@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "XZ2s5QnT6w/GIaji6P/YlKA48q1rMta+tC/8zTkGoLJeD6hZa5bd+nlJYZk6QYSVdDB95hF5uzTCHq3+tyKMCQ==",
+  "success": true,
+  "projectFilePath": "D:\\Faculta\\Second Year\\Second Semester\\ISS\\Lab\\Academic-Information-System\\Back-End\\AcademicInformationSystem\\AcademicInformationSystem\\AcademicInformationSystem.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Dan\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.13\\microsoft.netcore.app.host.win-x64.3.1.13.nupkg.sha512"
+  ],
+  "logs": []
+}
