@@ -87,3 +87,4 @@ C:\Users\paulu\OneDrive\Documents\GitHub\Academic-Information-System\Back-End\Ac
 C:\Users\paulu\OneDrive\Documents\GitHub\Academic-Information-System\Back-End\AcademicInfoSysAPI\AcademicInfoSysAPI\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\paulu\OneDrive\Documents\GitHub\Academic-Information-System\Back-End\AcademicInfoSysAPI\AcademicInfoSysAPI\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\paulu\OneDrive\Documents\GitHub\Academic-Information-System\Back-End\AcademicInfoSysAPI\AcademicInfoSysAPI\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Faculta\Second Year\Second Semester\ISS\Lab\Academic-Information-System\Back-End\AcademicInfoSysAPI\AcademicInfoSysAPI\obj\Debug\net5.0\refint\AcademicInfoSysAPI.dll

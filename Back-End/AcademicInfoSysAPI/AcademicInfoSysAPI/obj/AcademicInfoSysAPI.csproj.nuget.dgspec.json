@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\paulu\\OneDrive\\Documents\\GitHub\\Academic-Information-System\\Back-End\\AcademicInfoSysAPI\\AcademicInfoSysAPI\\AcademicInfoSysAPI.csproj": {}
+    "D:\\Faculta\\Second Year\\Second Semester\\ISS\\Lab\\Academic-Information-System\\Back-End\\AcademicInfoSysAPI\\AcademicInfoSysAPI\\AcademicInfoSysAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\paulu\\OneDrive\\Documents\\GitHub\\Academic-Information-System\\Back-End\\AcademicInfoSysAPI\\AcademicInfoSysAPI\\AcademicInfoSysAPI.csproj": {
+    "D:\\Faculta\\Second Year\\Second Semester\\ISS\\Lab\\Academic-Information-System\\Back-End\\AcademicInfoSysAPI\\AcademicInfoSysAPI\\AcademicInfoSysAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\paulu\\OneDrive\\Documents\\GitHub\\Academic-Information-System\\Back-End\\AcademicInfoSysAPI\\AcademicInfoSysAPI\\AcademicInfoSysAPI.csproj",
+        "projectUniqueName": "D:\\Faculta\\Second Year\\Second Semester\\ISS\\Lab\\Academic-Information-System\\Back-End\\AcademicInfoSysAPI\\AcademicInfoSysAPI\\AcademicInfoSysAPI.csproj",
         "projectName": "AcademicInfoSysAPI",
-        "projectPath": "C:\\Users\\paulu\\OneDrive\\Documents\\GitHub\\Academic-Information-System\\Back-End\\AcademicInfoSysAPI\\AcademicInfoSysAPI\\AcademicInfoSysAPI.csproj",
-        "packagesPath": "C:\\Users\\paulu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\paulu\\OneDrive\\Documents\\GitHub\\Academic-Information-System\\Back-End\\AcademicInfoSysAPI\\AcademicInfoSysAPI\\obj\\",
+        "projectPath": "D:\\Faculta\\Second Year\\Second Semester\\ISS\\Lab\\Academic-Information-System\\Back-End\\AcademicInfoSysAPI\\AcademicInfoSysAPI\\AcademicInfoSysAPI.csproj",
+        "packagesPath": "C:\\Users\\Dan\\.nuget\\packages\\",
+        "outputPath": "D:\\Faculta\\Second Year\\Second Semester\\ISS\\Lab\\Academic-Information-System\\Back-End\\AcademicInfoSysAPI\\AcademicInfoSysAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\paulu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,13 +64,13 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[6.0.2, )"
+              "version": "[6.0.3, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.2, )"
+              "version": "[6.0.3, )"
             },
             "Microsoft.NETCore.Targets": {
               "target": "Package",
