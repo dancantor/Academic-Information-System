@@ -1,5 +1,5 @@
-import { environment } from './../../environments/environment.prod';
-import { UserLoginDto } from './../Models/user-dto';
+import { environment } from '../../../environments/environment.prod';
+import { UserLoginDto } from '../../Models/user-dto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';

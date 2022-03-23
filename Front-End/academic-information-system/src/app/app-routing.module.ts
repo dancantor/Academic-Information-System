@@ -1,10 +1,10 @@
-import { HomepageComponent } from './homepage/homepage.component';
+import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { AppComponent } from './app.component';
-import { StudentMainPageComponent } from './student/student-main-page/student-main-page.component';
+import { StudentMainPageComponent } from './Pages/student-main-page/student-main-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TeacherMainPageComponent } from './teacher/teacher-main-page/teacher-main-page.component';
-import { StaffMainPageComponent } from './staff/staff-main-page/staff-main-page.component';
+import { TeacherMainPageComponent } from './Pages/teacher-main-page/teacher-main-page.component';
+import { StaffMainPageComponent } from './Pages/staff-main-page/staff-main-page.component';
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
