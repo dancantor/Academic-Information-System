@@ -7,10 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './Modules/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
-import { StudentMainPageComponent } from './Pages/student-main-page/student-main-page.component';
-import { TeacherMainPageComponent } from './Pages/teacher-main-page/teacher-main-page.component';
-import { StaffMainPageComponent } from './Pages/staff-main-page/staff-main-page.component';
-import { HomepageComponent } from './Pages/homepage/homepage.component'
+import { StudentMainPageComponent } from './pages/student-main-page/student-main-page.component';
+import { TeacherMainPageComponent } from './pages/teacher-main-page/teacher-main-page.component';
+import { StaffMainPageComponent } from './pages/staff-main-page/staff-main-page.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HomepageComponent } from './Pages/homepage/homepage.component'
     StudentMainPageComponent,
     TeacherMainPageComponent,
     StaffMainPageComponent,
-    HomepageComponent
+    HomepageComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

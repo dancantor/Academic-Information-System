@@ -2,3 +2,13 @@
 
 // html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.shadow{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+:root{
+    --this-is-a-var-color: #3dd5ac;
+    --navbar-icon-color:#014e88;
+    --navbar-background-color: #fff;
+}
