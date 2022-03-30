@@ -12,7 +12,6 @@ export class HomepageComponent implements OnInit {
 
   constructor(private loginService: LoginService, private router: Router) {}
   ngOnInit(): void {
-    console.log("morti mati");
   }
 
   student = {
