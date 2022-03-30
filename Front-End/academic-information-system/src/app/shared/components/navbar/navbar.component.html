@@ -1,0 +1,14 @@
+<mat-toolbar color="primary" class="shadow">
+    <img src="assets/images/logo.jpg" alt="image" width="106" height="40"/>
+
+    <div class="spacer"></div>
+    <a mat-button [matMenuTriggerFor]="menu"><mat-icon>person</mat-icon></a>
+    <mat-menu #menu="matMenu" class="dropdown shadow">
+        <table mat-menu-item class="menu-first-item">
+            <tr>
+                <td><div class="text">{{user.name}}</div></td>
+            </tr>
+        </table>
+        <a mat-menu-item (click)="logout()" class="log-out">Log out</a>
+    </mat-menu>
+</mat-toolbar>
