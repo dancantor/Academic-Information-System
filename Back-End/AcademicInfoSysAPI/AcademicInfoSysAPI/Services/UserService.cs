@@ -22,7 +22,7 @@ namespace AcademicInfoSysAPI.Services
         public async Task<string> CheckLogin(LoginDTO data)
         {
             var userLogged = await _userRepository.CheckUser(data.username);
-            if (userLogged == null)
+            if (userLogged == null || BCrypt.Net.BCrypt.Verify(data.password, userLogged.Passw))
                 throw new Exception("User not found in the database");
             return userLogged.UserRole;
         }
