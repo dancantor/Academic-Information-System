@@ -1,4 +1,4 @@
-using AcademicInfoSysAPI.Context;
+using AcademicInfoSysAPI.dbContext;
 using AcademicInfoSysAPI.Repository;
 using AcademicInfoSysAPI.Services;
 using Microsoft.AspNetCore.Builder;
@@ -38,7 +38,7 @@ namespace AcademicInfoSysAPI
                 });
             });
 
-            services.AddDbContext<UserContext>(options =>
+            services.AddDbContext<AcademicInformationSystemContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });

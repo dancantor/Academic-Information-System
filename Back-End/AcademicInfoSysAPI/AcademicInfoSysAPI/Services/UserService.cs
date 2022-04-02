@@ -21,10 +21,10 @@ namespace AcademicInfoSysAPI.Services
 
         public async Task<string> CheckLogin(LoginDTO data)
         {
-            var userLogged = await _userRepository.CheckUser(data.username);
+            var userLogged = await _userRepository.CheckUser(data.username, data.password);
             if (userLogged == null)
                 throw new Exception("User not found in the database");
-            return userLogged.UserRole;
+            return userLogged.Type;
         }
     }
 }
