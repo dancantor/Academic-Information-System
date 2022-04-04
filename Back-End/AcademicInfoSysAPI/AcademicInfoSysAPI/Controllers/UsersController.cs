@@ -11,7 +11,8 @@ using AcademicInfoSysAPI.Services;
 using AcademicInfoSysAPI.DTOs;
 
 namespace AcademicInfoSysAPI.Controllers
-{   
+{
+    
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : Controller
@@ -19,11 +20,12 @@ namespace AcademicInfoSysAPI.Controllers
         private readonly IUserService _userService;
 
         
+
         public UsersController(IUserService context)
         {
             _userService = context;
         }
-
+        
         [HttpPost]
         public async Task<IActionResult> CheckLogin([FromBody] LoginDTO data)
         {
@@ -38,6 +40,10 @@ namespace AcademicInfoSysAPI.Controllers
             {
                 return BadRequest(ex.Message);
             }
+
         }
+        public async Task<IActionResult> ()
+            {
+            }
     }
 }

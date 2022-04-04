@@ -26,5 +26,9 @@ namespace AcademicInfoSysAPI.Services
                 throw new Exception("User not found in the database");
             return userLogged.UserRole;
         }
+        public User<User> GetUserInfo()
+        {
+
+        }
     }
 }
