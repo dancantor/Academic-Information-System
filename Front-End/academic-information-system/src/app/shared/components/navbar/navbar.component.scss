@@ -1,0 +1,78 @@
+.mat-toolbar.mat-primary {
+    background: var(--navbar-background-color);
+    //height: 64px;
+    //width: 100vw;
+    img{
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 18px;
+    }
+}
+  
+.mat-icon{
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    margin-top: 9px;
+    color: var(--navbar-icon-color);
+}
+
+.mat-button{
+    font-size: 30px;
+    height: 100%;
+    padding-top: 9px;
+}
+
+.spacer{
+    flex: 1 1 auto;
+}
+
+ 
+
+ ::ng-deep .dropdown {
+    width: 300px;
+
+    .mat-menu-item:hover{
+        background-color: unset !important;
+    }
+
+    .menu-first-item{
+        height: 60px;
+        pointer-events: none;
+        td{
+            height: 50px;
+        }
+
+        .circle{
+            margin-top: 0;
+            width: 38px;
+            height: 38px;
+            line-height: 38px;
+            font-size: 15px;
+            padding: 0;
+        }
+
+        .text{
+            text-transform: capitalize;
+            margin-left: 15px;
+            font-weight: 700;
+            border-bottom: 1px solid black;
+            width: 170px;
+            height: 30px;
+            line-height: 20px;
+            text-align: center;
+        }
+    }
+
+    .log-out{
+        vertical-align: auto;
+        height: 20px;
+        width: 50px;
+        line-height: 14px;
+        font-size: 14px;
+        text-align: end;
+        margin-left: 180px;
+        font-weight: 700;
+        color: var(--navbar-icon-color);
+    }
+  }
