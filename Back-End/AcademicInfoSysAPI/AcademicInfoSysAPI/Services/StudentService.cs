@@ -8,6 +8,7 @@ namespace AcademicInfoSysAPI.Services
     public interface IStudentService
     {
         Task<StudentDTO> GetStudentInfoForID(string id);
+        Task<bool> UpdateStudentInfoForID(StudentDTO data);
     }
     public class StudentService : IStudentService
     {
@@ -25,6 +26,18 @@ namespace AcademicInfoSysAPI.Services
                 StudentId = userInfo.StudId,
 
             };
+        }
+
+        public async Task<bool> UpdateStudentInfoForID(StudentDTO data)
+        {
+            if( await _studentRepository.UpdateStudentInfoForID(data))
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+
         }
     }
 }

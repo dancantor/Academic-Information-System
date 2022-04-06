@@ -8,6 +8,7 @@ namespace AcademicInfoSysAPI.Services
     public interface IStaffService
     {
         Task<staffDTO> GetStaffInfoForID(string id);
+        Task<bool> UpdateStaffInfoForID(staffDTO data);
     }
     public class StaffService : IStaffService
     {
@@ -24,7 +25,20 @@ namespace AcademicInfoSysAPI.Services
             {
                 Cnp = userInfo.Cnp,
                 Id = userInfo.StaffId,
+
             };
+        }
+        public async Task<bool> UpdateStaffInfoForID(staffDTO data)
+        {
+            if (await _staffRepository.UpdateStaffInfoForID(data))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AcademicInfoSysAPI.TempDir;
 using AcademicInfoSysAPI.dbContext;
 using AcademicInfoSysAPI.Services;
+using AcademicInfoSysAPI.DTOs;
 
 namespace AcademicInfoSysAPI.Controllers
 {
@@ -40,6 +41,17 @@ namespace AcademicInfoSysAPI.Controllers
             }
 
         }
-
+        [HttpPost]
+        public async Task<IActionResult> UpdateStudentInfo([FromBody] staffDTO data)
+        {
+            if (await _staffService.UpdateStaffInfoForID(data))
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
     }
 }

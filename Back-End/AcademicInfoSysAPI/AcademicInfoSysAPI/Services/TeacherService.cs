@@ -8,6 +8,7 @@ namespace AcademicInfoSysAPI.Services
     public interface ITeacherService
     {
         Task<TeacherDTO> GetTeacherInfoForID(string id);
+        Task<bool> UpdateTeacherInfoForID(TeacherDTO data);
     }
     public class TeacherService : ITeacherService
     {
@@ -23,9 +24,20 @@ namespace AcademicInfoSysAPI.Services
             return new TeacherDTO
             {
                 Cnp = userInfo.Cnp,
-                TeacherId   =userInfo.TeacherId,
+                TeacherId = userInfo.TeacherId,
 
             };
+        }
+        public async Task<bool> UpdateTeacherInfoForID(TeacherDTO data)
+        {
+            if (await _teacherRepository.UpdateTeacherInfoForID(data))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

@@ -11,6 +11,7 @@ namespace AcademicInfoSysAPI.Repository
     public interface IStaffRepository
     {
         Task<staff> GetInfo(int staffId);
+        Task<bool> UpdateStaffInfoForID(staffDTO data);
     }
     public class StaffRepository : IStaffRepository
     {
@@ -24,6 +25,21 @@ namespace AcademicInfoSysAPI.Repository
         public async Task<staff> GetInfo(int staffid)
         {
             return await _dbContext.staff.Where(x => x.StaffId == staffid).FirstOrDefaultAsync();
+        }
+        public async Task<bool> UpdateStaffInfoForID(staffDTO data)
+        {
+            var staff_to_update = await _dbContext.staff.Where(x => x.StaffId == data.Id).FirstOrDefaultAsync();
+            if (staff_to_update != null)
+            {
+                staff_to_update.Cnp = data.Cnp;
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 }
