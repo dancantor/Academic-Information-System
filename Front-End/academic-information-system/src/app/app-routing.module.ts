@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TeacherMainPageComponent } from './pages/teacher-main-page/teacher-main-page.component';
 import { StaffMainPageComponent } from './pages/staff-main-page/staff-main-page.component';
-import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 
 
 const routes: Routes = [

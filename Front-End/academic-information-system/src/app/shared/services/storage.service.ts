@@ -14,6 +14,7 @@ export class StorageService {
     //localStorage.setItem('isAdmin', JSON.stringify(true));
   }
   getUser(){
+    return localStorage.getItem('userId');
   }
 
   getUserToken() {

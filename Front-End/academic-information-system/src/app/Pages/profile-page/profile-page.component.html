@@ -4,24 +4,20 @@
     </mat-card>
 </div> -->
 <app-navbar>
-    
 </app-navbar>
-<mat-card class="profile-card">
+<mat-card class="profile-card" fxFlex.gt-sm="70">
     <img mat-card-image src="assets\images\owl.png" alt="Photo of a Shiba Inu">
-    
 </mat-card>
 
-<div class="buttons">
-    <a mat-button>Update Details</a>
-    <a mat-button>Change Photo</a>
-    <a mat-button>Save Changes</a>
+<div class="background">
+    <div class="form-container">
+        <form [formGroup]="personalInformationForm">
+            <mat-form-field id="id" appearance="outline">
+                <mat-label>ID</mat-label>
+                <input matInput name="id" formControlName="id" [disabled]="true">
+            </mat-form-field>
+        </form>
+    </div>
 </div>
-
-<div class = background>
-    
-    
-</div>
-
-
 
 <app-sidebar> </app-sidebar>

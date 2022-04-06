@@ -13,7 +13,7 @@ import { StaffMainPageComponent } from './pages/staff-main-page/staff-main-page.
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
-import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
