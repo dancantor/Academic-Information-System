@@ -24,7 +24,7 @@ namespace AcademicInfoSysAPI.Services
             var userLogged = await _userRepository.CheckUser(data.username);
             if (userLogged == null || BCrypt.Net.BCrypt.Verify(data.password, userLogged.Passw))
                 throw new Exception("User not found in the database");
-            return userLogged.UserRole;
+            return userLogged.Type;
         }
     }
 }
