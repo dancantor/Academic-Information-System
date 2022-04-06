@@ -12,6 +12,9 @@ import { TeacherMainPageComponent } from './pages/teacher-main-page/teacher-main
 import { StaffMainPageComponent } from './pages/staff-main-page/staff-main-page.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
     TeacherMainPageComponent,
     StaffMainPageComponent,
     HomepageComponent,
-    NavbarComponent
+    NavbarComponent,
+    SidebarComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,8 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

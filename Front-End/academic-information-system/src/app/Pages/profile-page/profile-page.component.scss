@@ -1,0 +1,46 @@
+
+
+.mat-card{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    margin-top: 50px;
+    margin-left: 7%;
+}
+
+.mat-card-image{
+    padding-top: 20px;
+    width: 170px;
+    height: 200px;
+    margin:auto
+}
+
+.background{
+    background-color: rgb(208, 184, 231);
+    width: 67%;
+    height: 94vh;
+    margin-top: 22px;
+    margin-right: 20px;
+    float:right;
+}
+.buttons{
+    display:flexbox;
+    flex-direction: row;
+    flex-grow: 1;
+    position:absolute;
+    top: 500px;
+}
+
+@media (max-width: 800px) {
+    .buttons {
+      flex-direction: column;
+    }
+}
+
+.mat-button{
+    background-color: white;
+    float:left;
+    margin:10px;
+    flex: 1;
+}
+
