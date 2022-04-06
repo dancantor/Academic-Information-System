@@ -8,22 +8,22 @@ using System.Threading.Tasks;
 namespace AcademicInfoSysAPI.Repository
 {
 
-    public interface IStudentRepository
+    public interface ITeacherRepository
     {
-        Task<Student> GetInfo(int StudId);
+        Task<Teacher> GetInfo(int TeacherId);
     }
-    public class StudentRepository : IStudentRepository
+    public class TeacherRepository : ITeacherRepository
     {
         private readonly AcademicInformationSystemContext _dbContext;
 
-        public StudentRepository(AcademicInformationSystemContext someContext)
+        public TeacherRepository(AcademicInformationSystemContext someContext)
         {
             _dbContext = someContext;
         }
 
-        public async Task<Student> GetInfo(int StudId)
+        public async Task<Teacher> GetInfo(int TeachId)
         {
-            return await _dbContext.Students.Where(x => x.StudId == StudId).FirstOrDefaultAsync();
+            return await _dbContext.Teachers.Where(x => x.TeacherId == TeachId).FirstOrDefaultAsync();
         }
     }
 }
