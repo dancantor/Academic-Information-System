@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
     });
   }
   onLogin(){ if (!this.loginForm.valid) {
+    console.log("this works")
     return;
   }}
 }

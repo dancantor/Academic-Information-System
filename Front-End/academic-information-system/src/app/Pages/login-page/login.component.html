@@ -2,7 +2,7 @@
     <div class="header">
       <P>Sign Into Your Account </P>
     </div>
-    <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
+    <form  name="loginForm" [formGroup]="loginForm">
       <div class="usernameInput">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Username</mat-label>
@@ -35,7 +35,7 @@
         </mat-error>
       </mat-form-field>
       </div>
-      <button mat-flat-button color="primary">Login</button>
+      <button mat-flat-button color="primary" (click)="onLogin()">Login</button>
     </form>
 
     
