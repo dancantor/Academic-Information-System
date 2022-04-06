@@ -5,12 +5,28 @@ CREATE TABLE Users(
 	passw varchar(25)
 )
 
+ALTER TABLE Users
+ALTER COLUMN passw
+varchar(255)
+
 insert into Users values ('pop.ion', 'admin', 'admin'), ('ion.vasile','student', 'student'), ('cantor.dan', 'student', 'caca')
 
 update Users
-SET user_role = 'teacher'
+SET passw = '$2a$11$EdP6Lw8vuU.J2O1L868CDOU4TpAYdNh8Y5vPON9Ewi5DKmDH0UAci'
 WHERE username = 'pop.ion'
 
-insert into Users values ('elvira.bal', 'staff', 'secretara')
+update Users
+SET passw = '$2a$11$KVaLr1yH2cH8BbGjXGsOkuDy7zugQgjeTdBqSjPWaVLCku4sXOcg6'
+WHERE username = 'ion.vasile'
 
-SELECT * from Users
+update Users
+SET passw = '$2a$11$jALwA9pwrX.0oyBnTpQZqOLZ8oeE3LEnVy2cBriUle7QjSb7C7e3y'
+WHERE username = 'cantor.dan'
+
+update Users
+SET passw = '$2a$11$jLIwnXnlOZp9AgvqBCS6Ieew6MDMxJvCL58tawBEVYZSBPnJWELU2'
+WHERE username = 'elvira.bal'
+
+Select * from Users
+
+insert into Users values ('elvira.bal', 'staff', 'secretara')

@@ -1,6 +1,5 @@
-﻿using AcademicInfoSysAPI.Context;
-using AcademicInfoSysAPI.Context.Models;
-using AcademicInfoSysAPI.DTOs;
+﻿using AcademicInfoSysAPI.dbContext;
+using AcademicInfoSysAPI.TempDir;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,21 +8,21 @@ namespace AcademicInfoSysAPI.Repository
 {
     public interface IUserRepository
     {
-        Task<User> CheckUser(string username);
+        Task<GenericUser> CheckUser(string username);
     }
     public class UserRepository : IUserRepository
     {
-        private readonly UserContext _dbContext;
+        private readonly AcademicInformationSystemContext _dbContext;
 
-        public UserRepository(UserContext some_context)
+        public UserRepository(AcademicInformationSystemContext some_context)
         {
             _dbContext = some_context;
         }
 
-        public async Task<User> CheckUser(string username)
+        public async Task<GenericUser> CheckUser(string username)
         {
-            return await _dbContext.Users.Where(x => x.Username == username)
-                .FirstOrDefaultAsync<User>();
+            return await _dbContext.GenericUsers.Where(x => x.Username == username).FirstOrDefaultAsync();
+
         }
     }
 }

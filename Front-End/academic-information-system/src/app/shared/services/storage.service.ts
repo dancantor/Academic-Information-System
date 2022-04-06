@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LoginResponseUser } from 'src/app/Models/login-response-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -6,32 +7,40 @@ import { Injectable } from '@angular/core';
 export class StorageService {
 
   constructor() { }
-  saveStudentData(): void {
-    
-  }
-  saveAdminData(): void {
-    //this.saveUserData();
-    //localStorage.setItem('isAdmin', JSON.stringify(true));
-  }
-  getUser(){
-    return localStorage.getItem('userId');
+  saveUserData(user: LoginResponseUser): void {
+    localStorage.setItem("Type", JSON.stringify(user.type));
+    localStorage.setItem("Id", user.id.toString());
   }
 
-  getUserToken() {
-    
+  getUserId(){
+    return localStorage.getItem("Id");
+  }
+
+  getUserType() {
+    let type = localStorage.getItem("Type");
+    return type !== null ? JSON.parse(type) : "";
   }
 
   deleteUserData(): void {
     // TODO change this accordingly
-    localStorage.removeItem('');
-    localStorage.removeItem('');
-    localStorage.removeItem('');
+    localStorage.removeItem('Id');
+    localStorage.removeItem('Type');
   }
 
   
 
-  isUserAdmin(): boolean | false {
-    const isAdmin = localStorage.getItem('isAdmin');
-    return isAdmin === null ? false : JSON.parse(isAdmin);
+  isUserStudent(): boolean | false {
+    const type = localStorage.getItem('type');
+    return type === null || JSON.parse(type) !== "student" ? false : true;
+  }
+
+  isUserTeacher(): boolean | false {
+    const type = localStorage.getItem('type');
+    return type === null || JSON.parse(type) !== "teacher" ? false : true;
+  }
+
+  isUserStaff(): boolean | false {
+    const type = localStorage.getItem('type');
+    return type === null || JSON.parse(type) !== "staff" ? false : true;
   }
 }
