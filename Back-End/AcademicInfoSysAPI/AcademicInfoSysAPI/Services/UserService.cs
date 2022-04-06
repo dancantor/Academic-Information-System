@@ -8,7 +8,7 @@ namespace AcademicInfoSysAPI.Services
 
     public interface IUserService
     {
-        Task<string> CheckLogin(LoginDTO data);
+        Task<LoginResponseDto> CheckLogin(LoginDTO data);
     }
     public class UserService : IUserService
     {
@@ -19,12 +19,16 @@ namespace AcademicInfoSysAPI.Services
             _userRepository = some_repo;
         }
 
-        public async Task<string> CheckLogin(LoginDTO data)
+        public async Task<LoginResponseDto> CheckLogin(LoginDTO data)
         {
             var userLogged = await _userRepository.CheckUser(data.username);
-            if (userLogged == null || BCrypt.Net.BCrypt.Verify(data.password, userLogged.Passw))
+            if (userLogged == null || !BCrypt.Net.BCrypt.Verify(data.password, userLogged.Passw))
                 throw new Exception("User not found in the database");
-            return userLogged.Type;
+            return new LoginResponseDto
+            {
+                id = userLogged.Id,
+                role = userLogged.UserRole
+            };
         }
     }
 }
