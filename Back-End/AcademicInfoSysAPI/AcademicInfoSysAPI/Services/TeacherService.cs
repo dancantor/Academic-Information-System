@@ -23,10 +23,12 @@ namespace AcademicInfoSysAPI.Services
             var userInfo = await _teacherRepository.GetInfo(Int32.Parse(id));
             return new TeacherDTO
             {
-                Cnp = userInfo.Cnp,
-                TeacherId = userInfo.TeacherId,
-
-            };
+                CNP = userInfo.Cnp,
+                TeacherId = userInfo.TeacherID,
+                first_name = userInfo.FirstName,
+                last_name = userInfo.LastName,
+                age = userInfo.Age;
+        };
         }
         public async Task<bool> UpdateTeacherInfoForID(TeacherDTO data)
         {

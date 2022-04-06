@@ -5,8 +5,8 @@ namespace AcademicInfoSysAPI.TempDir
 {
     public partial class staff
     {
-        public int? GenericId { get; set; }
-        public int StaffId { get; set; }
+        public int? staffId { get; set; }
+        public int GenericId { get; set; }
         public string Cnp { get; set; }
 
         public virtual GenericUser Generic { get; set; }

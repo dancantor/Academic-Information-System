@@ -24,14 +24,14 @@ namespace AcademicInfoSysAPI.Repository
 
         public async Task<Teacher> GetInfo(int TeachId)
         {
-            return await _dbContext.Teachers.Where(x => x.TeacherId == TeachId).FirstOrDefaultAsync();
+            return await _dbContext.Teachers.Where(x => x.GenericId == TeachId).FirstOrDefaultAsync();
         }
         public async Task<bool> UpdateTeacherInfoForID(TeacherDTO data)
         {
-            var teacher_to_update = await _dbContext.Teachers.Where(x => x.TeacherId == data.TeacherId).FirstOrDefaultAsync();
+            var teacher_to_update = await _dbContext.Teachers.Where(x => x.GenericId == data.TeacherId).FirstOrDefaultAsync();
             if (teacher_to_update != null)
             {
-                teacher_to_update.Cnp = data.Cnp;
+                teacher_to_update.Cnp = data.CNP;
                 await _dbContext.SaveChangesAsync();
                 return true;
             }
