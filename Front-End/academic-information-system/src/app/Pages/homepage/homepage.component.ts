@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserLoginDto } from 'src/app/Models/user-dto'; 
 import { LoginService } from 'src/app/shared/services/login-service.service';
 import {Router} from '@angular/router'
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-homepage',
@@ -10,7 +11,7 @@ import {Router} from '@angular/router'
 })
 export class HomepageComponent implements OnInit {
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private loginService: LoginService, private router: Router, private storage: StorageService) {}
   ngOnInit(): void {
   }
 
@@ -31,11 +32,11 @@ export class HomepageComponent implements OnInit {
   userStatus: string;
 
   testLogin(user: any): void {
-    // this.loginService.login(user).subscribe(response => {
-    //   this.userStatus = response.toString();
-    //   this.router.navigate(['/' + this.userStatus]);
-    //   localStorage.setItem('role', this.userStatus);
-    // }, error => console.error(error));
+    this.loginService.login(user).subscribe(response => {
+      this.userStatus = response.toString();
+      this.router.navigate(['/' + this.userStatus]);
+      
+    }, error => console.error(error));
   }
 
   isHome(): boolean {
