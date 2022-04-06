@@ -8,7 +8,7 @@ namespace AcademicInfoSysAPI.Repository
 {
     public interface IUserRepository
     {
-        Task<GenericUser> CheckUser(string username, string password);
+        Task<GenericUser> CheckUser(string username);
     }
     public class UserRepository : IUserRepository
     {
@@ -19,9 +19,9 @@ namespace AcademicInfoSysAPI.Repository
             _dbContext = some_context;
         }
 
-        public async Task<GenericUser> CheckUser(string username, string password)
+        public async Task<GenericUser> CheckUser(string username)
         {
-            return await _dbContext.GenericUsers.Where(x => x.Username == username && x.Password == password).FirstOrDefaultAsync();
+            return await _dbContext.GenericUsers.Where(x => x.Username == username).FirstOrDefaultAsync();
 
         }
     }
