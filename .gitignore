@@ -73,3 +73,5 @@ _[Ss]cripts
 *.nupkg
 *.ncrunchsolution
 *.dot[Cc]over
+Back-End/AcademicInfoSysAPI/.vs/AcademicInfoSysAPI/DesignTimeBuild/.dtbcache.v2
+Back-End/AcademicInfoSysAPI/.vs/AcademicInfoSysAPI/v17/.futdcache.v1
