@@ -6,13 +6,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { TeacherMainPageComponent } from './Pages/teacher-main-page/teacher-main-page.component';
 import { StaffMainPageComponent } from './Pages/staff-main-page/staff-main-page.component';
 import { LoginComponent } from './Pages/login-page/login.component';
+import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
+
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'student', component: StudentMainPageComponent},
   {path: 'teacher', component: TeacherMainPageComponent},
   {path: 'staff', component: StaffMainPageComponent},
-  {path: 'login',component:LoginComponent}
+  {path: 'login',component:LoginComponent},
+  {path: 'profile', component: ProfilePageComponent}
 ];
 
 @NgModule({

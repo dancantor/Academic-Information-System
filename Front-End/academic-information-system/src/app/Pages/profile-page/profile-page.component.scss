@@ -1,0 +1,59 @@
+.mat-card {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    margin-top: 15%;
+    margin-left: 7%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.mat-card-image {
+    padding-top: 20px;
+    width: 170px;
+    height: 200px;
+    margin: auto
+}
+
+.background {
+    background-color: rgb(208, 184, 231);
+    width: 67%;
+    height: 94vh;
+    margin-top: 22px;
+    margin-right: 20px;
+    float: right;
+}
+
+.buttons {
+    display: flexbox;
+    flex-direction: row;
+    flex-grow: 1;
+    position: absolute;
+    top: 500px;
+}
+
+@media (max-width: 1200px) {
+    .buttons {
+        flex-direction: column;
+    }
+    .mat-card{
+        visibility: hidden;
+    }
+}
+
+.mat-button {
+    background-color: white;
+    float: left;
+    margin: 10px;
+    flex: 1;
+}
+
+.form-container{
+    margin-left: 15%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}

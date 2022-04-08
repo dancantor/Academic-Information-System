@@ -4,4 +4,5 @@ export class User implements UserLoginDto{
     username: string;
     password: string;
     name: string;
+    type: string;
 }

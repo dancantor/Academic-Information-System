@@ -1,0 +1,40 @@
+<!-- <div class="background-sidebar"> 
+    <mat-card class="profile-card">
+        <img mat-card-image src="assets\images\owl.png" alt="Photo of a Shiba Inu">
+    </mat-card>
+</div> -->
+<app-navbar>
+</app-navbar>
+<mat-card class="profile-card" fxFlex.gt-sm="70">
+    <img mat-card-image src="assets\images\owl.png" alt="Photo of a Shiba Inu">
+</mat-card>
+
+<div class="background">
+    <div class="form-container">
+        <form [formGroup]="personalInformationForm">
+            <mat-form-field appearance="outline" style="width: 600px; margin-top: 25px;">
+                <mat-label>ID</mat-label>
+                <input matInput name="id" formControlName="id">
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="width: 600px; margin-top: 25px;">
+                <mat-label>First Name</mat-label>
+                <input matInput name="firstName" formControlName="first_name">
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="width: 600px; margin-top: 25px;">
+                <mat-label>Last Name</mat-label>
+                <input matInput name="lastName" formControlName="last_name">
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="width: 600px; margin-top: 25px;">
+                <mat-label>CNP</mat-label>
+                <input matInput name="cnp" formControlName="CNP">
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="width: 600px; margin-top: 25px;">
+                <mat-label>Age</mat-label>
+                <input matInput name="age" formControlName="age">
+            </mat-form-field>
+        </form>
+        <button mat-button style="max-width: 400px; margin-right: 20%;" (click)="submitChanges()">Save Changes</button>
+    </div>
+</div>
+
+<app-sidebar> </app-sidebar>

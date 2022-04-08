@@ -17,6 +17,8 @@ import {MatButtonModule} from '@angular/material/button'
 import {MatInputModule} from '@angular/material/input';
 import { LoginComponent } from './Pages/login-page/login.component'
 import {MatIconModule} from '@angular/material/icon'
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {MatIconModule} from '@angular/material/icon'
     StaffMainPageComponent,
     HomepageComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    SidebarComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,
