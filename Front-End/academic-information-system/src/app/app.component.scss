@@ -1,4 +1,13 @@
-button {
-    width: 200px;
-    height: 200px;
+// button {
+//   width: 200px;
+//   height: 200px;
+// }
+.content-body {
+  width: 100%;
+  height: 100vh;
+   position: relative;
+  overflow: hidden;
+  display: block;
+  background-image: url("/assets/images/backgroundLogin.jpg");
+  background-size: 100% 100%;
 }
