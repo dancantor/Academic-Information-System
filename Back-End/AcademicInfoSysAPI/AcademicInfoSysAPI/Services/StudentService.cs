@@ -1,8 +1,14 @@
-﻿namespace AcademicInfoSysAPI.Services
+﻿using AcademicInfoSysAPI.DTOs;
+using AcademicInfoSysAPI.Repository;
+using System;
+using System.Threading.Tasks;
+
+namespace AcademicInfoSysAPI.Services
 {
     public interface IStudentService
     {
-        Task</*someDTO*/> GetStudentInfoForID(DTO data);
+        Task<StudentDTO> GetStudentInfoForID(string id);
+        Task<bool> UpdateStudentInfoForID(StudentDTO data);
     }
     public class StudentService : IStudentService
     {
@@ -12,10 +18,29 @@
         {
             _studentRepository = some_repo;
         }
-
-        Task</*someDTO*/> GetStudentInfoForID(DTO data);
+        public async Task<StudentDTO> GetStudentInfoForID(string id)
         {
-            //no need to search for the student as it is already logged in the site
+            var userInfo = await _studentRepository.GetInfo(Int32.Parse(id));
+            return new StudentDTO{
+                CNP = userInfo.Cnp,
+                StudentId = userInfo.StudId,
+                first_name = userInfo.FirstName,
+                last_name = userInfo.LastName,
+                age = userInfo.Age;
+
+        };
+        }
+
+        public async Task<bool> UpdateStudentInfoForID(StudentDTO data)
+        {
+            if( await _studentRepository.UpdateStudentInfoForID(data))
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+
         }
     }
 }

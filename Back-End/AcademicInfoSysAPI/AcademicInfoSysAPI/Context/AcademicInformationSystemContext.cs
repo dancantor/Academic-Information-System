@@ -239,26 +239,26 @@ namespace AcademicInfoSysAPI.dbContext
                     .HasConstraintName("FK__Student__generic__267ABA7A");
             });
 
-            modelBuilder.Entity<Teacher>(entity =>
+            modelBuilder.Entity<Teacher>((Action<Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Teacher>>)(entity =>
             {
                 entity.ToTable("Teacher");
 
-                entity.Property(e => e.TeacherId).HasColumnName("teacher_ID");
+                entity.Property<int>(e => (int)e.TeacherID).HasColumnName("teacher_ID");
 
                 entity.Property(e => e.Cnp)
                     .HasMaxLength(13)
                     .IsUnicode(false)
                     .HasColumnName("CNP");
 
-                entity.Property(e => e.GenericId).HasColumnName("generic_ID");
+                entity.Property<int?>(e => (int?)e.GenericId).HasColumnName("generic_ID");
 
                 entity.Property(e => e.IsChief).HasColumnName("isChief");
 
-                entity.HasOne(d => d.Generic)
+                RelationalForeignKeyBuilderExtensions.HasConstraintName<GenericUser, Teacher>(entity.HasOne(d => d.Generic)
                     .WithMany(p => p.Teachers)
-                    .HasForeignKey(d => d.GenericId)
-                    .HasConstraintName("FK__Teacher__generic__2C3393D0");
-            });
+                    .HasForeignKey(d => (object)d.GenericId)
+, "FK__Teacher__generic__2C3393D0");
+            }));
 
             modelBuilder.Entity<Year2DisciplineList>(entity =>
             {
@@ -281,24 +281,24 @@ namespace AcademicInfoSysAPI.dbContext
                     .HasConstraintName("FK__Year2Disc__stud___32E0915F");
             });
 
-            modelBuilder.Entity<staff>(entity =>
+            modelBuilder.Entity<staff>((Action<Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<staff>>)(entity =>
             {
                 entity.ToTable("Staff");
 
-                entity.Property(e => e.StaffId).HasColumnName("staff_ID");
+                entity.Property<int>(e => (int)e.staffId).HasColumnName("staff_ID");
 
                 entity.Property(e => e.Cnp)
                     .HasMaxLength(13)
                     .IsUnicode(false)
                     .HasColumnName("CNP");
 
-                entity.Property(e => e.GenericId).HasColumnName("generic_ID");
+                entity.Property<int?>(e => (int?)e.GenericId).HasColumnName("generic_ID");
 
-                entity.HasOne(d => d.Generic)
+                RelationalForeignKeyBuilderExtensions.HasConstraintName<GenericUser, staff>(entity.HasOne(d => d.Generic)
                     .WithMany(p => p.staff)
-                    .HasForeignKey(d => d.GenericId)
-                    .HasConstraintName("FK__Staff__generic_I__29572725");
-            });
+                    .HasForeignKey(d => (object)d.GenericId)
+, "FK__Staff__generic_I__29572725");
+            }));
 
             OnModelCreatingPartial(modelBuilder);
         }

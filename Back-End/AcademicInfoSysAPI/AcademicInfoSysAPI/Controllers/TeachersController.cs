@@ -14,38 +14,38 @@ namespace AcademicInfoSysAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StudentsController : Controller
+    public class TeachersController : Controller
     {
-        private readonly IStudentService _studentService;
+        private readonly ITeacherService _teacherService;
 
-        public StudentsController(IStudentService service)
+        public TeachersController(ITeacherService service)
         {
-            _studentService = service;
+            _teacherService = service;
         }
 
-        // GET: Students
-        [HttpGet("{stud_ID}")]
-        public async Task<IActionResult> GetStudentInfoForID(string stud_ID)
+        // GET: Teacher
+        [HttpGet("{teacher_ID}")]
+        public async Task<IActionResult> GetTeacherInfoForID(string teacher_ID)
         {
 
-            if (string.IsNullOrEmpty(stud_ID))
+            if (string.IsNullOrEmpty(teacher_ID))
                 return BadRequest();
             try
             {
-                var student = await _studentService.GetStudentInfoForID(stud_ID);
-                return Ok(student);
+                var teacher = await _teacherService.GetTeacherInfoForID(teacher_ID);
+                return Ok(teacher);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-            
+
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateStudentInfo([FromBody] StudentDTO data)
+        public async Task<IActionResult> UpdateTeacherInfo([FromBody] TeacherDTO data)
         {
-            if (await _studentService.UpdateStudentInfoForID(data))
+            if (await _teacherService.UpdateTeacherInfoForID(data))
             {
                 return Ok();
             }
@@ -54,6 +54,6 @@ namespace AcademicInfoSysAPI.Controllers
                 return BadRequest();
             }
         }
-        
+
     }
 }

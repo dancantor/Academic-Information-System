@@ -11,7 +11,7 @@ namespace AcademicInfoSysAPI.TempDir
         }
 
         public int? GenericId { get; set; }
-        public int TeacherId { get; set; }
+        public int TeacherID { get; set; }
         public string Cnp { get; set; }
         public bool? IsChief { get; set; }
 
