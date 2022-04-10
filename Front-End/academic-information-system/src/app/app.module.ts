@@ -19,6 +19,7 @@ import { LoginComponent } from './Pages/login-page/login.component'
 import {MatIconModule} from '@angular/material/icon'
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
+import { DisplayErrorsComponent } from './shared/utilities/display-errors/display-errors.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ProfilePageComponent } from './Pages/profile-page/profile-page.componen
     NavbarComponent,
     LoginComponent,
     SidebarComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    DisplayErrorsComponent
   ],
   imports: [
     BrowserModule,

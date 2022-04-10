@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { StorageService } from './storage.service';
 import { User } from 'src/app/Models/genericUser';
+import { LoginResponseUser } from 'src/app/Models/login-response-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +18,7 @@ export class LoginService {
   private apiURL = environment.apiURL + "/Users";
 
 
-  public login(user: UserLoginDto): Observable<string> {
-    return this.http.post<string>(this.apiURL, user).pipe(tap((response: string) =>{
-      // TODO maybe change this to storage service
-      localStorage.setItem('userId', response);
-    }))
+  public login(user: UserLoginDto): Observable<LoginResponseUser> {
+    return this.http.post<LoginResponseUser>(this.apiURL, user);
   }
 }

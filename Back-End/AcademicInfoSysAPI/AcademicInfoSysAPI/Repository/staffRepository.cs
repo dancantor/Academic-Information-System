@@ -1,6 +1,6 @@
-﻿using AcademicInfoSysAPI.dbContext;
+﻿using AcademicInfoSysAPI.Context;
+using AcademicInfoSysAPI.Context.Models;
 using AcademicInfoSysAPI.DTOs;
-using AcademicInfoSysAPI.TempDir;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,9 +15,9 @@ namespace AcademicInfoSysAPI.Repository
     }
     public class StaffRepository : IStaffRepository
     {
-        private readonly AcademicInformationSystemContext _dbContext;
+        private readonly AcademicInfoSysAPI_dbContext _dbContext;
 
-        public StaffRepository(AcademicInformationSystemContext someContext)
+        public StaffRepository(AcademicInfoSysAPI_dbContext someContext)
         {
             _dbContext = someContext;
         }

@@ -4,6 +4,7 @@
       <div class="header">
         <P>Sign Into Your Account </P>
       </div>
+      <app-display-errors [errors]="errors"></app-display-errors>
       <form  name="loginForm" [formGroup]="loginForm">
         <div class="usernameInput">
           <mat-form-field class="full-width" appearance="outline">

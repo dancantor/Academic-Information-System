@@ -1,6 +1,6 @@
 import { UserLoginDto } from "./user-dto";
 
-export class User implements UserLoginDto{
+export class User extends UserLoginDto{
     username: string;
     password: string;
     name: string;

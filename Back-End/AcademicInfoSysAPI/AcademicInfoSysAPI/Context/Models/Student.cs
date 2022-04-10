@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AcademicInfoSysAPI.TempDir
+namespace AcademicInfoSysAPI.Context.Models
 {
     public partial class Student
     {
@@ -17,6 +17,9 @@ namespace AcademicInfoSysAPI.TempDir
         public int? GenericId { get; set; }
         public int StudId { get; set; }
         public string Cnp { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int? Age { get; set; }
         public int Year1 { get; set; }
         public int? Year2 { get; set; }
         public int? ContractId { get; set; }

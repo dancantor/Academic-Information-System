@@ -24,10 +24,10 @@ namespace AcademicInfoSysAPI.Services
             return new staffDTO
             {
                 CNP = userInfo.Cnp,
-                Id = (int)userInfo.staffId
+                Id = (int)userInfo.StaffId,
                 first_name = userInfo.FirstName,
                 last_name = userInfo.LastName,
-                age = userInfo.Age;
+                age = (int)userInfo.Age
             };
         }
         public async Task<bool> UpdateStaffInfoForID(staffDTO data)

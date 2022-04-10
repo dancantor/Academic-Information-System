@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AcademicInfoSysAPI.TempDir
+namespace AcademicInfoSysAPI.Context.Models
 {
     public partial class StandardGrade
     {

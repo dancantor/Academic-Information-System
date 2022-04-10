@@ -24,11 +24,11 @@ namespace AcademicInfoSysAPI.Services
             return new TeacherDTO
             {
                 CNP = userInfo.Cnp,
-                TeacherId = userInfo.TeacherID,
+                TeacherId = userInfo.TeacherId,
                 first_name = userInfo.FirstName,
                 last_name = userInfo.LastName,
-                age = userInfo.Age;
-        };
+                age = (int)userInfo.Age
+            };
         }
         public async Task<bool> UpdateTeacherInfoForID(TeacherDTO data)
         {
