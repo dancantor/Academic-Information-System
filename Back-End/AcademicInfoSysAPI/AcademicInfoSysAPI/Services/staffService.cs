@@ -21,6 +21,10 @@ namespace AcademicInfoSysAPI.Services
         public async Task<staffDTO> GetStaffInfoForID(string id)
         {
             var userInfo = await _staffRepository.GetInfo(Int32.Parse(id));
+            if (userInfo == null)
+            {
+                return null;
+            }
             return new staffDTO
             {
                 CNP = userInfo.Cnp,

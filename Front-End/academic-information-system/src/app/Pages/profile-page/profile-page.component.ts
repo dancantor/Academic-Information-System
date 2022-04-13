@@ -4,34 +4,35 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { tap } from 'rxjs/operators';
 import { ProfileInformation } from 'src/app/Models/student.model';
+import { HttpRequestsService } from 'src/app/shared/services/http-requests.service';
 import { StorageService } from 'src/app/shared/services/storage.service';
-
-const student1: ProfileInformation = {
-  id: '1',
-  first_name: 'vasile',
-  last_name: 'mure',
-  age: 21,
-  CNP: 222222222222
-};
-
+import { parseWebAPIErrors } from 'src/app/shared/utilities/utils';
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
   styleUrls: ['./profile-page.component.scss']
 })
 export class ProfilePageComponent implements OnInit {
-  student:  ProfileInformation;
+  user:  ProfileInformation;
   personalInformationForm : FormGroup;
   userId: string;
   role: string;
+  msg: string[] = [];
 
   constructor(
     private _formBuilder: FormBuilder,
-    private http: HttpClient,
+    private http: HttpRequestsService,
     private _storageService: StorageService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
+    this.user = {
+      id: '0',
+      age: 0,
+      cnp: 0,
+      first_name: '',
+      last_name: ''
+    }
     this.getUserInfo();
     this.createForm();
   }
@@ -39,23 +40,24 @@ export class ProfilePageComponent implements OnInit {
   getUserInfo(): void{
     this.userId = this._storageService.getUserId() || '';
     this.role = this._storageService.getUserType();
-    this.http.get<ProfileInformation>(`/api/${this.role}/${this.userId}`)
-      .pipe(tap((response: ProfileInformation) => {
-        this.student = response;
-      }));
+    this.http.getProfileInfoById(this.userId, this.role)
+      .subscribe(result => this.user = result);
   }
   createForm(): void {
     this.personalInformationForm = this._formBuilder.group({
-      // Using the student1 mock
-        id: new FormControl({value: student1.id, disabled: true}),
-        first_name: new FormControl(student1.first_name),
-        last_name: new FormControl(student1.last_name),
-        CNP: new FormControl({value: student1.CNP, disabled: true}),
-        age: new FormControl(student1.age)
+        id: new FormControl(),
+        first_name: new FormControl(),
+        last_name: new FormControl(),
+        CNP: new FormControl(),
+        age: new FormControl()
     })
   }
 
   submitChanges(): void{
-    this.http.post(`/api/${this.role}/${this.userId}`, student1)
+    this.http.updateUserInfoById(this.role, this.user).subscribe( response => {
+      this.msg.pop();
+      this.msg.push("Update Successful")}
+      , error => this.msg = parseWebAPIErrors(error));
   }
+  
 }

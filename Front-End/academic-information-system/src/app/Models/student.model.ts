@@ -3,5 +3,5 @@ export class ProfileInformation {
     first_name: string;
     last_name: string;
     age: number;
-    CNP: number;
+    cnp: number;
 }

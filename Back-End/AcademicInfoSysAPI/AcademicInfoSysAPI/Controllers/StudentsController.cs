@@ -31,6 +31,10 @@ namespace AcademicInfoSysAPI.Controllers
             try
             {
                 var student = await _studentService.GetStudentInfoForID(stud_ID);
+                if (student == null)
+                {
+                    return NotFound();
+                }
                 return Ok(student);
             }
             catch (Exception ex)

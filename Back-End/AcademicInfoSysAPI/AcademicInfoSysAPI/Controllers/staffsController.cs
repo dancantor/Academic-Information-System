@@ -31,6 +31,10 @@ namespace AcademicInfoSysAPI.Controllers
             try
             {
                 var staff = await _staffService.GetStaffInfoForID(staff_ID);
+                if (staff == null)
+                {
+                    return NotFound();
+                }
                 return Ok(staff);
             }
             catch (Exception ex)

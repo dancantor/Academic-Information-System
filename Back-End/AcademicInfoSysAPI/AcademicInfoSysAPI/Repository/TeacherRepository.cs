@@ -28,10 +28,13 @@ namespace AcademicInfoSysAPI.Repository
         }
         public async Task<bool> UpdateTeacherInfoForID(TeacherDTO data)
         {
-            var teacher_to_update = await _dbContext.Teachers.Where(x => x.GenericId == data.TeacherId).FirstOrDefaultAsync();
+            var teacher_to_update = await _dbContext.Teachers.Where(x => x.TeacherId == data.Id).FirstOrDefaultAsync();
             if (teacher_to_update != null)
             {
                 teacher_to_update.Cnp = data.CNP;
+                teacher_to_update.FirstName = data.first_name;
+                teacher_to_update.LastName = data.last_name;
+                teacher_to_update.Age = data.age;
                 await _dbContext.SaveChangesAsync();
                 return true;
             }
