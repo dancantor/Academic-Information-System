@@ -2,10 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+    <ApplicationInsightsResourceId>/subscriptions/af7a5464-4b07-48ec-9513-d84d042c4eb3/resourceGroups/AcademicInfoSysAPI20220330010514ResourceGroup/providers/microsoft.insights/components/AcademicInfoSysAPI</ApplicationInsightsResourceId>
+    <UserSecretsId>0a706ffc-c622-4815-8d03-9b52cd4c88df</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.15.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="6.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="6.0.3" />

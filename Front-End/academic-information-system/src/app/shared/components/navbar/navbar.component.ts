@@ -1,24 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/Models/genericUser';
 import { StorageService } from '../../services/storage.service';
-
+import { ProfileInformation } from '../../../Models/student.model';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+  
+  @Input()
+  user!: ProfileInformation;
 
-  user!: User;
-  constructor(private router: Router, private storageService: StorageService){
-    this.setUser();
-  }
+  constructor(private router: Router, private storageService: StorageService){  }
 
-  setUser(): void{
-    this.user = new User()
-    this.user.name = "Pop Ioan";
-  }
 
   logout(): void{
     this.storageService.deleteUserData();

@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using AcademicInfoSysAPI.TempDir;
+using AcademicInfoSysAPI.Context.Models;
 
-namespace AcademicInfoSysAPI.dbContext
+namespace AcademicInfoSysAPI.Context
 {
-    public partial class AcademicInformationSystemContext : DbContext
+    public partial class AcademicInfoSysAPI_dbContext : DbContext
     {
-        public AcademicInformationSystemContext()
+        public AcademicInfoSysAPI_dbContext()
         {
         }
 
-        public AcademicInformationSystemContext(DbContextOptions<AcademicInformationSystemContext> options)
+        public AcademicInfoSysAPI_dbContext(DbContextOptions<AcademicInfoSysAPI_dbContext> options)
             : base(options)
         {
         }
@@ -57,7 +57,7 @@ namespace AcademicInfoSysAPI.dbContext
                 entity.HasOne(d => d.Stud)
                     .WithMany(p => p.Contracts)
                     .HasForeignKey(d => d.StudId)
-                    .HasConstraintName("FK__Contract__stud_I__2F10007B");
+                    .HasConstraintName("FK__Contract__stud_I__693CA210");
             });
 
             modelBuilder.Entity<GenericUser>(entity =>
@@ -97,17 +97,17 @@ namespace AcademicInfoSysAPI.dbContext
                 entity.HasOne(d => d.Teacher)
                     .WithMany(p => p.OptionalDisciplines)
                     .HasForeignKey(d => d.TeacherId)
-                    .HasConstraintName("FK__OptionalD__teach__3A81B327");
+                    .HasConstraintName("FK__OptionalD__teach__74AE54BC");
 
                 entity.HasMany(d => d.Studs)
                     .WithMany(p => p.OptionalDisciplines)
                     .UsingEntity<Dictionary<string, object>>(
                         "FinalOptionalDisciplineList",
-                        l => l.HasOne<Student>().WithMany().HasForeignKey("StudId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK__FinalOpti__stud___45F365D3"),
-                        r => r.HasOne<OptionalDiscipline>().WithMany().HasForeignKey("OptionalDisciplineId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK__FinalOpti__optio__44FF419A"),
+                        l => l.HasOne<Student>().WithMany().HasForeignKey("StudId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK__FinalOpti__stud___00200768"),
+                        r => r.HasOne<OptionalDiscipline>().WithMany().HasForeignKey("OptionalDisciplineId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK__FinalOpti__optio__7F2BE32F"),
                         j =>
                         {
-                            j.HasKey("OptionalDisciplineId", "StudId").HasName("PK__FinalOpt__AE4E6FCEE95693A1");
+                            j.HasKey("OptionalDisciplineId", "StudId").HasName("PK__FinalOpt__AE4E6FCE19D71C13");
 
                             j.ToTable("FinalOptionalDisciplineList");
 
@@ -120,7 +120,7 @@ namespace AcademicInfoSysAPI.dbContext
             modelBuilder.Entity<OptionalDisciplineList>(entity =>
             {
                 entity.HasKey(e => new { e.OptionalDisciplineId, e.StudId })
-                    .HasName("PK__Optional__AE4E6FCE4661DA02");
+                    .HasName("PK__Optional__AE4E6FCE88FFEE4D");
 
                 entity.ToTable("OptionalDisciplineList");
 
@@ -134,19 +134,19 @@ namespace AcademicInfoSysAPI.dbContext
                     .WithMany(p => p.OptionalDisciplineLists)
                     .HasForeignKey(d => d.OptionalDisciplineId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OptionalD__optio__412EB0B6");
+                    .HasConstraintName("FK__OptionalD__optio__7B5B524B");
 
                 entity.HasOne(d => d.Stud)
                     .WithMany(p => p.OptionalDisciplineLists)
                     .HasForeignKey(d => d.StudId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OptionalD__stud___4222D4EF");
+                    .HasConstraintName("FK__OptionalD__stud___7C4F7684");
             });
 
             modelBuilder.Entity<OptionalGrade>(entity =>
             {
                 entity.HasKey(e => new { e.OptionalDisciplineId, e.StudId })
-                    .HasName("PK__Optional__AE4E6FCE555ED1C5");
+                    .HasName("PK__Optional__AE4E6FCE5F1555B8");
 
                 entity.ToTable("OptionalGrade");
 
@@ -160,13 +160,13 @@ namespace AcademicInfoSysAPI.dbContext
                     .WithMany(p => p.OptionalGrades)
                     .HasForeignKey(d => d.OptionalDisciplineId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OptionalG__optio__3D5E1FD2");
+                    .HasConstraintName("FK__OptionalG__optio__778AC167");
 
                 entity.HasOne(d => d.Stud)
                     .WithMany(p => p.OptionalGrades)
                     .HasForeignKey(d => d.StudId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OptionalG__stud___3E52440B");
+                    .HasConstraintName("FK__OptionalG__stud___787EE5A0");
             });
 
             modelBuilder.Entity<StandardDiscipline>(entity =>
@@ -186,7 +186,7 @@ namespace AcademicInfoSysAPI.dbContext
             modelBuilder.Entity<StandardGrade>(entity =>
             {
                 entity.HasKey(e => new { e.DisciplineId, e.StudId })
-                    .HasName("PK__Standard__202E185460B95B5D");
+                    .HasName("PK__Standard__202E185486E3CC7A");
 
                 entity.ToTable("StandardGrade");
 
@@ -200,19 +200,19 @@ namespace AcademicInfoSysAPI.dbContext
                     .WithMany(p => p.StandardGrades)
                     .HasForeignKey(d => d.DisciplineId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__StandardG__disci__36B12243");
+                    .HasConstraintName("FK__StandardG__disci__70DDC3D8");
 
                 entity.HasOne(d => d.Stud)
                     .WithMany(p => p.StandardGrades)
                     .HasForeignKey(d => d.StudId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__StandardG__stud___37A5467C");
+                    .HasConstraintName("FK__StandardG__stud___71D1E811");
             });
 
             modelBuilder.Entity<Student>(entity =>
             {
                 entity.HasKey(e => e.StudId)
-                    .HasName("PK__Student__EBAE406BE8CFDFFD");
+                    .HasName("PK__Student__EBAE406BE032BCED");
 
                 entity.ToTable("Student");
 
@@ -225,7 +225,15 @@ namespace AcademicInfoSysAPI.dbContext
 
                 entity.Property(e => e.ContractId).HasColumnName("contract_ID");
 
+                entity.Property(e => e.FirstName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.GenericId).HasColumnName("generic_ID");
+
+                entity.Property(e => e.LastName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.OptionalDisciplineListId).HasColumnName("optionalDisciplineList_id");
 
@@ -236,29 +244,37 @@ namespace AcademicInfoSysAPI.dbContext
                 entity.HasOne(d => d.Generic)
                     .WithMany(p => p.Students)
                     .HasForeignKey(d => d.GenericId)
-                    .HasConstraintName("FK__Student__generic__267ABA7A");
+                    .HasConstraintName("FK__Student__generic__60A75C0F");
             });
 
-            modelBuilder.Entity<Teacher>((Action<Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Teacher>>)(entity =>
+            modelBuilder.Entity<Teacher>(entity =>
             {
                 entity.ToTable("Teacher");
 
-                entity.Property<int>(e => (int)e.TeacherID).HasColumnName("teacher_ID");
+                entity.Property(e => e.TeacherId).HasColumnName("teacher_ID");
 
                 entity.Property(e => e.Cnp)
                     .HasMaxLength(13)
                     .IsUnicode(false)
                     .HasColumnName("CNP");
 
-                entity.Property<int?>(e => (int?)e.GenericId).HasColumnName("generic_ID");
+                entity.Property(e => e.FirstName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.GenericId).HasColumnName("generic_ID");
 
                 entity.Property(e => e.IsChief).HasColumnName("isChief");
 
-                RelationalForeignKeyBuilderExtensions.HasConstraintName<GenericUser, Teacher>(entity.HasOne(d => d.Generic)
+                entity.Property(e => e.LastName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.Generic)
                     .WithMany(p => p.Teachers)
-                    .HasForeignKey(d => (object)d.GenericId)
-, "FK__Teacher__generic__2C3393D0");
-            }));
+                    .HasForeignKey(d => d.GenericId)
+                    .HasConstraintName("FK__Teacher__generic__66603565");
+            });
 
             modelBuilder.Entity<Year2DisciplineList>(entity =>
             {
@@ -273,32 +289,40 @@ namespace AcademicInfoSysAPI.dbContext
                 entity.HasOne(d => d.Discipline)
                     .WithMany()
                     .HasForeignKey(d => d.DisciplineId)
-                    .HasConstraintName("FK__Year2Disc__disci__33D4B598");
+                    .HasConstraintName("FK__Year2Disc__disci__6E01572D");
 
                 entity.HasOne(d => d.Stud)
                     .WithMany()
                     .HasForeignKey(d => d.StudId)
-                    .HasConstraintName("FK__Year2Disc__stud___32E0915F");
+                    .HasConstraintName("FK__Year2Disc__stud___6D0D32F4");
             });
 
-            modelBuilder.Entity<staff>((Action<Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<staff>>)(entity =>
+            modelBuilder.Entity<staff>(entity =>
             {
                 entity.ToTable("Staff");
 
-                entity.Property<int>(e => (int)e.staffId).HasColumnName("staff_ID");
+                entity.Property(e => e.StaffId).HasColumnName("staff_ID");
 
                 entity.Property(e => e.Cnp)
                     .HasMaxLength(13)
                     .IsUnicode(false)
                     .HasColumnName("CNP");
 
-                entity.Property<int?>(e => (int?)e.GenericId).HasColumnName("generic_ID");
+                entity.Property(e => e.FirstName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
-                RelationalForeignKeyBuilderExtensions.HasConstraintName<GenericUser, staff>(entity.HasOne(d => d.Generic)
+                entity.Property(e => e.GenericId).HasColumnName("generic_ID");
+
+                entity.Property(e => e.LastName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.Generic)
                     .WithMany(p => p.staff)
-                    .HasForeignKey(d => (object)d.GenericId)
-, "FK__Staff__generic_I__29572725");
-            }));
+                    .HasForeignKey(d => d.GenericId)
+                    .HasConstraintName("FK__Staff__generic_I__6383C8BA");
+            });
 
             OnModelCreatingPartial(modelBuilder);
         }

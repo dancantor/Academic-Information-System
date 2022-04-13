@@ -1,4 +1,4 @@
-using AcademicInfoSysAPI.dbContext;
+using AcademicInfoSysAPI.Context;
 using AcademicInfoSysAPI.Repository;
 using AcademicInfoSysAPI.Services;
 using Microsoft.AspNetCore.Builder;
@@ -38,7 +38,7 @@ namespace AcademicInfoSysAPI
                 });
             });
 
-            services.AddDbContext<AcademicInformationSystemContext>(options =>
+            services.AddDbContext<AcademicInfoSysAPI_dbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
@@ -52,9 +52,16 @@ namespace AcademicInfoSysAPI
 
             // Repositories
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IStudentRepository, StudentRepository>();
+            services.AddTransient<IStaffRepository, StaffRepository>();
+            services.AddTransient<ITeacherRepository, TeacherRepository>();
 
             // Services
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IStudentService, StudentService>();
+            services.AddTransient<ITeacherService, TeacherService>();
+            services.AddTransient<IStaffService, StaffService>();
+            services.AddApplicationInsightsTelemetry(Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

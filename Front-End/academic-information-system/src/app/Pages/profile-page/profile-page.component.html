@@ -3,38 +3,50 @@
         <img mat-card-image src="assets\images\owl.png" alt="Photo of a Shiba Inu">
     </mat-card>
 </div> -->
-<app-navbar>
+<app-navbar [user]="this.user">
 </app-navbar>
-<mat-card class="profile-card" fxFlex.gt-sm="70">
-    <img mat-card-image src="assets\images\owl.png" alt="Photo of a Shiba Inu">
-</mat-card>
-
-<div class="background">
-    <div class="form-container">
-        <form [formGroup]="personalInformationForm">
-            <mat-form-field appearance="outline" style="width: 600px; margin-top: 25px;">
-                <mat-label>ID</mat-label>
-                <input matInput name="id" formControlName="id">
-            </mat-form-field>
-            <mat-form-field appearance="outline" style="width: 600px; margin-top: 25px;">
-                <mat-label>First Name</mat-label>
-                <input matInput name="firstName" formControlName="first_name">
-            </mat-form-field>
-            <mat-form-field appearance="outline" style="width: 600px; margin-top: 25px;">
-                <mat-label>Last Name</mat-label>
-                <input matInput name="lastName" formControlName="last_name">
-            </mat-form-field>
-            <mat-form-field appearance="outline" style="width: 600px; margin-top: 25px;">
-                <mat-label>CNP</mat-label>
-                <input matInput name="cnp" formControlName="CNP">
-            </mat-form-field>
-            <mat-form-field appearance="outline" style="width: 600px; margin-top: 25px;">
-                <mat-label>Age</mat-label>
-                <input matInput name="age" formControlName="age">
-            </mat-form-field>
-        </form>
-        <button mat-button style="max-width: 400px; margin-right: 20%;" (click)="submitChanges()">Save Changes</button>
+<div class="container">
+    <div class="left-comp">
+        <mat-card class="profile-card" fxFlex.gt-sm="70">
+            <img mat-card-image src="assets\images\owl.png" alt="Photo of a Shiba Inu">
+        </mat-card>
+    </div>
+    <div class="background">
+        <div class="form-container">
+            <form [formGroup]="personalInformationForm">
+                <mat-form-field appearance="outline" style="width: 600px; margin-top: 25px;">
+                    <mat-label>ID</mat-label>
+                    <input 
+                    [(ngModel)]="user.id" 
+                    matInput name="id" 
+                    formControlName="id"
+                    readonly>
+                </mat-form-field>
+                <mat-form-field appearance="outline" style="width: 600px; margin-top: 25px;">
+                    <mat-label>First Name</mat-label>
+                    <input [(ngModel)]="user.first_name" matInput name="firstName" formControlName="first_name">
+                </mat-form-field>
+                <mat-form-field appearance="outline" style="width: 600px; margin-top: 25px;">
+                    <mat-label>Last Name</mat-label>
+                    <input [(ngModel)]="user.last_name" matInput name="lastName" formControlName="last_name">
+                </mat-form-field>
+                <mat-form-field appearance="outline" style="width: 600px; margin-top: 25px;">
+                    <mat-label>CNP</mat-label>
+                    <input 
+                    [(ngModel)]="user.cnp" 
+                    matInput name="cnp" 
+                    formControlName="CNP"
+                    readonly>
+                </mat-form-field>
+                <mat-form-field appearance="outline" style="width: 600px; margin-top: 25px;">
+                    <mat-label>Age</mat-label>
+                    <input [(ngModel)]="user.age" matInput name="age" formControlName="age">
+                </mat-form-field>
+                <app-display-errors [errors]="msg"></app-display-errors>
+            </form>
+            <div></div>
+            <button mat-button style="max-width: 400px; margin-right: 20%;" (click)="submitChanges()">Save Changes</button>
+        </div>
     </div>
 </div>
-
-<app-sidebar> </app-sidebar>
+<!-- <app-sidebar> </app-sidebar> -->

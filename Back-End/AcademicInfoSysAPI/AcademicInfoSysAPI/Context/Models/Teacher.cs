@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AcademicInfoSysAPI.TempDir
+namespace AcademicInfoSysAPI.Context.Models
 {
     public partial class Teacher
     {
@@ -11,7 +11,10 @@ namespace AcademicInfoSysAPI.TempDir
         }
 
         public int? GenericId { get; set; }
-        public int TeacherID { get; set; }
+        public int TeacherId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int? Age { get; set; }
         public string Cnp { get; set; }
         public bool? IsChief { get; set; }
 

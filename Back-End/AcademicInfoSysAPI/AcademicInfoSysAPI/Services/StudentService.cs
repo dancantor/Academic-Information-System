@@ -21,14 +21,18 @@ namespace AcademicInfoSysAPI.Services
         public async Task<StudentDTO> GetStudentInfoForID(string id)
         {
             var userInfo = await _studentRepository.GetInfo(Int32.Parse(id));
-            return new StudentDTO{
+            if (userInfo == null) {
+                return null;
+            }
+            return new StudentDTO 
+            {
                 CNP = userInfo.Cnp,
-                StudentId = userInfo.StudId,
+                Id = userInfo.StudId,
                 first_name = userInfo.FirstName,
                 last_name = userInfo.LastName,
-                age = userInfo.Age;
+                age = (int)userInfo.Age
+            };
 
-        };
         }
 
         public async Task<bool> UpdateStudentInfoForID(StudentDTO data)

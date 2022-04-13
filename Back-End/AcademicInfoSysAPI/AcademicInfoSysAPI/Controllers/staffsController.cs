@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using AcademicInfoSysAPI.TempDir;
-using AcademicInfoSysAPI.dbContext;
 using AcademicInfoSysAPI.Services;
 using AcademicInfoSysAPI.DTOs;
 
@@ -33,6 +31,10 @@ namespace AcademicInfoSysAPI.Controllers
             try
             {
                 var staff = await _staffService.GetStaffInfoForID(staff_ID);
+                if (staff == null)
+                {
+                    return NotFound();
+                }
                 return Ok(staff);
             }
             catch (Exception ex)

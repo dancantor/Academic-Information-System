@@ -1,5 +1,5 @@
-﻿using AcademicInfoSysAPI.dbContext;
-using AcademicInfoSysAPI.TempDir;
+﻿using AcademicInfoSysAPI.Context;
+using AcademicInfoSysAPI.Context.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,9 +12,9 @@ namespace AcademicInfoSysAPI.Repository
     }
     public class UserRepository : IUserRepository
     {
-        private readonly AcademicInformationSystemContext _dbContext;
+        private readonly AcademicInfoSysAPI_dbContext _dbContext;
 
-        public UserRepository(AcademicInformationSystemContext some_context)
+        public UserRepository(AcademicInfoSysAPI_dbContext some_context)
         {
             _dbContext = some_context;
         }

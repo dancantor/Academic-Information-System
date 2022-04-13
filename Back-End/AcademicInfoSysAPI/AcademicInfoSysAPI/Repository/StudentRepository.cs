@@ -1,6 +1,6 @@
-﻿using AcademicInfoSysAPI.dbContext;
+﻿using AcademicInfoSysAPI.Context;
+using AcademicInfoSysAPI.Context.Models;
 using AcademicInfoSysAPI.DTOs;
-using AcademicInfoSysAPI.TempDir;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,9 +15,9 @@ namespace AcademicInfoSysAPI.Repository
     }
     public class StudentRepository : IStudentRepository
     {
-        private readonly AcademicInformationSystemContext _dbContext;
+        private readonly AcademicInfoSysAPI_dbContext _dbContext;
 
-        public StudentRepository(AcademicInformationSystemContext someContext)
+        public StudentRepository(AcademicInfoSysAPI_dbContext someContext)
         {
             _dbContext = someContext;
         }
@@ -29,11 +29,13 @@ namespace AcademicInfoSysAPI.Repository
 
         public async Task<bool> UpdateStudentInfoForID(StudentDTO data)
         {
-            var student_to_update = await _dbContext.Students.Where(x => x.GenericId == data.StudentId).FirstOrDefaultAsync();
+            var student_to_update = await _dbContext.Students.Where(x => x.StudId == data.Id).FirstOrDefaultAsync();
             if(student_to_update != null)
             {
                 student_to_update.Cnp = data.CNP;
-                // rest of the updates
+                student_to_update.FirstName = data.first_name;
+                student_to_update.LastName = data.last_name;
+                student_to_update.Age = data.age;
                 await _dbContext.SaveChangesAsync();
                 return true;
             } else

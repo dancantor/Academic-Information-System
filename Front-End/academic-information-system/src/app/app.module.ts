@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './Modules/material/material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { StudentMainPageComponent } from './Pages/student-main-page/student-main-page.component';
 import { TeacherMainPageComponent } from './Pages/teacher-main-page/teacher-main-page.component';
@@ -19,6 +19,7 @@ import { LoginComponent } from './Pages/login-page/login.component'
 import {MatIconModule} from '@angular/material/icon'
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
+import { DisplayErrorsComponent } from './shared/utilities/display-errors/display-errors.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ProfilePageComponent } from './Pages/profile-page/profile-page.componen
     NavbarComponent,
     LoginComponent,
     SidebarComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    DisplayErrorsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import { ProfilePageComponent } from './Pages/profile-page/profile-page.componen
     HttpClientModule,
     MatCardModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
