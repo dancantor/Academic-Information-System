@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     }
     this.loginService.login(this.loginForm.value).subscribe(response =>{
       this.localStorageService.saveUserData(response);
-      this.router.navigate(['/' + 'profile']);
+      this.router.navigate([`/${this.localStorageService.getUserType()}`]);
     }, error => {
       if (error.error === "User not found in the database") {
         this.errors = parseWebAPIErrors({error: "Invalid account"});

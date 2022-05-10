@@ -2,7 +2,10 @@
 .container {
   display: flex;
   height:100%;
-  align-items: center;
+  width: 50%;
+  padding-top: 25vh;
+  padding-right: 5vw;
+  // align-items: flex-end;
 }
   
   mat-card {
