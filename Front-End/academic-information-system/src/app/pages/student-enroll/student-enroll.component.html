@@ -6,15 +6,16 @@
         <div class="main-page">
             <div class="year-container">
                 <div class="title">Year 1
-                    <button id="button1" class="enrol-button" (click)="enroll(1)" mat-button>{{text1}}</button>
+                    <button id="button1" class="enrol-button" (click)="enroll(1)" mat-button [disabled]="this.enrollment.year1 === 1 || this.enrollment.year2 === 1">Enroll</button>
                 </div>
                 <div class="title">Year 2
-                    <button id="button2" class="enrol-button" (click)="enroll(2)" disabled="text2 === Already enrolled" mat-button>{{text2}}</button>
+                    <button id="button2" class="enrol-button" (click)="enroll(2)" [disabled]="this.enrollment.year1 === 2 || this.enrollment.year2 === 2" mat-button>Enroll</button>
                 </div>
                 <div class="title">Year 3
-                    <button id="button3" class="enrol-button" (click)="enroll(3)" mat-button>{{text3}}</button>
+                    <button id="button3" class="enrol-button" (click)="enroll(3)" [disabled]="this.enrollment.year1 === 3 || this.enrollment.year2 === 3" mat-button>Enroll</button>
                 </div>
             </div>
+            <div class="title" style="color: red; padding-left: 5vw;" *ngIf="this.enrollment.year1 !== 0 && this.enrollment.year2 !== 0">You are already enrolled in 2 years</div>
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

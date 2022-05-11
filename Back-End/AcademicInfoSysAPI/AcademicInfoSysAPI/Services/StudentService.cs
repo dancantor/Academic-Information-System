@@ -35,7 +35,7 @@ namespace AcademicInfoSysAPI.Services
 
         public async Task<EnrollmentDTO> GetEnrollmentForStudent(int stud_id)
         {
-            var student = await _studentRepository.GetInfo(stud_id);
+            var student = await _studentRepository.GetInfoWithStudId(stud_id);
             EnrollmentDTO enrollment = new() { year1 = student.Year1, year2 = student.Year2.Value};
             return enrollment;
         }

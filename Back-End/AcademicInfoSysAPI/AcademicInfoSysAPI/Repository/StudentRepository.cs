@@ -11,6 +11,7 @@ namespace AcademicInfoSysAPI.Repository
     public interface IStudentRepository
     {
         public Task<Student> GetInfo(int StudId);
+        public Task<Student> GetInfoWithStudId(int StudId);
         public Task<bool> UpdateStudentInfoForID(StudentDTO data);
         public Task<bool> EnrollStudentToYear(int year, int StudId);
     }
@@ -31,9 +32,9 @@ namespace AcademicInfoSysAPI.Repository
             else
             {
                 if (student.Year1 != 0)
-                    student.Year1 = year;
-                else
                     student.Year2 = year;
+                else
+                    student.Year1 = year;
             }
             await _dbContext.SaveChangesAsync();
             return true;
@@ -42,6 +43,11 @@ namespace AcademicInfoSysAPI.Repository
         public async Task<Student> GetInfo(int StudId)
         {
             return await _dbContext.Students.Where(x => x.GenericId == StudId).FirstOrDefaultAsync();
+        }
+
+        public async Task<Student> GetInfoWithStudId(int StudId)
+        {
+            return await _dbContext.Students.Where(x => x.StudId == StudId).FirstOrDefaultAsync();
         }
 
         public async Task<bool> UpdateStudentInfoForID(StudentDTO data)

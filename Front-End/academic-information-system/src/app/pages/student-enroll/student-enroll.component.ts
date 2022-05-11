@@ -19,32 +19,31 @@ export class StudentEnrollComponent implements OnInit {
 
   user: ProfileInformation;
 
-  constructor(private http : HttpRequestsService, private storageService: StorageService, private snackbar: MatSnackBar) {}
+  constructor(private http : HttpRequestsService, private storageService: StorageService, private snackbar: MatSnackBar) {
+    
+  }
 
   ngOnInit(): void {
     this.http.getProfileInfoById(this.storageService.getUserId() || '', this.storageService.getUserType()).subscribe((response) => {
       this.user = response;
-      this.http.getEnrolledYears(this.user.id).subscribe((response) => {this.enrollment = response})
+      this.http.getEnrolledYears(this.user.id).subscribe((response) => {this.enrollment = response
+      if (this.enrollment.year1 === 1 || this.enrollment.year2 === 1)
+        this.text1 = "Already enrolled";
+      else
+        this.text1 = "Enroll";
+
+      if (this.enrollment.year1 === 2 || this.enrollment.year2 === 2)
+        this.text2 = "Already enrolled";
+      else
+        this.text2 = "Enroll";
+
+      if (this.enrollment.year1 === 3 || this.enrollment.year2 === 3)
+        this.text3 = "Already enrolled";
+      else
+        this.text3 = "Enroll";
+
+      })
     })
-
-    if (this.enrollment.year1 === 1 || this.enrollment.year2 === 1)
-      this.text1 = "Already enrolled";
-    else
-      this.text1 = "Enroll";
-
-    if (this.enrollment.year1 === 2 || this.enrollment.year2 === 2)
-      this.text2 = "Already enrolled";
-    else
-      this.text2 = "Enroll";
-
-    if (this.enrollment.year1 === 3 || this.enrollment.year2 === 3)
-      this.text3 = "Already enrolled";
-    else
-      this.text3 = "Enroll";
-
-    document.getElementById('button1')!.textContent = this.text1;
-    document.getElementById('button2')!.textContent = this.text2;
-    document.getElementById('button3')!.textContent = this.text3;
   }
 
   enroll(year: number){
@@ -53,6 +52,7 @@ export class StudentEnrollComponent implements OnInit {
     }
     else {
       this.http.postEnrollmentYear(year, this.user.id).subscribe(() => this.snackbar.open("You succesfully enrolled to a year", "Good"));
+      this.enrollment.year1
     }
   }
 }
