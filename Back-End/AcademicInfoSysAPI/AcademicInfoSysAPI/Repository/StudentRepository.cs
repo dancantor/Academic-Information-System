@@ -10,8 +10,9 @@ namespace AcademicInfoSysAPI.Repository
 
     public interface IStudentRepository
     {
-        Task<Student> GetInfo(int StudId);
-        Task<bool> UpdateStudentInfoForID(StudentDTO data);
+        public Task<Student> GetInfo(int StudId);
+        public Task<bool> UpdateStudentInfoForID(StudentDTO data);
+        public Task<bool> EnrollStudentToYear(int year, int StudId);
     }
     public class StudentRepository : IStudentRepository
     {
@@ -20,6 +21,22 @@ namespace AcademicInfoSysAPI.Repository
         public StudentRepository(AcademicInfoSysAPI_dbContext someContext)
         {
             _dbContext = someContext;
+        }
+
+        public async Task<bool> EnrollStudentToYear(int year, int StudId)
+        {
+            var student = await _dbContext.Students.FirstOrDefaultAsync(x => x.StudId == StudId);
+            if (student == null)
+                return false;
+            else
+            {
+                if (student.Year1 != 0)
+                    student.Year1 = year;
+                else
+                    student.Year2 = year;
+            }
+            await _dbContext.SaveChangesAsync();
+            return true;
         }
 
         public async Task<Student> GetInfo(int StudId)

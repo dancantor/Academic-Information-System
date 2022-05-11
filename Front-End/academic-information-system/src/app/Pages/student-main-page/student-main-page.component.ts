@@ -17,9 +17,13 @@ export class StudentMainPageComponent implements OnInit {
     this.router.navigate(['student/curriculum'])
   }
 
-  goToEnrollPage(){}
+  goToEnrollPage(){
+    this.router.navigate(['student/enroll']);
+  }
 
-  goToConsultPage(){}
+  goToConsultPage(){
+    this.router.navigate(['student/assigned-optional-courses'])
+  }
 
   goToOptionalPage(){}
 

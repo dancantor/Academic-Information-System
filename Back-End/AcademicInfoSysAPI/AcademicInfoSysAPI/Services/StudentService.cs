@@ -9,6 +9,8 @@ namespace AcademicInfoSysAPI.Services
     {
         Task<StudentDTO> GetStudentInfoForID(string id);
         Task<bool> UpdateStudentInfoForID(StudentDTO data);
+        Task<EnrollmentDTO> GetEnrollmentForStudent(int stud_id);
+        Task<bool> EnrollStudentToYear(int year, int stud_id);
     }
     public class StudentService : IStudentService
     {
@@ -18,6 +20,26 @@ namespace AcademicInfoSysAPI.Services
         {
             _studentRepository = some_repo;
         }
+
+        public async Task<bool> EnrollStudentToYear(int year, int stud_id)
+        {
+            if (await _studentRepository.EnrollStudentToYear(year, stud_id))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public async Task<EnrollmentDTO> GetEnrollmentForStudent(int stud_id)
+        {
+            var student = await _studentRepository.GetInfo(stud_id);
+            EnrollmentDTO enrollment = new() { year1 = student.Year1, year2 = student.Year2.Value};
+            return enrollment;
+        }
+
         public async Task<StudentDTO> GetStudentInfoForID(string id)
         {
             var userInfo = await _studentRepository.GetInfo(Int32.Parse(id));

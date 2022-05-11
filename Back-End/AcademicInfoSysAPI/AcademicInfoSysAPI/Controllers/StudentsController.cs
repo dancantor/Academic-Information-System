@@ -44,6 +44,31 @@ namespace AcademicInfoSysAPI.Controllers
             
         }
 
+        // GET enrolled years for a student
+        [HttpGet("enroll/{stud_id}")]
+        public async Task<IActionResult> GetAllEnrolledYearsForStudent([FromRoute] int stud_id)
+        {
+            if (stud_id < 1)
+            {
+                return BadRequest("Id must be a positive integer");
+            }
+            var response = await _studentService.GetEnrollmentForStudent(stud_id);
+            return Ok(response);
+        }
+
+        [HttpPost("enroll/{stud_id}")]
+        public async Task<IActionResult> EnrollStudentToYear([FromBody] int year, [FromRoute] int stud_id)
+        {
+            if (await _studentService.EnrollStudentToYear(year, stud_id))
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> UpdateStudentInfo([FromBody] StudentDTO data)
         {

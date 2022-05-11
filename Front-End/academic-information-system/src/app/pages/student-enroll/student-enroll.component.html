@@ -1,0 +1,20 @@
+<mat-sidenav-container class="main-container">
+    <mat-sidenav mode="side" opened>
+        <app-sidebar-pages></app-sidebar-pages>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="main-page">
+            <div class="year-container">
+                <div class="title">Year 1
+                    <button id="button1" class="enrol-button" (click)="enroll(1)" mat-button>{{text1}}</button>
+                </div>
+                <div class="title">Year 2
+                    <button id="button2" class="enrol-button" (click)="enroll(2)" disabled="text2 === Already enrolled" mat-button>{{text2}}</button>
+                </div>
+                <div class="title">Year 3
+                    <button id="button3" class="enrol-button" (click)="enroll(3)" mat-button>{{text3}}</button>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

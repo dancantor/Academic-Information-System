@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,13 +15,16 @@ import {MatCardModule} from '@angular/material/card'
 import {MatInputModule} from '@angular/material/input';
 import { LoginComponent } from './pages/login-page/login.component'
 import {MatIconModule} from '@angular/material/icon'
+import {MatTableModule} from '@angular/material/table';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { DisplayErrorsComponent } from './shared/utilities/display-errors/display-errors.component';
 import { SidebarPagesComponent } from './shared/components/sidebar-pages/sidebar-pages.component';
-import { ViewCurriculumComponent } from './Pages/view-curriculum/view-curriculum.component';
+import { ViewCurriculumComponent } from './pages/view-curriculum/view-curriculum.component';
 import { TableCurriculumComponent } from './shared/components/table-curriculum/table-curriculum.component';
-
+import { ViewAssignedCoursesComponentComponent } from './pages/view-assigned-courses-component/view-assigned-courses-component.component';
+import { CoursesTableComponent } from './pages/view-assigned-courses-component/courses-table/courses-table/courses-table.component';
+import { StudentEnrollComponent } from './pages/student-enroll/student-enroll.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,10 @@ import { TableCurriculumComponent } from './shared/components/table-curriculum/t
     DisplayErrorsComponent,
     SidebarPagesComponent,
     ViewCurriculumComponent,
-    TableCurriculumComponent
+    TableCurriculumComponent,
+    ViewAssignedCoursesComponentComponent,
+    CoursesTableComponent,
+    StudentEnrollComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,8 @@ import { TableCurriculumComponent } from './shared/components/table-curriculum/t
     MatCardModule,
     MatInputModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
