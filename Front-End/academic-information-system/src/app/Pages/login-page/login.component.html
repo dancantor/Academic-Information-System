@@ -1,4 +1,60 @@
-<div class="container">
+<div style="display:flex; flex-flow: row nowrap;">
+  <div style="height: 100vh; width: 50vw; display: flex;">
+    <div style="display:flex; flex-flow: column; justify-content: center;">
+      <img src="assets/images/login-image.png" style="width:30vw; align-self: flex-end; padding:10vw">
+    </div>
+  </div>
+  <div class="container">
+    <mat-card>
+      <mat-card-content>
+        <div class="header">
+          <P>Sign Into Your Account </P>
+        </div>
+        <app-display-errors [errors]="errors"></app-display-errors>
+        <form  name="loginForm" [formGroup]="loginForm">
+          <div class="usernameInput">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Username</mat-label>
+              <mat-icon matPrefix>people</mat-icon>
+              <input
+                formControlName="username"
+                matInput
+                placeholder="Enter username" required
+              />
+              <mat-error *ngIf="!loginForm.controls['username'].valid">
+                  Username is required
+                </mat-error>
+            </mat-form-field>
+          </div>
+  
+          <div>
+            
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Password</mat-label>
+              <mat-icon matPrefix>key</mat-icon>
+              <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'" required />
+              <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>
+                  {{hide ? 'visibility_off' : 'visibility'}}
+              </mat-icon>
+          </button>
+          <mat-error *ngIf="!loginForm.controls['password'].valid">
+              Password is required
+            </mat-error>
+          </mat-form-field>
+          </div>
+          <button mat-flat-button color="primary" (click)="onLogin()">Login</button>
+        </form>
+  
+        
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>
+
+<!-- <div class="container">
   <mat-card>
     <mat-card-content>
       <div class="header">
@@ -44,4 +100,4 @@
       
     </mat-card-content>
   </mat-card>
-</div>
+</div> -->
