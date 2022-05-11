@@ -1,3 +1,4 @@
+import { ViewCurriculumComponent } from './Pages/view-curriculum/view-curriculum.component';
 import { StudentMainPageComponent } from './pages/student-main-page/student-main-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';

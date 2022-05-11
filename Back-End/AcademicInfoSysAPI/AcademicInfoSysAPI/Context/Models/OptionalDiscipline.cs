@@ -16,6 +16,9 @@ namespace AcademicInfoSysAPI.Context.Models
         public int? TeacherId { get; set; }
         public int? NoStudents { get; set; }
         public bool? IsApproved { get; set; }
+        public int? CoresopondingYear { get; set; }
+        public int? NoCredits { get; set; }
+        public string Name { get; set; }
 
         public virtual Teacher Teacher { get; set; }
         public virtual ICollection<OptionalDisciplineList> OptionalDisciplineLists { get; set; }

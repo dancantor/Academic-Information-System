@@ -56,6 +56,6 @@ namespace AcademicInfoSysAPI.Controllers
                 return BadRequest();
             }
         }
-        
+
     }
 }

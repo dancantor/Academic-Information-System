@@ -67,7 +67,7 @@ namespace AcademicInfoSysAPI.Context
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Password)
-                    .HasMaxLength(50)
+                    .HasMaxLength(255)
                     .IsUnicode(false)
                     .HasColumnName("password");
 
@@ -88,7 +88,16 @@ namespace AcademicInfoSysAPI.Context
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
+                entity.Property(e => e.CoresopondingYear).HasColumnName("coresoponding_year");
+
                 entity.Property(e => e.IsApproved).HasColumnName("isApproved");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("name");
+
+                entity.Property(e => e.NoCredits).HasColumnName("no_credits");
 
                 entity.Property(e => e.NoStudents).HasColumnName("noStudents");
 
@@ -181,6 +190,20 @@ namespace AcademicInfoSysAPI.Context
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("description");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("name");
+
+                entity.Property(e => e.NoCredits).HasColumnName("no_credits");
+
+                entity.Property(e => e.TeacherId).HasColumnName("teacher_ID");
+
+                entity.HasOne(d => d.Teacher)
+                    .WithMany(p => p.StandardDisciplines)
+                    .HasForeignKey(d => d.TeacherId)
+                    .HasConstraintName("FK__StandardD__teach__01142BA1");
             });
 
             modelBuilder.Entity<StandardGrade>(entity =>

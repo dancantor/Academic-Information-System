@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProfileInformation } from 'src/app/Models/student.model';
 import { HttpRequestsService } from 'src/app/shared/services/http-requests.service';
 import { StorageService } from 'src/app/shared/services/storage.service';
@@ -19,7 +20,8 @@ export class ProfilePageComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private http: HttpRequestsService,
-    private _storageService: StorageService
+    private _storageService: StorageService,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -53,7 +55,7 @@ export class ProfilePageComponent implements OnInit {
   submitChanges(): void{
     this.http.updateUserInfoById(this.role, this.user).subscribe( response => {
       this.msg.pop();
-      this.msg.push("Update Successful")}
+      this._snackBar.open("Student updated!")}
       , error => this.msg = parseWebAPIErrors(error));
   }
   

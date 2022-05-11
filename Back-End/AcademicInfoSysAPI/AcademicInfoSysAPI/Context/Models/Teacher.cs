@@ -8,6 +8,7 @@ namespace AcademicInfoSysAPI.Context.Models
         public Teacher()
         {
             OptionalDisciplines = new HashSet<OptionalDiscipline>();
+            StandardDisciplines = new HashSet<StandardDiscipline>();
         }
 
         public int? GenericId { get; set; }
@@ -20,5 +21,6 @@ namespace AcademicInfoSysAPI.Context.Models
 
         public virtual GenericUser Generic { get; set; }
         public virtual ICollection<OptionalDiscipline> OptionalDisciplines { get; set; }
+        public virtual ICollection<StandardDiscipline> StandardDisciplines { get; set; }
     }
 }

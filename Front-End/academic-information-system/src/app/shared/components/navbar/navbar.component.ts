@@ -8,6 +8,7 @@ import { HttpRequestsService } from '../../services/http-requests.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
+
 export class NavbarComponent implements OnInit {
 
   user!: ProfileInformation;
@@ -17,7 +18,6 @@ export class NavbarComponent implements OnInit {
     this.http.getProfileInfoById(this.storageService.getUserId() || '', this.storageService.getUserType())
       .subscribe(result => this.user = result);
   }
-
 
   logout(): void{
     this.storageService.deleteUserData();

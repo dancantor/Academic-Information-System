@@ -1,0 +1,22 @@
+
+<mat-sidenav-container class="main-container">
+    <mat-sidenav mode="side" opened>
+        <app-sidebar-pages></app-sidebar-pages>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="main-page">
+            <div class="year-container">
+                <div class="title">Year 1</div>
+                <app-table-curriculum [courses]="year1"></app-table-curriculum>
+            </div>
+            <div class="year-container">
+                <div class="title">Year 2</div>
+                <app-table-curriculum [courses]="year2"></app-table-curriculum>
+            </div>
+            <div class="year-container">
+                <div class="title">Year 3</div>
+                <app-table-curriculum [courses]="year3"></app-table-curriculum>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
