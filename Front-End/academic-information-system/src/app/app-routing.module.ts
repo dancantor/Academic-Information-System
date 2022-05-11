@@ -5,6 +5,7 @@ import { TeacherMainPageComponent } from './pages/teacher-main-page/teacher-main
 import { StaffMainPageComponent } from './pages/staff-main-page/staff-main-page.component';
 import { LoginComponent } from './pages/login-page/login.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { ViewcurriculumComponent } from './pages/viewcurriculum/viewcurriculum.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'teacher', component: TeacherMainPageComponent},
   {path: 'staff', component: StaffMainPageComponent},
   {path: 'login',component:LoginComponent},
-  {path: 'profile', component: ProfilePageComponent}
+  {path: 'profile', component: ProfilePageComponent},
+  {path: 'student/curriculum', component: ViewcurriculumComponent}
 ];
 
 @NgModule({

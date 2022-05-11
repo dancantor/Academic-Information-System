@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="shadow">
+<mat-toolbar color="primary" style="background-image:src/assets/images/background" class="shadow">
     <img src="assets/images/logo.jpg" alt="image" width="106" height="40"/>
 
     <div class="spacer"></div>
@@ -9,6 +9,9 @@
                 <td><div class="text">{{user.last_name}} {{user.first_name}}</div></td>
             </tr>
         </table>
-        <a mat-menu-item (click)="logout()" class="log-out">Log out</a>
+        <div style="display: flex; flex-flow: column nowrap">
+            <a mat-menu-item (click)="logout()" class="log-out">Log out</a>
+            <a mat-menu-item (click)="goToProfile()" class="profile">Profile</a>
+        </div>
     </mat-menu>
 </mat-toolbar>
