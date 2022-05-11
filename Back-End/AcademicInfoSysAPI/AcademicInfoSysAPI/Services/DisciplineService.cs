@@ -10,6 +10,7 @@ namespace AcademicInfoSysAPI.Services
     {
         Task<List<CurriculumDTO>> GetAllDisciplinesForYear(int id);
         Task<List<AssignedCourseDTO>> GetAssignedOptionalDisciplines(int stud_id);
+        Task<List<CurriculumDTO>> GetAllOptionalDisciplines();
     }
     public class DisciplineService : IDisciplineService
     {
@@ -47,6 +48,7 @@ namespace AcademicInfoSysAPI.Services
             return disciplines;
 
         }
+
         public async Task<List<AssignedCourseDTO>> GetAssignedOptionalDisciplines(int stud_id)
         {
             // this is for the OptionalDisciplineList that has 3 ids as attributes
@@ -56,7 +58,22 @@ namespace AcademicInfoSysAPI.Services
             var enrolled_courses = await _disciplineRepository.GetAssignedOptionalDisciplines(enrolled_courses_with_ids);
 
             return await _disciplineRepository.GetAssignedOptionalDisciplinesForDTO(enrolled_courses);
-            
+        }
+
+        public async Task<List<CurriculumDTO>> GetAllOptionalDisciplines()
+        {
+            var optionalDisciplines = await _disciplineRepository.GetOptionalDisciplines(3);
+            List<CurriculumDTO> disciplines = new List<CurriculumDTO>();
+            foreach (var discipline in optionalDisciplines)
+            {
+                disciplines.Add(new CurriculumDTO
+                {
+                    ProfessorName = discipline.Teacher.FirstName + " " + discipline.Teacher.LastName,
+                    NrOfCredits = (int)discipline.NoCredits,
+                    Name = discipline.Name
+                });
+            }
+            return disciplines;
         }
     }
 }

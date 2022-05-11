@@ -54,6 +54,24 @@ namespace AcademicInfoSysAPI.Controllers
             {
                 return null;
             }
+        }
+        
+        [HttpGet]
+        public async Task<IActionResult> GetAllOptionalDisciplines()
+        {
+            try
+            {
+                var disciplines = await disciplineService.GetAllOptionalDisciplines();
+                if (disciplines == null)
+                {
+                    return NotFound();
+                }
+                return Ok(disciplines);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
         }
     }

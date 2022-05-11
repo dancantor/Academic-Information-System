@@ -29,4 +29,8 @@ export class NavbarComponent implements OnInit {
     this.router.navigate([`profile`])
   }
 
+  navigateToMenu(): void{
+    this.router.navigate([this.storageService.getUserType()]);
+  }
+
 }
