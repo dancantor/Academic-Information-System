@@ -23,6 +23,7 @@ import { SidebarPagesComponent } from './shared/components/sidebar-pages/sidebar
 import { ViewCurriculumComponent } from './Pages/view-curriculum/view-curriculum.component';
 import { TableCurriculumComponent } from './shared/components/table-curriculum/table-curriculum.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -1,6 +1,7 @@
 .mat-toolbar.mat-primary {
     background: var(--navbar-background-color);
-    //height: 64px;
+    background-image: url("/assets/images/backgroundLogin.jpg");
+    height: 64px;
     //width: 100vw;
     img{
         padding-top: 10px;
@@ -30,7 +31,8 @@
  
 
  ::ng-deep .dropdown {
-    width: 300px;
+    width: 400px;
+    height: 100px;
 
     .mat-menu-item:hover{
         background-color: unset !important;
@@ -70,8 +72,23 @@
         width: 50px;
         line-height: 14px;
         font-size: 14px;
-        text-align: end;
-        margin-left: 180px;
+        align-self: end;
+        //margin-left: 180px;
+        font-weight: 700;
+        position: absolute;
+        color: var(--navbar-icon-color);
+    }
+
+    .profile{
+        vertical-align: auto;
+        height: 20px;
+        width: 50px;
+        line-height: 14px;
+        font-size: 14px;
+        align-self: start;
+        margin-left: 10px;
+        //margin-right: 0px;
+        position: absolute;
         font-weight: 700;
         color: var(--navbar-icon-color);
     }

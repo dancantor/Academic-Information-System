@@ -8,35 +8,25 @@ import { HttpRequestsService } from '../../services/http-requests.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {
-  
-  user:  ProfileInformation;
-  userId: string;
-  role: string;
-  ngOnInit(): void {
-    this.user = {
-      id: '0',
-      age: 0,
-      cnp: 0,
-      first_name: '',
-      last_name: ''
-    }
-    this.getUserInfo();
-  }
 
-  getUserInfo(): void{
-    this.userId = this.storageService.getUserId() || '';
-    this.role = this.storageService.getUserType();
-    this.http.getProfileInfoById(this.userId, this.role)
-      .subscribe(result => this.user = result);
-  }
+export class NavbarComponent implements OnInit {
+
+  user!: ProfileInformation;
 
   constructor(private router: Router, private storageService: StorageService, private http: HttpRequestsService){  }
-
+  ngOnInit(): void {
+    this.http.getProfileInfoById(this.storageService.getUserId() || '', this.storageService.getUserType())
+      .subscribe(result => this.user = result);
+  }
 
   logout(): void{
     this.storageService.deleteUserData();
     this.router.navigate(['/login']);
+  }
+
+  goToProfile(): void{
+    console.log('go to profile called' + this.storageService.getUserType());
+    this.router.navigate([`profile`])
   }
 
 }
