@@ -9,6 +9,7 @@ namespace AcademicInfoSysAPI.Services
     public interface IDisciplineService
     {
         Task<List<CurriculumDTO>> GetAllDisciplinesForYear(int id);
+        Task<List<CurriculumDTO>> GetAllOptionalDisciplines();
     }
     public class DisciplineService : IDisciplineService
     {
@@ -45,6 +46,22 @@ namespace AcademicInfoSysAPI.Services
             }
             return disciplines;
 
+        }
+
+        public async Task<List<CurriculumDTO>> GetAllOptionalDisciplines()
+        {
+            var optionalDisciplines = await _disciplineRepository.GetOptionalDisciplines(3);
+            List<CurriculumDTO> disciplines = new List<CurriculumDTO>();
+            foreach (var discipline in optionalDisciplines)
+            {
+                disciplines.Add(new CurriculumDTO
+                {
+                    ProfessorName = discipline.Teacher.FirstName + " " + discipline.Teacher.LastName,
+                    NrOfCredits = (int)discipline.NoCredits,
+                    Name = discipline.Name
+                });
+            }
+            return disciplines;
         }
     }
 }
