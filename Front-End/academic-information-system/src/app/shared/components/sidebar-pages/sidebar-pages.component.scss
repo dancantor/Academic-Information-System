@@ -1,0 +1,13 @@
+.container {
+    padding:20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-display {
+    transform: scale(2);
+}
+
+.books {
+    align-self: center;
+}

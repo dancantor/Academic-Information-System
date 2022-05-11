@@ -19,6 +19,9 @@ import {MatIconModule} from '@angular/material/icon'
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { DisplayErrorsComponent } from './shared/utilities/display-errors/display-errors.component';
+import { SidebarPagesComponent } from './shared/components/sidebar-pages/sidebar-pages.component';
+import { ViewCurriculumComponent } from './Pages/view-curriculum/view-curriculum.component';
+import { TableCurriculumComponent } from './shared/components/table-curriculum/table-curriculum.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { DisplayErrorsComponent } from './shared/utilities/display-errors/displa
     LoginComponent,
     SidebarComponent,
     ProfilePageComponent,
-    DisplayErrorsComponent
+    DisplayErrorsComponent,
+    SidebarPagesComponent,
+    ViewCurriculumComponent,
+    TableCurriculumComponent
   ],
   imports: [
     BrowserModule,

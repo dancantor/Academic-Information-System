@@ -55,12 +55,14 @@ namespace AcademicInfoSysAPI
             services.AddTransient<IStudentRepository, StudentRepository>();
             services.AddTransient<IStaffRepository, StaffRepository>();
             services.AddTransient<ITeacherRepository, TeacherRepository>();
+            services.AddTransient<IDisciplineRepository, DisciplineRepository>();
 
             // Services
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IStudentService, StudentService>();
             services.AddTransient<ITeacherService, TeacherService>();
             services.AddTransient<IStaffService, StaffService>();
+            services.AddTransient<IDisciplineService, DisciplineService>();
             services.AddApplicationInsightsTelemetry(Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
         }
 

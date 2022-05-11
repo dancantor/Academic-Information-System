@@ -8,6 +8,11 @@ import { MatInputModule} from '@angular/material/input'
 import {MatSelectModule} from '@angular/material/select'
 import {MatCheckboxModule} from '@angular/material/checkbox'
 import { MatMenuModule } from '@angular/material/menu'
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTableModule} from '@angular/material/table';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 @NgModule({
   declarations: [],
@@ -19,7 +24,11 @@ import { MatMenuModule } from '@angular/material/menu'
     MatInputModule,
     MatSelectModule,
     MatCheckboxModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSidenavModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatProgressSpinnerModule
   ],
   imports: [
     CommonModule

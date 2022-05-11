@@ -1,3 +1,4 @@
+import { Curriculum } from './../../Models/curriculum';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -20,5 +21,9 @@ export class HttpRequestsService {
 
   updateUserInfoById(role:string, user: ProfileInformation){
     return this.http.post(`${this.apiURL}/${role}s`, user)
+  }
+
+  getDisciplinesByYear(year: number): Observable<Array<Curriculum>> {
+    return this.http.get<Array<Curriculum>>(`${this.apiURL}/discipline/${year}`);
   }
 }
