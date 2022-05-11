@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'staff', component: StaffMainPageComponent},
   {path: 'login',component:LoginComponent},
   {path: 'profile', component: ProfilePageComponent},
-  {path: 'student/curriculum', component: ViewcurriculumComponent}
+  {path: 'student/curriculum', component: ViewCurriculumComponent}
 ];
 
 @NgModule({
