@@ -1,0 +1,18 @@
+<mat-table #table [dataSource]="datasource">
+    <ng-container matColumnDef="Name">
+        <mat-header-cell *matHeaderCellDef> Course Name</mat-header-cell>
+        <mat-cell *matCellDef="let course">
+            {{course.name}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Proffesor">
+        <mat-header-cell *matHeaderCellDef> Course Proffesor</mat-header-cell>
+        <mat-cell *matCellDef="let course"> {{course.proffesor}}
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+
+    <mat-row *matRowDef="let course; columns: displayedColumns" matRipple></mat-row>
+</mat-table>

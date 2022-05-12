@@ -1,0 +1,44 @@
+.main-container {
+    height: 100%;
+    width: 100%;
+}
+
+mat-sidenav {
+    width: 20vw;
+    background-image: url("/assets/images/background.png");
+}
+
+mat-sidenav-content {
+    height: 100%;
+}
+
+html, body { height: 100%;}
+
+.year-container {
+    padding-bottom: 10vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    display: flexbox;
+    flex-flow: column nowrap;
+}
+
+.title {
+    font-size: 30px;
+    padding-bottom: 3vh;
+}
+
+.main-page {
+    height: 100%;
+    padding-top: 100px;
+    padding-left: 15vw;
+    background-color: var(--page-background-color);
+    margin:20px;
+}
+
+.enrol-button{
+    margin-left: 5vw;
+    width: 15vw;
+    height: 5vh;
+    background-color: aliceblue;
+    border-radius: 20px;
+}

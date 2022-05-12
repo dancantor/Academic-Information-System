@@ -9,6 +9,8 @@ namespace AcademicInfoSysAPI.Services
     public interface IDisciplineService
     {
         Task<List<CurriculumDTO>> GetAllDisciplinesForYear(int id);
+        Task<List<AssignedCourseDTO>> GetAssignedOptionalDisciplines(int stud_id);
+        Task<List<CurriculumDTO>> GetAllOptionalDisciplines();
         Task<List<DisciplineWithIdDTO>> GetAllOptionalDisciplines();
         Task<bool> InsertTemporaryOptional(OptionalTemporaryDTO optional);
         Task<List<DisciplineWithIdDTO>> GetOptionalDisciplinesSortedByPriority(int studentId);
@@ -50,6 +52,18 @@ namespace AcademicInfoSysAPI.Services
 
         }
 
+        public async Task<List<AssignedCourseDTO>> GetAssignedOptionalDisciplines(int stud_id)
+        {
+            // this is for the OptionalDisciplineList that has 3 ids as attributes
+            var enrolled_courses_with_ids = await _disciplineRepository.GetAssignedOptionalDisciplinesList(stud_id);
+            
+            // a list that contains the optionalDiscipine of the student
+            var enrolled_courses = await _disciplineRepository.GetAssignedOptionalDisciplines(enrolled_courses_with_ids);
+
+            return await _disciplineRepository.GetAssignedOptionalDisciplinesForDTO(enrolled_courses);
+        }
+
+        public async Task<List<CurriculumDTO>> GetAllOptionalDisciplines()
         public async Task<List<DisciplineWithIdDTO>> GetAllOptionalDisciplines()
         {
             var optionalDisciplines = await _disciplineRepository.GetOptionalDisciplines(3);

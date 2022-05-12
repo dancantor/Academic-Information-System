@@ -7,6 +7,9 @@ import { TeacherMainPageComponent } from './pages/teacher-main-page/teacher-main
 import { StaffMainPageComponent } from './pages/staff-main-page/staff-main-page.component';
 import { LoginComponent } from './pages/login-page/login.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { ViewAssignedCoursesComponentComponent } from './pages/view-assigned-courses-component/view-assigned-courses-component.component';
+import { StudentEnrollComponent } from './pages/student-enroll/student-enroll.component';
+
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -16,6 +19,8 @@ const routes: Routes = [
   {path: 'login',component:LoginComponent},
   {path: 'profile', component: ProfilePageComponent},
   {path: 'student/curriculum', component: ViewCurriculumComponent},
+  {path: 'student/assigned-optional-courses', component: ViewAssignedCoursesComponentComponent},
+  {path: 'student/enroll', component: StudentEnrollComponent},
   {path: 'student/optional-courses', component: ConsultOptionalCoursesComponent}
 ];
 

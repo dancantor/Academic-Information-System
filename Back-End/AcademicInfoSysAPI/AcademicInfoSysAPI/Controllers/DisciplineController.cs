@@ -38,6 +38,24 @@ namespace AcademicInfoSysAPI.Controllers
 
         }
 
+        [HttpGet("assigned/{stud_id}")]
+        public async Task<IActionResult> GetAssignedOptionalDisciplines([FromRoute] int stud_id)
+        {
+            if (stud_id < 1)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                var optionalCourses = await disciplineService.GetAssignedOptionalDisciplines(stud_id);
+                return Ok(optionalCourses);
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+        }
+        
         [HttpGet]
         public async Task<IActionResult> GetAllOptionalDisciplines()
         {
