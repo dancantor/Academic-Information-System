@@ -1,0 +1,22 @@
+<mat-sidenav-container class="main-container">
+    <mat-sidenav mode="side" opened>
+        <app-sidebar-pages></app-sidebar-pages>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="main-page">
+            <div class="year-container">
+                <app-display-errors *ngIf="!yearNo1" [errors]="['You must first enroll in year no 1']"></app-display-errors>
+                <div class="title">Year no. 1
+                    <button (click)="input1.click()" id="button1" class="enrol-button" [disabled]="!yearNo1" mat-button>Upload
+                        <input #input1 type="file" style="display:none" (change)="selectDocument($event.target)">
+                    </button>                </div>
+                <app-display-errors *ngIf="!yearNo2" [errors]="['You must first enroll in year no 2']"></app-display-errors>
+                <div class="title">Year no. 2
+                    <button (click)="input2.click()" id="button2" class="enrol-button" [disabled]="!yearNo2" mat-button>Upload
+                        <input #input2 type="file" style="display:none" (change)="selectDocument($event.target)">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

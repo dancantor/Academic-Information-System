@@ -26,6 +26,7 @@ import { ViewAssignedCoursesComponentComponent } from './Pages/view-assigned-cou
 import { CoursesTableComponent } from './Pages/view-assigned-courses-component/courses-table/courses-table/courses-table.component';
 import { StudentEnrollComponent } from './Pages/student-enroll/student-enroll.component';
 import { ConsultOptionalCoursesComponent } from './Pages/consult-optional-courses/consult-optional-courses.component';
+import { SignContractComponent } from './Pages/sign-contract/sign-contract.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { ConsultOptionalCoursesComponent } from './Pages/consult-optional-course
     ViewAssignedCoursesComponentComponent,
     CoursesTableComponent,
     StudentEnrollComponent,
-    ConsultOptionalCoursesComponent
+    ConsultOptionalCoursesComponent,
+    SignContractComponent
   ],
   imports: [
     BrowserModule,

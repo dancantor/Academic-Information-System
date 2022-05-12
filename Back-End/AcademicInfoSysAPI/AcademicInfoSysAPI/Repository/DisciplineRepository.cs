@@ -17,6 +17,7 @@ namespace AcademicInfoSysAPI.Repository
         Task<List<AssignedCourseDTO>> GetAssignedOptionalDisciplinesForDTO(List<OptionalDiscipline> CoursesIdList);
         Task<bool> InsertTemporaryOptional(OptionalDisciplineList odl);
         Task<List<OptionalDiscipline>> GetOptionalDisciplinesSortedByPriority(int studentId);
+    
     }
     public class DisciplineRepository : IDisciplineRepository
     {
@@ -54,7 +55,7 @@ namespace AcademicInfoSysAPI.Repository
 
         public async Task<List<OptionalDisciplineList>> GetAssignedOptionalDisciplinesList(int stud_id)
         {
-            return await _dbContext.OptionalDisciplineLists.Where(x => x.StudId == stud_id)
+            return await _dbContext.OptionalDisciplineLists.Where(x => x.StudId == stud_id && x.Final == true)
                                                             .ToListAsync();
         }
 
@@ -88,7 +89,7 @@ namespace AcademicInfoSysAPI.Repository
 
         public async Task<bool> InsertTemporaryOptional(OptionalDisciplineList odl)
         {
-            _dbContext.Add(odl);
+            _dbContext.OptionalDisciplineLists.Add(odl);
             await _dbContext.SaveChangesAsync();
             return true;
         }

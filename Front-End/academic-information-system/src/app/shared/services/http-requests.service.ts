@@ -2,7 +2,7 @@ import { OptionalWithPreference } from './../../Models/optional-with-preference'
 import { DisciplineWithId } from './../../Models/discipline-with-id';
 import { Curriculum } from './../../Models/curriculum';
 import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ProfileInformation } from 'src/app/Models/student.model';
 import { environment } from 'src/environments/environment.prod';
@@ -52,5 +52,13 @@ export class HttpRequestsService {
 
   insertOptionalPreferedDiscipline(opt: OptionalWithPreference){
     return this.http.post(`${this.apiURL}/discipline/temporary-optional`, opt);
+  }
+
+  sendFileToServer(data: FormData){
+    const headers = {
+      'Content-Type': 'multipart/form-data',
+      'Accept': 'application/json',
+    };
+    return this.http.post(`${this.apiURL}/students/upload-contract`, data, {'headers': headers});
   }
 }

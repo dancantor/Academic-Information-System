@@ -1,3 +1,4 @@
+import { SignContractComponent } from './Pages/sign-contract/sign-contract.component';
 import { ConsultOptionalCoursesComponent } from './Pages/consult-optional-courses/consult-optional-courses.component';
 import { ViewCurriculumComponent } from './Pages/view-curriculum/view-curriculum.component';
 import { NgModule } from '@angular/core';
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'student/curriculum', component: ViewCurriculumComponent},
   {path: 'student/assigned-optional-courses', component: ViewAssignedCoursesComponentComponent},
   {path: 'student/enroll', component: StudentEnrollComponent},
-  {path: 'student/optional-courses', component: ConsultOptionalCoursesComponent}
+  {path: 'student/optional-courses', component: ConsultOptionalCoursesComponent},
+  {path: 'student/sign-contract', component: SignContractComponent}
 ];
 
 @NgModule({
