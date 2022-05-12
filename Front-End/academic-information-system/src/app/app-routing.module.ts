@@ -1,3 +1,4 @@
+import { ConsultOptionalCoursesComponent } from './Pages/consult-optional-courses/consult-optional-courses.component';
 import { ViewCurriculumComponent } from './Pages/view-curriculum/view-curriculum.component';
 import { StudentMainPageComponent } from './pages/student-main-page/student-main-page.component';
 import { NgModule } from '@angular/core';
@@ -6,8 +7,6 @@ import { TeacherMainPageComponent } from './pages/teacher-main-page/teacher-main
 import { StaffMainPageComponent } from './pages/staff-main-page/staff-main-page.component';
 import { LoginComponent } from './pages/login-page/login.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
-import { ViewcurriculumComponent } from './pages/viewcurriculum/viewcurriculum.component';
-
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -16,7 +15,8 @@ const routes: Routes = [
   {path: 'staff', component: StaffMainPageComponent},
   {path: 'login',component:LoginComponent},
   {path: 'profile', component: ProfilePageComponent},
-  {path: 'student/curriculum', component: ViewCurriculumComponent}
+  {path: 'student/curriculum', component: ViewCurriculumComponent},
+  {path: 'student/optional-courses', component: ConsultOptionalCoursesComponent}
 ];
 
 @NgModule({

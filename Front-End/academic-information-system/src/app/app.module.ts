@@ -22,6 +22,7 @@ import { DisplayErrorsComponent } from './shared/utilities/display-errors/displa
 import { SidebarPagesComponent } from './shared/components/sidebar-pages/sidebar-pages.component';
 import { ViewCurriculumComponent } from './Pages/view-curriculum/view-curriculum.component';
 import { TableCurriculumComponent } from './shared/components/table-curriculum/table-curriculum.component';
+import { ConsultOptionalCoursesComponent } from './Pages/consult-optional-courses/consult-optional-courses.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { TableCurriculumComponent } from './shared/components/table-curriculum/t
     DisplayErrorsComponent,
     SidebarPagesComponent,
     ViewCurriculumComponent,
-    TableCurriculumComponent
+    TableCurriculumComponent,
+    ConsultOptionalCoursesComponent
   ],
   imports: [
     BrowserModule,

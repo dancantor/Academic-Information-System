@@ -1,0 +1,109 @@
+<mat-sidenav-container class="main-container">
+    <mat-sidenav mode="side" opened>
+        <app-sidebar-pages></app-sidebar-pages>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="main-page">
+            <div class="description">
+                Drag and drop the Optional Courses to your list in decreasing order of preference. All Optional Courses must be added. After you press Save and Send no further changes can be made, so be careful! You will later be assigned to two optional courses.
+            </div>
+            <div class="important" *ngIf="locked">You have already sent your optional list!!</div>
+            <div class="tables">
+                <div class="optional-list">
+                    <div class="title">
+                        Optional List
+                    </div>
+                    <div class="table-container">
+                        <table
+                            mat-table
+                            [dataSource]="optionalInitial"
+                            #initial
+                            cdkDropList
+                            [cdkDropListConnectedTo]="['bb']"
+                            [cdkDropListData]="optionalInitial"
+                            cdkDropListSortingDisabled
+                            (cdkDropListDropped)="drop($event)"
+                        >
+                            <ng-container matColumnDef="Name">
+                                <th mat-header-cell *matHeaderCellDef>Name</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.name}}
+                                </td>
+                            </ng-container>
+                        
+                            <ng-container matColumnDef="ProfessorName">
+                                <th mat-header-cell *matHeaderCellDef>ProfessorName</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.professorName}}
+                                </td>
+                            </ng-container>
+                        
+                            <ng-container matColumnDef="NrOfCredits">
+                                <th mat-header-cell *matHeaderCellDef>NrOfCredits</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.nrOfCredits}}
+                                </td>
+                            </ng-container>
+                        
+                            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                            <tr 
+                            mat-row
+                            cdkDrag 
+                            [cdkDragDisabled]="locked"
+                            *matRowDef="let row; columns: columnsToDisplay"></tr>
+                        </table>
+                        
+                    </div>
+                </div>
+
+                <div class="your-list">
+                    <div class="title">
+                        Your List
+                    </div>
+                    <div class="table-container">
+                        <table
+                            mat-table
+                            id="bb"
+                            #final
+                            [dataSource]="optionalFinal"
+                            cdkDropList
+                            [cdkDropListData]="optionalFinal"
+                            (cdkDropListDropped)="drop($event)"
+                        >
+                            <ng-container matColumnDef="Name">
+                                <th mat-header-cell *matHeaderCellDef>Name</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.name}}
+                                </td>
+                            </ng-container>
+                        
+                            <ng-container matColumnDef="ProfessorName">
+                                <th mat-header-cell *matHeaderCellDef>ProfessorName</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.professorName}}
+                                </td>
+                            </ng-container>
+                        
+                            <ng-container matColumnDef="NrOfCredits">
+                                <th mat-header-cell *matHeaderCellDef>NrOfCredits</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.nrOfCredits}}
+                                </td>
+                            </ng-container>
+                        
+                            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                            <tr 
+                            mat-row 
+                            cdkDrag 
+                            [cdkDragDisabled]="locked"
+                            *matRowDef="let row; columns: columnsToDisplay"></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <app-display-errors [errors]="msg"></app-display-errors>
+            <button mat-flat-button color="primary" (click)="saveOptionalList()">Save and Send</button>
+
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

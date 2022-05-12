@@ -9,7 +9,9 @@ namespace AcademicInfoSysAPI.Services
     public interface IDisciplineService
     {
         Task<List<CurriculumDTO>> GetAllDisciplinesForYear(int id);
-        Task<List<CurriculumDTO>> GetAllOptionalDisciplines();
+        Task<List<DisciplineWithIdDTO>> GetAllOptionalDisciplines();
+        Task<bool> InsertTemporaryOptional(OptionalTemporaryDTO optional);
+        Task<List<DisciplineWithIdDTO>> GetOptionalDisciplinesSortedByPriority(int studentId);
     }
     public class DisciplineService : IDisciplineService
     {
@@ -48,17 +50,50 @@ namespace AcademicInfoSysAPI.Services
 
         }
 
-        public async Task<List<CurriculumDTO>> GetAllOptionalDisciplines()
+        public async Task<List<DisciplineWithIdDTO>> GetAllOptionalDisciplines()
         {
             var optionalDisciplines = await _disciplineRepository.GetOptionalDisciplines(3);
-            List<CurriculumDTO> disciplines = new List<CurriculumDTO>();
+            List<DisciplineWithIdDTO> disciplines = new List<DisciplineWithIdDTO>();
             foreach (var discipline in optionalDisciplines)
             {
-                disciplines.Add(new CurriculumDTO
+                disciplines.Add(new DisciplineWithIdDTO
                 {
                     ProfessorName = discipline.Teacher.FirstName + " " + discipline.Teacher.LastName,
                     NrOfCredits = (int)discipline.NoCredits,
-                    Name = discipline.Name
+                    Name = discipline.Name,
+                    id = discipline.Id
+                });
+            }
+            return disciplines;
+        }
+
+        public async Task<bool> InsertTemporaryOptional(OptionalTemporaryDTO optional)
+        {
+            if (await _disciplineRepository.InsertTemporaryOptional(new Context.Models.OptionalDisciplineList
+            {
+                OptionalDisciplineId = optional.disciplineID,
+                StudId = optional.studID,
+                OrderPreference = optional.order
+            }))
+            {
+                return true;
+            }
+            return false;
+               
+        }
+
+        public async Task<List<DisciplineWithIdDTO>> GetOptionalDisciplinesSortedByPriority(int studentId)
+        {
+            var optionalDisciplines = await _disciplineRepository.GetOptionalDisciplinesSortedByPriority(studentId);
+            List<DisciplineWithIdDTO> disciplines = new List<DisciplineWithIdDTO>();
+            foreach (var discipline in optionalDisciplines)
+            {
+                disciplines.Add(new DisciplineWithIdDTO
+                {
+                    ProfessorName = discipline.Teacher.FirstName + " " + discipline.Teacher.LastName,
+                    NrOfCredits = (int)discipline.NoCredits,
+                    Name = discipline.Name,
+                    id = discipline.Id
                 });
             }
             return disciplines;
