@@ -25,6 +25,8 @@ import { TableCurriculumComponent } from './shared/components/table-curriculum/t
 import { ViewAssignedCoursesComponentComponent } from './pages/view-assigned-courses-component/view-assigned-courses-component.component';
 import { CoursesTableComponent } from './pages/view-assigned-courses-component/courses-table/courses-table/courses-table.component';
 import { StudentEnrollComponent } from './pages/student-enroll/student-enroll.component';
+import { ConsultOptionalCoursesComponent } from './Pages/consult-optional-courses/consult-optional-courses.component';
+
 
 @NgModule({
   declarations: [

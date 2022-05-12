@@ -74,5 +74,38 @@ namespace AcademicInfoSysAPI.Controllers
             }
 
         }
+
+        [HttpGet("optional/{studentID}")]
+        public async Task<IActionResult> GetOptionalDisciplinesSortedByPriority(int studentID)
+        {
+            try
+            {
+                var disciplines = await disciplineService.GetOptionalDisciplinesSortedByPriority(studentID);
+                if (disciplines == null)
+                {
+                    return NotFound();
+                }
+                return Ok(disciplines);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+
+        [HttpPost("temporary-optional")]
+        public async Task<IActionResult> InsertTemporaryOptional([FromBody] OptionalTemporaryDTO data)
+        {
+            if (await disciplineService.InsertTemporaryOptional(data))
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
     }
 }
