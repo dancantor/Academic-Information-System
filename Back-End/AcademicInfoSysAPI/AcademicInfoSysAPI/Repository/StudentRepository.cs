@@ -2,6 +2,7 @@
 using AcademicInfoSysAPI.Context.Models;
 using AcademicInfoSysAPI.DTOs;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,6 +15,8 @@ namespace AcademicInfoSysAPI.Repository
         public Task<Student> GetInfoWithStudId(int StudId);
         public Task<bool> UpdateStudentInfoForID(StudentDTO data);
         public Task<bool> EnrollStudentToYear(int year, int StudId);
+
+        public Task<List<GradeDTO>> GetGradesForStudent(int stud_id);
     }
     public class StudentRepository : IStudentRepository
     {
@@ -65,6 +68,28 @@ namespace AcademicInfoSysAPI.Repository
             {
                 return false;
             }
+        }
+
+        public async Task<List<GradeDTO>> GetGradesForStudent(int stud_id)
+        {
+            List<OptionalGrade> optionalGrades = await _dbContext.OptionalGrades.Where(x => x.StudId == stud_id).ToListAsync();
+            List<StandardGrade> standardGrades = await _dbContext.StandardGrades.Where(x => x.StudId == stud_id).ToListAsync();
+            
+            List<GradeDTO> grades = new();
+
+            foreach (var grade in optionalGrades)
+            {
+                var courseName = await _dbContext.OptionalDisciplines.FirstOrDefaultAsync(x => x.Id == grade.OptionalDisciplineId);
+                grades.Add(new GradeDTO { CourseName = courseName.Name, Grade = grade.Value.Value });
+            }
+
+            foreach (var grade in standardGrades)
+            {
+                var courseName = await _dbContext.StandardDisciplines.FirstOrDefaultAsync(x => x.Id == grade.DisciplineId);
+                grades.Add(new GradeDTO { CourseName = courseName.Name, Grade = grade.Value.Value });
+            }
+
+            return grades;
         }
     }
 }

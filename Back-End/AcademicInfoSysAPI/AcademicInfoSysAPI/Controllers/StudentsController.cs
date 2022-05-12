@@ -82,5 +82,26 @@ namespace AcademicInfoSysAPI.Controllers
             }
         }
 
+        [HttpGet("grades/{stud_id}")]
+        public async Task<IActionResult> GetGradesForStudent([FromRoute]int stud_id)
+        {
+            try
+            {
+                List<GradeDTO> response = await _studentService.GetGradesForStudent(stud_id);
+                if(response == null)
+                    return NoContent();
+                else
+                    return Ok(response);
+            }
+            catch(BadRequestException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
     }
 }
