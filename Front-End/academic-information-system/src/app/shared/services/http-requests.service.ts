@@ -1,3 +1,5 @@
+import { OptionalWithPreference } from './../../Models/optional-with-preference';
+import { DisciplineWithId } from './../../Models/discipline-with-id';
 import { Curriculum } from './../../Models/curriculum';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -39,5 +41,16 @@ export class HttpRequestsService {
 
   postEnrollmentYear(year: number, id: string): Observable<boolean>{
     return this.http.post<boolean>(`${this.apiURL}/students/enroll/${id}`, year);
+  }
+  getOptionalDisciplines(): Observable<Array<DisciplineWithId>> {
+    return this.http.get<Array<DisciplineWithId>>(`${this.apiURL}/discipline`);
+  }
+
+  getOptionalSortedByPriority(studID: number): Observable<Array<DisciplineWithId>> {
+    return this.http.get<Array<DisciplineWithId>>(`${this.apiURL}/discipline/optional/${studID}`)
+  }
+
+  insertOptionalPreferedDiscipline(opt: OptionalWithPreference){
+    return this.http.post(`${this.apiURL}/discipline/temporary-optional`, opt);
   }
 }
