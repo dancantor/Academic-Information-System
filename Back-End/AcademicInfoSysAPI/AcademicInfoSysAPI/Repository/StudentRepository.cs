@@ -17,6 +17,7 @@ namespace AcademicInfoSysAPI.Repository
         public Task<bool> EnrollStudentToYear(int year, int StudId);
 
         public Task<List<GradeDTO>> GetGradesForStudent(int stud_id);
+        Task<bool> InsertContractForStudent(Contract contractDto);
     }
     public class StudentRepository : IStudentRepository
     {
@@ -51,6 +52,13 @@ namespace AcademicInfoSysAPI.Repository
         public async Task<Student> GetInfoWithStudId(int StudId)
         {
             return await _dbContext.Students.Where(x => x.StudId == StudId).FirstOrDefaultAsync();
+        }
+
+        public async Task<bool> InsertContractForStudent(Contract contract)
+        {
+            _dbContext.Contracts.Add(contract);
+            await _dbContext.SaveChangesAsync();
+            return true;
         }
 
         public async Task<bool> UpdateStudentInfoForID(StudentDTO data)

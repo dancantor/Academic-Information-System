@@ -25,7 +25,13 @@ export class StudentMainPageComponent implements OnInit {
     this.router.navigate(['student/optional-courses']);
   }
 
-  goToContractPage(){}
+  goToAssignedOptionalsPage() {
+    this.router.navigate(['student/assigned-optional-courses'])
+  }
+
+  goToContractPage(){
+    this.router.navigate(['student/sign-contract']);
+  }
 
   goToGradePage(){}
 }

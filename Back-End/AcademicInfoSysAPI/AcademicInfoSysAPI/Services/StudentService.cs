@@ -1,4 +1,5 @@
-﻿using AcademicInfoSysAPI.Controllers;
+using AcademicInfoSysAPI.Controllers;
+using AcademicInfoSysAPI.Context.Models;
 using AcademicInfoSysAPI.DTOs;
 using AcademicInfoSysAPI.Repository;
 using System;
@@ -15,6 +16,7 @@ namespace AcademicInfoSysAPI.Services
         Task<bool> EnrollStudentToYear(int year, int stud_id);
 
         Task<List<GradeDTO>> GetGradesForStudent(int stud_id);
+        Task<bool> InsertContractForStudent(ContractDto contractDto);
     }
     public class StudentService : IStudentService
     {
@@ -59,6 +61,22 @@ namespace AcademicInfoSysAPI.Services
                 age = (int)userInfo.Age
             };
 
+        }
+
+        public async Task<bool> InsertContractForStudent(ContractDto contractDto)
+        {
+            if (await _studentRepository.InsertContractForStudent(new Contract
+            {
+                Description = "",
+                Signed = true,
+                StudId = contractDto.studId
+            }))
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
         }
 
         public async Task<bool> UpdateStudentInfoForID(StudentDTO data)

@@ -7,6 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AcademicInfoSysAPI.Services;
 using AcademicInfoSysAPI.DTOs;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
+using System.Net.Http.Headers;
+using AcademicInfoSysAPI.Helpers;
 
 namespace AcademicInfoSysAPI.Controllers
 {
@@ -15,10 +20,12 @@ namespace AcademicInfoSysAPI.Controllers
     public class StudentsController : Controller
     {
         private readonly IStudentService _studentService;
+        private readonly IFileStorageService storageService;
 
-        public StudentsController(IStudentService service)
+        public StudentsController(IStudentService service, IFileStorageService storageService)
         {
             _studentService = service;
+            this.storageService = storageService;
         }
 
         // GET: Students
@@ -101,6 +108,17 @@ namespace AcademicInfoSysAPI.Controllers
             {
                 return NotFound(ex.Message);
             }
+        [HttpPost("upload-contract")]
+        public async Task<IActionResult> SaveFileToDisk([FromForm] ContractDto contract)
+        {
+
+            if (contract.contract != null)
+            {
+                await storageService.SaveFile("contracts", contract.contract);
+                await _studentService.InsertContractForStudent(contract);
+            }
+            return Ok();
+
         }
 
     }

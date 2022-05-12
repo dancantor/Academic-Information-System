@@ -1,8 +1,10 @@
 using AcademicInfoSysAPI.Context;
+using AcademicInfoSysAPI.Helpers;
 using AcademicInfoSysAPI.Repository;
 using AcademicInfoSysAPI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -37,6 +39,12 @@ namespace AcademicInfoSysAPI
                     builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
                 });
             });
+            services.Configure<FormOptions>(o =>
+            {
+                o.ValueLengthLimit = int.MaxValue;
+                o.MultipartBodyLengthLimit = int.MaxValue;
+                o.MemoryBufferThreshold = int.MaxValue;
+            });
 
             services.AddDbContext<AcademicInfoSysAPI_dbContext>(options =>
             {
@@ -49,7 +57,8 @@ namespace AcademicInfoSysAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AcademicInfoSysAPI", Version = "v1" });
             });
 
-
+            services.AddScoped<IFileStorageService, InAppStorageService>();
+            services.AddHttpContextAccessor();
             // Repositories
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IStudentRepository, StudentRepository>();
@@ -77,6 +86,8 @@ namespace AcademicInfoSysAPI
             }
 
             app.UseHttpsRedirection();
+
+            app.UseStaticFiles();
 
             app.UseRouting();
 

@@ -1,14 +1,16 @@
+import { SignContractComponent } from './Pages/sign-contract/sign-contract.component';
 import { ConsultOptionalCoursesComponent } from './Pages/consult-optional-courses/consult-optional-courses.component';
 import { ViewCurriculumComponent } from './Pages/view-curriculum/view-curriculum.component';
-import { StudentMainPageComponent } from './pages/student-main-page/student-main-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TeacherMainPageComponent } from './pages/teacher-main-page/teacher-main-page.component';
-import { StaffMainPageComponent } from './pages/staff-main-page/staff-main-page.component';
-import { LoginComponent } from './pages/login-page/login.component';
-import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
-import { ViewAssignedCoursesComponentComponent } from './pages/view-assigned-courses-component/view-assigned-courses-component.component';
-import { StudentEnrollComponent } from './pages/student-enroll/student-enroll.component';
+import { LoginComponent } from './Pages/login-page/login.component';
+import { StudentMainPageComponent } from './Pages/student-main-page/student-main-page.component';
+import { TeacherMainPageComponent } from './Pages/teacher-main-page/teacher-main-page.component';
+import { StaffMainPageComponent } from './Pages/staff-main-page/staff-main-page.component';
+import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
+import { ViewAssignedCoursesComponentComponent } from './Pages/view-assigned-courses-component/view-assigned-courses-component.component';
+import { StudentEnrollComponent } from './Pages/student-enroll/student-enroll.component';
+
 
 
 const routes: Routes = [
@@ -21,7 +23,8 @@ const routes: Routes = [
   {path: 'student/curriculum', component: ViewCurriculumComponent},
   {path: 'student/assigned-optional-courses', component: ViewAssignedCoursesComponentComponent},
   {path: 'student/enroll', component: StudentEnrollComponent},
-  {path: 'student/optional-courses', component: ConsultOptionalCoursesComponent}
+  {path: 'student/optional-courses', component: ConsultOptionalCoursesComponent},
+  {path: 'student/sign-contract', component: SignContractComponent}
 ];
 
 @NgModule({

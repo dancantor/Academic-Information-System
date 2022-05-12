@@ -137,6 +137,8 @@ namespace AcademicInfoSysAPI.Context
 
                 entity.Property(e => e.StudId).HasColumnName("stud_ID");
 
+                entity.Property(e => e.Final).HasColumnName("final");
+
                 entity.Property(e => e.OrderPreference).HasColumnName("orderPreference");
 
                 entity.HasOne(d => d.OptionalDiscipline)
