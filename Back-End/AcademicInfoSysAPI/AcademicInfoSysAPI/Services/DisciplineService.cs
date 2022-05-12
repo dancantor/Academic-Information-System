@@ -10,7 +10,6 @@ namespace AcademicInfoSysAPI.Services
     {
         Task<List<CurriculumDTO>> GetAllDisciplinesForYear(int id);
         Task<List<AssignedCourseDTO>> GetAssignedOptionalDisciplines(int stud_id);
-        Task<List<CurriculumDTO>> GetAllOptionalDisciplines();
         Task<List<DisciplineWithIdDTO>> GetAllOptionalDisciplines();
         Task<bool> InsertTemporaryOptional(OptionalTemporaryDTO optional);
         Task<List<DisciplineWithIdDTO>> GetOptionalDisciplinesSortedByPriority(int studentId);
@@ -62,8 +61,6 @@ namespace AcademicInfoSysAPI.Services
 
             return await _disciplineRepository.GetAssignedOptionalDisciplinesForDTO(enrolled_courses);
         }
-
-        public async Task<List<CurriculumDTO>> GetAllOptionalDisciplines()
         public async Task<List<DisciplineWithIdDTO>> GetAllOptionalDisciplines()
         {
             var optionalDisciplines = await _disciplineRepository.GetOptionalDisciplines(3);

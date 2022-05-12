@@ -6,25 +6,25 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './Modules/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
-import { StudentMainPageComponent } from './pages/student-main-page/student-main-page.component';
-import { TeacherMainPageComponent } from './pages/teacher-main-page/teacher-main-page.component';
-import { StaffMainPageComponent } from './pages/staff-main-page/staff-main-page.component';
-import { HomepageComponent } from './pages/homepage/homepage.component';
+import { StudentMainPageComponent } from './Pages/student-main-page/student-main-page.component';
+import { TeacherMainPageComponent } from './Pages/teacher-main-page/teacher-main-page.component';
+import { StaffMainPageComponent } from './Pages/staff-main-page/staff-main-page.component';
+import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import {MatCardModule} from '@angular/material/card'
 import {MatInputModule} from '@angular/material/input';
-import { LoginComponent } from './pages/login-page/login.component'
+import { LoginComponent } from './Pages/login-page/login.component'
 import {MatIconModule} from '@angular/material/icon'
 import {MatTableModule} from '@angular/material/table';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
-import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
 import { DisplayErrorsComponent } from './shared/utilities/display-errors/display-errors.component';
-import { SidebarPagesComponent } from './shared/components/sidebar-pages/sidebar-pages.component';
-import { ViewCurriculumComponent } from './pages/view-curriculum/view-curriculum.component';
+import { SidebarPagesComponent } from './shared/components/sidebar-Pages/sidebar-Pages.component';
+import { ViewCurriculumComponent} from './Pages/view-curriculum/view-curriculum.component';
 import { TableCurriculumComponent } from './shared/components/table-curriculum/table-curriculum.component';
-import { ViewAssignedCoursesComponentComponent } from './pages/view-assigned-courses-component/view-assigned-courses-component.component';
-import { CoursesTableComponent } from './pages/view-assigned-courses-component/courses-table/courses-table/courses-table.component';
-import { StudentEnrollComponent } from './pages/student-enroll/student-enroll.component';
+import { ViewAssignedCoursesComponentComponent } from './Pages/view-assigned-courses-component/view-assigned-courses-component.component';
+import { CoursesTableComponent } from './Pages/view-assigned-courses-component/courses-table/courses-table/courses-table.component';
+import { StudentEnrollComponent } from './Pages/student-enroll/student-enroll.component';
 import { ConsultOptionalCoursesComponent } from './Pages/consult-optional-courses/consult-optional-courses.component';
 
 
@@ -45,7 +45,8 @@ import { ConsultOptionalCoursesComponent } from './Pages/consult-optional-course
     TableCurriculumComponent,
     ViewAssignedCoursesComponentComponent,
     CoursesTableComponent,
-    StudentEnrollComponent
+    StudentEnrollComponent,
+    ConsultOptionalCoursesComponent
   ],
   imports: [
     BrowserModule,
