@@ -1,7 +1,9 @@
-﻿using AcademicInfoSysAPI.Context.Models;
+using AcademicInfoSysAPI.Controllers;
+using AcademicInfoSysAPI.Context.Models;
 using AcademicInfoSysAPI.DTOs;
 using AcademicInfoSysAPI.Repository;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AcademicInfoSysAPI.Services
@@ -12,6 +14,8 @@ namespace AcademicInfoSysAPI.Services
         Task<bool> UpdateStudentInfoForID(StudentDTO data);
         Task<EnrollmentDTO> GetEnrollmentForStudent(int stud_id);
         Task<bool> EnrollStudentToYear(int year, int stud_id);
+
+        Task<List<GradeDTO>> GetGradesForStudent(int stud_id);
         Task<bool> InsertContractForStudent(ContractDto contractDto);
     }
     public class StudentService : IStudentService
@@ -85,6 +89,19 @@ namespace AcademicInfoSysAPI.Services
                 return false;
             }
 
+        }
+
+        public async Task<List<GradeDTO>> GetGradesForStudent(int stud_id)
+        {
+            if (stud_id < 1)
+                throw new NotFoundException("Student Id must be positive");
+
+            var userInfo = await _studentRepository.GetInfoWithStudId(stud_id);
+            if (userInfo == null)
+            {
+                throw new NotFoundException("Student with the given id not found");
+            }
+            return await _studentRepository.GetGradesForStudent(stud_id);
         }
     }
 }
