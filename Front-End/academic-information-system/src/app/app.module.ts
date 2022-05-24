@@ -28,6 +28,7 @@ import { StudentEnrollComponent } from './Pages/student-enroll/student-enroll.co
 import { ConsultOptionalCoursesComponent } from './Pages/consult-optional-courses/consult-optional-courses.component';
 import { SignContractComponent } from './Pages/sign-contract/sign-contract.component';
 import { GradesPageComponent } from './Pages/grades-page/grades-page.component';
+import { ViewCoursesComponent } from './Pages/view-courses/view-courses.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { GradesPageComponent } from './Pages/grades-page/grades-page.component';
     StudentEnrollComponent,
     ConsultOptionalCoursesComponent,
     SignContractComponent,
-    GradesPageComponent
+    GradesPageComponent,
+    ViewCoursesComponent
   ],
   imports: [
     BrowserModule,

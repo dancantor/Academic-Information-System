@@ -34,7 +34,7 @@ namespace AcademicInfoSysAPI.Repository
 
             foreach (var discipline in optionalDisciplineLists)
             {
-                response.Add(await _dbContext.OptionalDisciplines.FirstOrDefaultAsync(x => x.Id == discipline.OptionalDisciplineId));
+                response.Add(await _dbContext.OptionalDisciplines.Include(x => x.Teacher).FirstOrDefaultAsync(x => x.Id == discipline.OptionalDisciplineId));
             }
             return response;
         }

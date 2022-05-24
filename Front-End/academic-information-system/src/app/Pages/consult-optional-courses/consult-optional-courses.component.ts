@@ -1,3 +1,4 @@
+import { CourseDto } from './../../Models/course-dto';
 import { OptionalWithPreference } from './../../Models/optional-with-preference';
 import { DisciplineWithId } from './../../Models/discipline-with-id';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -22,6 +23,7 @@ export class ConsultOptionalCoursesComponent implements OnInit {
     NrOfCredits: 0,
     id: 0
   }];
+  mandatoryDisciplines: Array<DisciplineWithId> = [];
   columnsToDisplay = ['Name', 'ProfessorName', 'NrOfCredits'];
   msg: string[] = [];
   locked: boolean = false;
@@ -38,6 +40,21 @@ export class ConsultOptionalCoursesComponent implements OnInit {
       this.optionalInitial = result;
       this.http.getProfileInfoById(this.storage.getUserId() || '', this.storage.getUserType()).subscribe(
         result1 => {
+          this.http.getEnrolledYears(result1.id).subscribe(years => {
+            this.http.getCoursesByStudIdAndYear(parseInt(result1.id), years.year1).subscribe(courses => {
+              
+              for (let course of courses){
+                this.mandatoryDisciplines.push({
+                  Name: course.name,
+                  NrOfCredits: course.nrOfCredits,
+                  ProfessorName: course.professorName,
+                  id: 1
+                })
+              }
+              console.log(this.mandatoryDisciplines);
+
+            })
+          })
           this.http.getOptionalSortedByPriority(parseInt(result1.id)).subscribe(optionals => {
             this.optionalFinal = optionals;
             if (this.optionalFinal.length === this.optionalInitial.length) {
