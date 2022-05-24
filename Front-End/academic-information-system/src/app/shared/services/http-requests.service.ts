@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment.prod';
 import { StorageService } from './storage.service';
 import { AssignedCourse } from 'src/app/Models/AssignedCourse';
 import { enrollment } from 'src/app/Models/enrollment';
+import { GradeDto } from 'src/app/Models/grade-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -60,5 +61,9 @@ export class HttpRequestsService {
       'Accept': 'application/json',
     };
     return this.http.post(`${this.apiURL}/students/upload-contract`, data, {'headers': headers});
+  }
+
+  getGrades(studId: number): Observable<Array<GradeDto>> {
+    return this.http.get<Array<GradeDto>>(`${this.apiURL}/students/grades/${studId}`);
   }
 }
