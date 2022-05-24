@@ -60,7 +60,47 @@
                     <div class="title">
                         Your List
                     </div>
-                    <div class="table-container">
+                    <div class="table-container-2">
+                        <div class="sub-title">
+                            Mandatory courses
+                        </div>
+                        <table
+                            mat-table
+                            [dataSource]="mandatoryDisciplines"
+                            *ngIf="mandatoryDisciplines.length > 0"
+                        >
+                            <ng-container matColumnDef="Name">
+                                <th mat-header-cell *matHeaderCellDef>Name</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.Name}}
+                                </td>
+                            </ng-container>
+                        
+                            <ng-container matColumnDef="ProfessorName">
+                                <th mat-header-cell *matHeaderCellDef>ProfessorName</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.ProfessorName}}
+                                </td>
+                            </ng-container>
+                        
+                            <ng-container matColumnDef="NrOfCredits">
+                                <th mat-header-cell *matHeaderCellDef>NrOfCredits</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.NrOfCredits}}
+                                </td>
+                            </ng-container>
+                        
+                            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                            <tr 
+                            mat-row
+                            *matRowDef="let row; columns: columnsToDisplay"></tr>
+                        </table>
+                        
+                    </div>
+                    <div class="table-container-2">
+                        <div class="sub-title">
+                            Optional Courses
+                        </div>
                         <table
                             mat-table
                             id="bb"
