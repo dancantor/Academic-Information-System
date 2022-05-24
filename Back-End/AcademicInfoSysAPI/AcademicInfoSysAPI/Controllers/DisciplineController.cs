@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using AcademicInfoSysAPI.DTOs;
 using System.Threading.Tasks;
 using System;
+using System.Collections.Generic;
 
 namespace AcademicInfoSysAPI.Controllers
 {
@@ -105,6 +106,26 @@ namespace AcademicInfoSysAPI.Controllers
             else
             {
                 return BadRequest();
+            }
+        }
+        [HttpGet("courses")]
+        public async Task<IActionResult> GetCoursesForStudent(int stud_id, int year)
+        {
+            try
+            {
+                List<CourseDTO> courses = await disciplineService.GetCoursesForStudent(stud_id, year);
+                if (Response == null)
+                    return NoContent();
+                else
+                    return Ok(courses);
+            }
+            catch (BadRequestException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
             }
         }
     }

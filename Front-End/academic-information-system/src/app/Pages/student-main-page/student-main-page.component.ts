@@ -36,4 +36,8 @@ export class StudentMainPageComponent implements OnInit {
   goToGradePage(){
     this.router.navigate(['student/view-grades']);
   }
+
+  goToViewCoursesforStudent() {
+    this.router.navigate(['student/view-courses'])
+  }
 }

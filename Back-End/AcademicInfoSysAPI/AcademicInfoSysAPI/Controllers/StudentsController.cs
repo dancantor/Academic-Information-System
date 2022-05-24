@@ -109,9 +109,9 @@ namespace AcademicInfoSysAPI.Controllers
                 return NotFound(ex.Message);
             }
         }
-            [HttpPost("upload-contract")]
+        [HttpPost("upload-contract")]
         public async Task<IActionResult> SaveFileToDisk([FromForm] ContractDto contract)
-            {
+        {
 
                 if (contract.contract != null)
                 {
@@ -120,8 +120,7 @@ namespace AcademicInfoSysAPI.Controllers
                 }
                 return Ok();
 
-            }
+        }
 
-   
     }
 }
