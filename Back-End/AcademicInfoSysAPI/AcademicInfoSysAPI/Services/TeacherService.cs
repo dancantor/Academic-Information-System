@@ -9,6 +9,7 @@ namespace AcademicInfoSysAPI.Services
     {
         Task<TeacherDTO> GetTeacherInfoForID(string id);
         Task<bool> UpdateTeacherInfoForID(TeacherDTO data);
+        Task<bool> ProposeOptional(ProposedOptionalDTO optional);
     }
     public class TeacherService : ITeacherService
     {
@@ -35,16 +36,24 @@ namespace AcademicInfoSysAPI.Services
                 isChief = (bool)userInfo.IsChief
             };
         }
+
+        public async Task<bool> ProposeOptional(ProposedOptionalDTO optional)
+        {
+            if (await _teacherRepository.ProposeOptional(optional))
+            {
+                return true;
+            }
+            return false;
+
+        }
+
         public async Task<bool> UpdateTeacherInfoForID(TeacherDTO data)
         {
             if (await _teacherRepository.UpdateTeacherInfoForID(data))
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
     }
 }

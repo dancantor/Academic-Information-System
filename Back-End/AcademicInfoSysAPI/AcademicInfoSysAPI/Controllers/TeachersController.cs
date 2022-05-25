@@ -56,6 +56,16 @@ namespace AcademicInfoSysAPI.Controllers
                 return BadRequest();
             }
         }
+        
+        [HttpPost("propose")]
+        public async Task<IActionResult> ProposeOptional([FromBody] ProposedOptionalDTO optional)
+        {
+            if (await _teacherService.ProposeOptional(optional))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
 
     }
 }

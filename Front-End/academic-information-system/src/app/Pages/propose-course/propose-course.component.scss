@@ -1,0 +1,34 @@
+.main-container {
+    height: 100%;
+    width: 100%;
+}
+
+mat-sidenav {
+    width: 20vw;
+    background-image: url("/assets/images/background.png");
+}
+
+mat-sidenav-content {
+    height: 100%;
+}
+
+
+.main-page {
+    height: 100%;
+    padding-top: 100px;
+    padding-left: 5vw;
+    background-color: var(--page-background-color);
+    margin:20px;
+}
+
+html, body { height: 100%;}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: white;
+    border-radius: 5px;
+    width: 20vw;
+  }
+
+// button{
+//     height: 60px;
+// }

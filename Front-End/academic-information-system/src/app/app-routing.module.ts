@@ -1,3 +1,4 @@
+import { ProposeCourseComponent } from './Pages/propose-course/propose-course.component';
 import { ViewCoursesComponent } from './Pages/view-courses/view-courses.component';
 import { GradesPageComponent } from './Pages/grades-page/grades-page.component';
 import { SignContractComponent } from './Pages/sign-contract/sign-contract.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'student/sign-contract', component: SignContractComponent},
   {path: 'student/view-grades', component: GradesPageComponent},
   {path: 'student/view-courses', component: ViewCoursesComponent},
+  {path: 'teacher/propose-course', component: ProposeCourseComponent},
 ];
 
 @NgModule({
