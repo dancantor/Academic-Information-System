@@ -22,6 +22,7 @@ import { DisplayErrorsComponent } from './shared/utilities/display-errors/displa
 import { SidebarPagesComponent } from './shared/components/sidebar-Pages/sidebar-Pages.component';
 import { ViewCurriculumComponent} from './pages/view-curriculum/view-curriculum.component';
 import { TableCurriculumComponent } from './shared/components/table-curriculum/table-curriculum.component';
+import { DialogComponent } from './shared/components/dialog/dialog.component';
 import { ViewAssignedCoursesComponentComponent } from './pages/view-assigned-courses-component/view-assigned-courses-component.component';
 import { CoursesTableComponent } from './pages/view-assigned-courses-component/courses-table/courses-table/courses-table.component';
 import { StudentEnrollComponent } from './pages/student-enroll/student-enroll.component';
@@ -57,6 +58,7 @@ import { ApproveCoursesTableComponent } from './pages/view-and-approve-optional-
     GradesPageComponent,
     ViewCoursesComponent,
     ProposeCourseComponent,
+    DialogComponent,
     ViewApproveOptionalCoursesComponent,
     ApproveCoursesTableComponent
   ],

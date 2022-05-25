@@ -78,6 +78,9 @@ export class HttpRequestsService {
     return this.http.post(`${this.apiURL}/teachers/propose`, optional);
   }
 
+  distributeOptionals() {
+    return this.http.get(`${this.devURL}/staffs/distribute-optionals`);
+  }
   getCourses(): Observable<Array<ProposedOptionalDTOWithProfName>>{
     return this.http.get<Array<ProposedOptionalDTOWithProfName>>(`${this.devURL}/teachers/courses`);
   }

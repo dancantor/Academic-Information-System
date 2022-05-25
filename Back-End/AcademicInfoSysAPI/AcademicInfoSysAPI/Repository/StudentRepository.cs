@@ -17,7 +17,9 @@ namespace AcademicInfoSysAPI.Repository
         public Task<bool> EnrollStudentToYear(int year, int StudId);
 
         public Task<List<GradeDTO>> GetGradesForStudent(int stud_id);
+        public Task<List<GradeWithCreditsDto>> GetGradesWithCredits(int stud_id);
         Task<bool> InsertContractForStudent(Contract contractDto);
+        Task<List<Student>> GetAllStudents();
     }
     public class StudentRepository : IStudentRepository
     {
@@ -98,6 +100,33 @@ namespace AcademicInfoSysAPI.Repository
             }
 
             return grades;
+        }
+
+        public async Task<List<GradeWithCreditsDto>> GetGradesWithCredits(int stud_id)
+        {
+            List<OptionalGrade> optionalGrades = await _dbContext.OptionalGrades.Where(x => x.StudId == stud_id).ToListAsync();
+            List<StandardGrade> standardGrades = await _dbContext.StandardGrades.Where(x => x.StudId == stud_id).ToListAsync();
+
+            List<GradeWithCreditsDto> grades = new();
+
+            foreach (var grade in optionalGrades)
+            {
+                var courseName = await _dbContext.OptionalDisciplines.FirstOrDefaultAsync(x => x.Id == grade.OptionalDisciplineId);
+                grades.Add(new GradeWithCreditsDto { Value = grade.Value.Value, Credits = courseName.NoCredits.Value });
+            }
+
+            foreach (var grade in standardGrades)
+            {
+                var courseName = await _dbContext.StandardDisciplines.FirstOrDefaultAsync(x => x.Id == grade.DisciplineId);
+                grades.Add(new GradeWithCreditsDto { Value = grade.Value.Value, Credits = courseName.NoCredits.Value });
+            }
+
+            return grades;
+        }
+
+        public async Task<List<Student>> GetAllStudents()
+        {
+            return await _dbContext.Students.ToListAsync();
         }
     }
 }

@@ -12,6 +12,7 @@ namespace AcademicInfoSysAPI.Repository
     {
         Task<staff> GetInfo(int staffId);
         Task<bool> UpdateStaffInfoForID(staffDTO data);
+        Task<bool> DeleteOptionalsThatAreNotApproved();
     }
     public class StaffRepository : IStaffRepository
     {
@@ -43,6 +44,31 @@ namespace AcademicInfoSysAPI.Repository
                 return false;
             }
 
+        }
+
+        public async Task<bool> DeleteOptionalsThatAreNotApproved()
+        {
+            var optionalsToBeDeleted = await _dbContext.OptionalDisciplines.Where(optional => !optional.IsApproved ?? false).ToListAsync();
+            var discipliesLists = await _dbContext.OptionalDisciplineLists.ToListAsync();
+            discipliesLists.RemoveAll(disc => optionalsToBeDeleted.All(optional => optional.Id != disc.OptionalDisciplineId));
+            var optionalGrades = await _dbContext.OptionalGrades.ToListAsync();
+            optionalGrades.RemoveAll(grade => optionalsToBeDeleted.All(optional => optional.Id != grade.OptionalDisciplineId));
+            foreach (var discipline in discipliesLists)
+            {
+                _dbContext.OptionalDisciplineLists.Remove(discipline);
+            }
+            foreach (var grade in optionalGrades)
+            {
+                _dbContext.OptionalGrades.Remove(grade);
+            }
+            foreach(var optional in optionalsToBeDeleted)
+            {
+                _dbContext.OptionalDisciplines.Remove(optional);
+            }
+            
+
+            await _dbContext.SaveChangesAsync();
+            return true;
         }
     }
 }

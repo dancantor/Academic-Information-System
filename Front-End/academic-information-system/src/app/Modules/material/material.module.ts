@@ -13,6 +13,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {DragDropModule} from '@angular/cdk/drag-drop'
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [],
@@ -29,7 +31,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop'
     MatSnackBarModule,
     MatTableModule,
     MatProgressSpinnerModule,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule
   ],
   imports: [
     CommonModule
