@@ -30,22 +30,26 @@ export class ProposeCourseComponent implements OnInit {
   }
 
   saveCourse(){ 
-    const id = this.storage.getUserId()
+    const id = this.storage.getUserId();
+    var role = this.storage.getUserType();
     if (id === null){
       this.snackBar.open('Error on proposing optional', 'Ok', {
         duration: 3000
       })
       return
     }
+    this.http.getProfileInfoById(id, role).subscribe(teacher => {
+      this.http.proposeCourse({teacherId: teacher.id, ...this.courseConfig.value}).subscribe(result =>{
+        this.snackBar.open('Optional successfully proposed', 'Ok', {
+          duration: 3000
+        });
+      }, error => this.snackBar.open('Error on proposing optional'));
+    })
     // let course: ProposedOptionalDto = {
     //   teacherId: +id,
 
     // }
-    this.http.proposeCourse({teacherId: id, ...this.courseConfig.value}).subscribe(result =>{
-      this.snackBar.open('Optional successfully proposed', 'Ok', {
-        duration: 3000
-      });
-    }, error => this.snackBar.open('Error on proposing optional'));
+    
   }
 
   getErrorMessageFieldName() {
