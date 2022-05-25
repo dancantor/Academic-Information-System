@@ -33,7 +33,7 @@ const routes: Routes = [
   {path: 'student/view-grades', component: GradesPageComponent},
   {path: 'student/view-courses', component: ViewCoursesComponent},
   {path: 'teacher/propose-course', component: ProposeCourseComponent},
-  {path: 'teacher/grading', component: TeacherGradingComponent}
+  {path: 'teacher/grading', component: TeacherGradingComponent},
   {path: 'teacher/approve-courses', component: ViewApproveOptionalCoursesComponent}
 ];
 

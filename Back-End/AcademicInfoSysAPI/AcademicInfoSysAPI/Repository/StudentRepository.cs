@@ -20,7 +20,6 @@ namespace AcademicInfoSysAPI.Repository
         public Task<List<GradeDTO>> GetGradesForStudent(int stud_id);
         public Task<List<GradeWithCreditsDto>> GetGradesWithCredits(int stud_id);
         Task<bool> InsertContractForStudent(Contract contractDto);
-        Task<List<Student>> GetAllStudents();
     }
     public class StudentRepository : IStudentRepository
     {
@@ -128,11 +127,6 @@ namespace AcademicInfoSysAPI.Repository
             }
 
             return grades;
-        }
-
-        public async Task<List<Student>> GetAllStudents()
-        {
-            return await _dbContext.Students.ToListAsync();
         }
     }
 }
