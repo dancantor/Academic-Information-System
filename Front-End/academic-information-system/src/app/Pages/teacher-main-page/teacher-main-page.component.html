@@ -1,1 +1,19 @@
-<p>teacher-main-page works!</p>
+<app-navbar></app-navbar>
+<div style="display:flex; flex-flow: row nowrap;">
+    <div style="height: 100vh; width: 50vw; display: flex;">
+        <div class="button-container">
+            <button mat-button style="width: 25vw; height: 7vh;border-radius: 20px; background-color: #E4E2FF; margin: 2vh " (click)="goToAddGrades()"> Add Grades </button>
+            <button mat-button style="width: 25vw; height: 7vh;border-radius: 20px; background-color: #E4E2FF; margin: 2vh " (click)="goToProposeCourses()"> Propose Optional Courses </button>
+            <button mat-button style="width: 25vw; height: 7vh;border-radius: 20px; background-color: #E4E2FF; margin: 2vh " *ngIf="user.isChief" (click)="goToApproveOptionals()"> View/Approve Optional Courses </button>
+            <button mat-button style="width: 25vw; height: 7vh;border-radius: 20px; background-color: #E4E2FF; margin: 2vh " *ngIf="user.isChief" (click)="goToSpecifyCapacity()"> Specify Number of Students  </button>
+            <button mat-button style="width: 25vw; height: 7vh;border-radius: 20px; background-color: #E4E2FF; margin: 2vh " *ngIf="user.isChief" (click)="goToViewResultsByTeacher()"> View Results for Teacher </button>
+            <button mat-button style="width: 25vw; height: 7vh;border-radius: 20px; background-color: #E4E2FF; margin: 2vh " *ngIf="user.isChief" (click)="goToViewDisciplinesByTeacher()"> View Disciplines for Teacher </button>
+            <button mat-button style="width: 25vw; height: 7vh;border-radius: 20px; background-color: #E4E2FF; margin: 2vh " *ngIf="user.isChief" (click)="goToViewResultsByDiscipline()"> View Results for Discipline </button>
+        </div>
+    </div>
+    <div style="height: 100vh; width: 50vw; display: flex">
+        <img src="assets/images/teacher.png">
+    </div>
+</div>
+
+        

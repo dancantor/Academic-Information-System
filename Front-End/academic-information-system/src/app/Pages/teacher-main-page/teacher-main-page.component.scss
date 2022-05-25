@@ -1,0 +1,14 @@
+.button-container{
+    display: flexbox;
+    flex-flow: row wrap;
+    padding-left: 10vw;
+    padding-top: 7vh;
+    margin: 3vh, 3vw;
+}
+
+img {
+    position: fixed;
+    bottom:40px;
+    max-width: 100%;
+    max-height: 50%;
+}

@@ -31,7 +31,8 @@ namespace AcademicInfoSysAPI.Services
                 Id = userInfo.TeacherId,
                 first_name = userInfo.FirstName,
                 last_name = userInfo.LastName,
-                age = (int)userInfo.Age
+                age = (int)userInfo.Age,
+                isChief = (bool)userInfo.IsChief
             };
         }
         public async Task<bool> UpdateTeacherInfoForID(TeacherDTO data)
