@@ -1,7 +1,6 @@
 import { User } from 'src/app/Models/genericUser';
 import { ContractDto } from './../../Models/contract-dto';
 import { ContractService } from './../../shared/services/contract.service';
-import { saveAs } from 'file-saver';
 import { ProfileInformation } from 'src/app/Models/student.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';

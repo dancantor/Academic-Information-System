@@ -1,6 +1,7 @@
 ﻿using AcademicInfoSysAPI.DTOs;
 using AcademicInfoSysAPI.Repository;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AcademicInfoSysAPI.Services
@@ -10,6 +11,8 @@ namespace AcademicInfoSysAPI.Services
         Task<TeacherDTO> GetTeacherInfoForID(string id);
         Task<bool> UpdateTeacherInfoForID(TeacherDTO data);
         Task<bool> ProposeOptional(ProposedOptionalDTO optional);
+        Task<List<OptionalCourseForApproveDTO>> GetCourses();
+        Task ApproveCourses(List<OptionalCourseForApproveDTO> courses);
     }
     public class TeacherService : ITeacherService
     {
@@ -54,6 +57,19 @@ namespace AcademicInfoSysAPI.Services
                 return true;
             }
             return false;
+        }
+
+        public async Task<List<OptionalCourseForApproveDTO>> GetCourses()
+        {
+            return await _teacherRepository.GetCourses();
+        }
+
+        public async Task ApproveCourses(List<OptionalCourseForApproveDTO> courses)
+        {
+            foreach (var course in courses)
+            {
+                await _teacherRepository.ApproveCourse(course);
+            }
         }
     }
 }
