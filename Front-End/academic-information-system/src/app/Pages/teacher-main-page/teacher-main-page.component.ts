@@ -1,4 +1,8 @@
+import { ProfileInformation } from 'src/app/Models/student.model';
+import { StorageService } from 'src/app/shared/services/storage.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpRequestsService } from 'src/app/shared/services/http-requests.service';
 
 @Component({
   selector: 'app-teacher-main-page',
@@ -6,10 +10,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./teacher-main-page.component.scss']
 })
 export class TeacherMainPageComponent implements OnInit {
-
-  constructor() { }
+  constructor(private router : Router, private storage: StorageService, private http: HttpRequestsService){  }
+  user: ProfileInformation;
 
   ngOnInit(): void {
+    this.http.getProfileInfoById(this.storage.getUserId() || '', this.storage.getUserType())
+      .subscribe(result => {
+        this.user = result; console.log(this.user.last_name)
+        console.log(this.user.isChief);
+      });
+  }
+
+  goToAddGrades(): void{
+  }
+
+  goToProposeCourses(){
+  }
+
+  goToApproveOptionals(){
+  }
+
+  goToSpecifyCapacity() {
+  }
+
+  goToViewResultsByTeacher(){
+  }
+
+  goToViewDisciplinesByTeacher(){
+  }
+
+  goToViewResultsByDiscipline() {
   }
 
 }

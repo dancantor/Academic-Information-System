@@ -4,4 +4,5 @@ export class ProfileInformation {
     last_name: string;
     age: number;
     cnp: number;
+    isChief?: boolean;
 }
