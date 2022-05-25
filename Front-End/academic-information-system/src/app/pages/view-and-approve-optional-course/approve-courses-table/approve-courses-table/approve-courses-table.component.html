@@ -1,0 +1,48 @@
+<mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="Name">
+        <mat-header-cell *matHeaderCellDef> Course Name</mat-header-cell>
+        <mat-cell *matCellDef="let course">
+            {{course.name}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="TeacherName">
+        <mat-header-cell *matHeaderCellDef> Course Proffesor</mat-header-cell>
+        <mat-cell *matCellDef="let course"> {{course.professorName}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="NumberOfStudents">
+        <mat-header-cell *matHeaderCellDef>Number of students</mat-header-cell>
+        <mat-cell *matCellDef="let course">
+            {{course.nrOfStudents}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Year">
+        <mat-header-cell *matHeaderCellDef>Year of study</mat-header-cell>
+        <mat-cell *matCellDef="let course"> {{course.correspondingYear}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="isApproved">
+        <mat-header-cell *matHeaderCellDef> Approved </mat-header-cell>
+        <mat-cell *matCellDef="let course"><mat-checkbox [(ngModel)]="course.isApproved" [disabled]="alreadyApproved.indexOf(course) > -1"
+            (change)="markAsChanged(course)"></mat-checkbox>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nrOfCredits">
+        <mat-header-cell *matHeaderCellDef> Number Of Credits </mat-header-cell>
+        <mat-cell *matCellDef="let course">{{course.nrOfCredits}}
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+
+    <mat-row *matRowDef="let course; columns: displayedColumns" matRipple></mat-row>
+
+</mat-table>
+
+<button mat-raised-button color="primary" style="margin-top: 2vh; margin-left: 30vw; width: 10vw" (click)="updateApprovals()">Approve courses</button>

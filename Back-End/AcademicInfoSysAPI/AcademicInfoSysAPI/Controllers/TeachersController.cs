@@ -67,5 +67,23 @@ namespace AcademicInfoSysAPI.Controllers
             return BadRequest();
         }
 
+        [HttpGet("courses")]
+        public async Task<IActionResult> GetCoursesToApprove()
+        {
+            var courses = await _teacherService.GetCourses();
+            if (courses.Count != 0)
+            {
+                return Ok(courses);
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("approve")]
+        public async Task<IActionResult> ApproveCourses([FromBody] List<OptionalCourseForApproveDTO> courses)
+        {
+            await _teacherService.ApproveCourses(courses);
+           
+            return NoContent();
+        }
     }
 }

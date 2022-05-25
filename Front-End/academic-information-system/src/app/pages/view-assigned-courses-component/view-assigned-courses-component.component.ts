@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CoursesTableComponent } from './courses-table/courses-table/courses-table.component';
 
 @Component({
   selector: 'app-view-assigned-courses-component',

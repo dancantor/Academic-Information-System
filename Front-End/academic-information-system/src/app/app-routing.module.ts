@@ -1,18 +1,19 @@
-import { ProposeCourseComponent } from './Pages/propose-course/propose-course.component';
-import { ViewCoursesComponent } from './Pages/view-courses/view-courses.component';
-import { GradesPageComponent } from './Pages/grades-page/grades-page.component';
-import { SignContractComponent } from './Pages/sign-contract/sign-contract.component';
-import { ConsultOptionalCoursesComponent } from './Pages/consult-optional-courses/consult-optional-courses.component';
-import { ViewCurriculumComponent } from './Pages/view-curriculum/view-curriculum.component';
+import { ProposeCourseComponent } from './pages/propose-course/propose-course.component';
+import { ViewCoursesComponent } from './pages/view-courses/view-courses.component';
+import { GradesPageComponent } from './pages/grades-page/grades-page.component';
+import { SignContractComponent } from './pages/sign-contract/sign-contract.component';
+import { ConsultOptionalCoursesComponent } from './pages/consult-optional-courses/consult-optional-courses.component';
+import { ViewCurriculumComponent } from './pages/view-curriculum/view-curriculum.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './Pages/login-page/login.component';
-import { StudentMainPageComponent } from './Pages/student-main-page/student-main-page.component';
-import { TeacherMainPageComponent } from './Pages/teacher-main-page/teacher-main-page.component';
-import { StaffMainPageComponent } from './Pages/staff-main-page/staff-main-page.component';
-import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
-import { ViewAssignedCoursesComponentComponent } from './Pages/view-assigned-courses-component/view-assigned-courses-component.component';
-import { StudentEnrollComponent } from './Pages/student-enroll/student-enroll.component';
+import { LoginComponent } from './pages/login-page/login.component';
+import { StudentMainPageComponent } from './pages/student-main-page/student-main-page.component';
+import { TeacherMainPageComponent } from './pages/teacher-main-page/teacher-main-page.component';
+import { StaffMainPageComponent } from './pages/staff-main-page/staff-main-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { ViewAssignedCoursesComponentComponent } from './pages/view-assigned-courses-component/view-assigned-courses-component.component';
+import { StudentEnrollComponent } from './pages/student-enroll/student-enroll.component';
+import { ViewApproveOptionalCoursesComponent } from './pages/view-and-approve-optional-course/view-approve-optional-courses/view-approve-optional-courses.component';
 
 
 
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path: 'student/view-grades', component: GradesPageComponent},
   {path: 'student/view-courses', component: ViewCoursesComponent},
   {path: 'teacher/propose-course', component: ProposeCourseComponent},
+  {path: 'teacher/approve-courses', component: ViewApproveOptionalCoursesComponent}
 ];
 
 @NgModule({
