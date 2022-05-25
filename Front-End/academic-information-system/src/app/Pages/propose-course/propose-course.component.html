@@ -1,0 +1,51 @@
+<mat-sidenav-container class="main-container">
+    <mat-sidenav mode="side" opened>
+        <app-sidebar-pages></app-sidebar-pages>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="main-page">
+            <form [formGroup]="courseConfig" (submit)="saveCourse()" style="display: inline;">
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input
+                    formControlName="name"
+                    matInput placeholder="Name of the course"
+                    required>
+                <mat-error *ngIf="courseConfig.invalid">{{getErrorMessageFieldName()}}</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="outline">
+                    <mat-label>Number of Students</mat-label>
+                    <input
+                    type="number"
+                    formControlName="noOfStudents"
+                    matInput placeholder="Maximum number of students"
+                    required>
+                <mat-error *ngIf="courseConfig.invalid">{{getErrorMessageFieldName()}}</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="outline">
+                    <mat-label>Year of Study</mat-label>
+                    <input
+                    type="number"
+                    formControlName="correspondingYear"
+                    matInput placeholder="Year to be proposed"
+                    required>
+                <mat-error *ngIf="courseConfig.invalid">{{getErrorMessageFieldName()}}</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="outline">
+                    <mat-label>No of Credits</mat-label>
+                    <input
+                    type="number"
+                    formControlName="noOfCredits"
+                    matInput placeholder="Credits value of the optional"
+                    required>
+                <mat-error *ngIf="courseConfig.invalid">{{getErrorMessageFieldName()}}</mat-error>
+                </mat-form-field>
+                <br>   
+                <button [disabled]="courseConfig.invalid" mat-raised-button (submit)="saveCourse()" color="primary">Propose Optional</button>
+            </form>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

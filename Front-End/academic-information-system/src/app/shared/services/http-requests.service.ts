@@ -1,3 +1,4 @@
+import { ProposedOptionalDto } from './../../Models/proposed-optional-dto';
 import { CourseDto } from './../../Models/course-dto';
 import { OptionalWithPreference } from './../../Models/optional-with-preference';
 import { DisciplineWithId } from './../../Models/discipline-with-id';
@@ -70,5 +71,9 @@ export class HttpRequestsService {
 
   getCoursesByStudIdAndYear(studId: number, year: number): Observable<Array<CourseDto>>{
     return this.http.get<Array<CourseDto>>(`${this.apiURL}/discipline/courses?stud_id=${studId}&year=${year}`);
+  }
+
+  proposeCourse(optional: ProposedOptionalDto ) {
+    return this.http.post(`${this.apiURL}/teachers/propose`, optional);
   }
 }

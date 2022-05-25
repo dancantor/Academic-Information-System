@@ -12,6 +12,7 @@ namespace AcademicInfoSysAPI.Repository
     {
         Task<Teacher> GetInfo(int TeacherId);
         Task<bool> UpdateTeacherInfoForID(TeacherDTO data);
+        Task<bool> ProposeOptional(ProposedOptionalDTO optional);
     }
     public class TeacherRepository : ITeacherRepository
     {
@@ -26,6 +27,23 @@ namespace AcademicInfoSysAPI.Repository
         {
             return await _dbContext.Teachers.Where(x => x.GenericId == TeachId).FirstOrDefaultAsync();
         }
+
+        public async Task<bool> ProposeOptional(ProposedOptionalDTO optional)
+        {
+            _dbContext.OptionalDisciplines.Add(new OptionalDiscipline
+            {
+                TeacherId = optional.teacherId,
+                NoStudents = optional.noOfStudents,
+                IsApproved = false,
+                CoresopondingYear = optional.correspondingYear,
+                NoCredits = optional.noOfCredits,
+                Name = optional.name,
+
+            });
+            await _dbContext.SaveChangesAsync();
+            return true;
+        }
+
         public async Task<bool> UpdateTeacherInfoForID(TeacherDTO data)
         {
             var teacher_to_update = await _dbContext.Teachers.Where(x => x.TeacherId == data.Id).FirstOrDefaultAsync();

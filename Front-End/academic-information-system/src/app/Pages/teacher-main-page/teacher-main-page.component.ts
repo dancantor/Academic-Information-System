@@ -25,6 +25,7 @@ export class TeacherMainPageComponent implements OnInit {
   }
 
   goToProposeCourses(){
+    this.router.navigate(['teacher/propose-course']);
   }
 
   goToApproveOptionals(){

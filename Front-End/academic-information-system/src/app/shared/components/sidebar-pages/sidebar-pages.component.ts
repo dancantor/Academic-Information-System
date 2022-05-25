@@ -1,3 +1,4 @@
+import { StorageService } from 'src/app/shared/services/storage.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,12 +9,12 @@ import { Router } from '@angular/router';
 })
 export class SidebarPagesComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private storage: StorageService) { }
 
   ngOnInit(): void {
   }
 
   returnToMainPage(): void {
-    this.router.navigate(['/student']);
+    this.router.navigate([`/${this.storage.getUserType()}`]);
   }
 }
