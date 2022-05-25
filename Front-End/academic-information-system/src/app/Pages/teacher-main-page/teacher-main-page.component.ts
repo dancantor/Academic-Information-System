@@ -30,6 +30,7 @@ export class TeacherMainPageComponent implements OnInit {
   }
 
   goToApproveOptionals(){
+    this.router.navigate(['teacher/approve-courses']);
   }
 
   goToSpecifyCapacity() {

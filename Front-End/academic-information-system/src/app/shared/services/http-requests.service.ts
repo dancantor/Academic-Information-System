@@ -90,4 +90,15 @@ export class HttpRequestsService {
   postGrade(grade: GradeToPostDto){
     return this.http.post(`${this.devURL}/teachers/grade`, grade);
   }
+  
+  distributeOptionals() {
+    return this.http.get(`${this.devURL}/staffs/distribute-optionals`);
+  }
+  getCourses(): Observable<Array<ProposedOptionalDTOWithProfName>>{
+    return this.http.get<Array<ProposedOptionalDTOWithProfName>>(`${this.devURL}/teachers/courses`);
+  }
+
+  updateCourseApproval(courses: Array<ProposedOptionalDTOWithProfName>){
+    return this.http.post(`${this.devURL}/teachers/approve`, courses);
+  }
 }

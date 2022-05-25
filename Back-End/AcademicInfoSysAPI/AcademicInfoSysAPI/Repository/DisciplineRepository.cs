@@ -19,6 +19,7 @@ namespace AcademicInfoSysAPI.Repository
         Task<List<OptionalDiscipline>> GetOptionalDisciplinesSortedByPriority(int studentId);
         Task<Student> GetStudentById(int studentId);
     
+        Task<bool> MakeOptionalFinal(int studentId, int optionalId);
     }
     public class DisciplineRepository : IDisciplineRepository
     {
@@ -84,6 +85,7 @@ namespace AcademicInfoSysAPI.Repository
                     Name = result.discipline_list.optionalDiscipline.Name,
                     Teacher = result.discipline_list.optionalDiscipline.Teacher,
                     NoCredits = result.discipline_list.optionalDiscipline.NoCredits,
+                    NoStudents = result.discipline_list.optionalDiscipline.NoStudents
                 }).ToListAsync();
                 
         }
@@ -98,6 +100,18 @@ namespace AcademicInfoSysAPI.Repository
         public async Task<Student> GetStudentById(int studentId)
         {
             return await _dbContext.Students.FirstOrDefaultAsync(x => x.StudId == studentId);
+        }
+
+        public async Task<bool> MakeOptionalFinal(int studentId, int optionalId)
+        {
+            var optionalToUpdate = await _dbContext.OptionalDisciplineLists.Where(opl => opl.StudId == studentId && opl.OptionalDisciplineId == optionalId).FirstAsync();
+            if (optionalToUpdate != null)
+            {
+                optionalToUpdate.Final = true;
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -22,6 +22,7 @@ import { DisplayErrorsComponent } from './shared/utilities/display-errors/displa
 import { SidebarPagesComponent } from './shared/components/sidebar-Pages/sidebar-Pages.component';
 import { ViewCurriculumComponent} from './pages/view-curriculum/view-curriculum.component';
 import { TableCurriculumComponent } from './shared/components/table-curriculum/table-curriculum.component';
+import { DialogComponent } from './shared/components/dialog/dialog.component';
 import { ViewAssignedCoursesComponentComponent } from './pages/view-assigned-courses-component/view-assigned-courses-component.component';
 import { CoursesTableComponent } from './pages/view-assigned-courses-component/courses-table/courses-table/courses-table.component';
 import { StudentEnrollComponent } from './pages/student-enroll/student-enroll.component';
@@ -31,6 +32,8 @@ import { GradesPageComponent } from './pages/grades-page/grades-page.component';
 import { ViewCoursesComponent } from './pages/view-courses/view-courses.component';
 import { ProposeCourseComponent } from './pages/propose-course/propose-course.component';
 import { TeacherGradingComponent } from './pages/teacher-grading/teacher-grading/teacher-grading.component';
+import { ViewApproveOptionalCoursesComponent } from './pages/view-and-approve-optional-course/view-approve-optional-courses/view-approve-optional-courses.component';
+import { ApproveCoursesTableComponent } from './pages/view-and-approve-optional-course/approve-courses-table/approve-courses-table/approve-courses-table.component';
 
 
 @NgModule({
@@ -56,7 +59,10 @@ import { TeacherGradingComponent } from './pages/teacher-grading/teacher-grading
     GradesPageComponent,
     ViewCoursesComponent,
     ProposeCourseComponent,
-    TeacherGradingComponent
+    TeacherGradingComponent,
+    DialogComponent,
+    ViewApproveOptionalCoursesComponent,
+    ApproveCoursesTableComponent
   ],
   imports: [
     BrowserModule,

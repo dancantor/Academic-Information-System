@@ -55,5 +55,15 @@ namespace AcademicInfoSysAPI.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet("distribute-optionals")]
+        public async Task<IActionResult> DistributeOptionals()
+        {
+            if (await _staffService.DistributeOptionals())
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
     }
 }
