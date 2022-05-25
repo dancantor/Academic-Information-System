@@ -1,5 +1,5 @@
 import { ProposedOptionalDto } from './../../Models/proposed-optional-dto';
-import { CourseDto } from './../../Models/course-dto';
+import { CourseDto, CourseDtoSimple } from './../../Models/course-dto';
 import { OptionalWithPreference } from './../../Models/optional-with-preference';
 import { DisciplineWithId } from './../../Models/discipline-with-id';
 import { Curriculum } from './../../Models/curriculum';
@@ -11,13 +11,15 @@ import { environment } from 'src/environments/environment.prod';
 import { StorageService } from './storage.service';
 import { AssignedCourse } from 'src/app/Models/AssignedCourse';
 import { enrollment } from 'src/app/Models/enrollment';
-import { GradeDto } from 'src/app/Models/grade-dto';
+import { GradeDto, GradeToPostDto } from 'src/app/Models/grade-dto';
+import { SimpleStudent } from 'src/app/Models/student-simple';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpRequestsService {
   private apiURL = environment.apiURL;
+  private devURL = environment.devURL;
 
 
   constructor(private http: HttpClient, private storageService: StorageService) { }
@@ -75,5 +77,17 @@ export class HttpRequestsService {
 
   proposeCourse(optional: ProposedOptionalDto ) {
     return this.http.post(`${this.apiURL}/teachers/propose`, optional);
+  }
+
+  getAllStudents(): Observable<Array<SimpleStudent>> {
+    return this.http.get<Array<SimpleStudent>>(`${this.devURL}/students`);
+  }
+
+  getCoursesForStudentByTeacher(studentId: string, teacherId: string): Observable<Array<CourseDtoSimple>>{
+    return this.http.get<Array<CourseDtoSimple>>(`${this.devURL}/discipline/${teacherId}/${studentId}`);
+  }
+
+  postGrade(grade: GradeToPostDto){
+    return this.http.post(`${this.devURL}/teachers/grade`, grade);
   }
 }

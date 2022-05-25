@@ -1,0 +1,38 @@
+<mat-sidenav-container class="main-container">
+    <mat-sidenav mode="side" opened>
+        <app-sidebar-pages></app-sidebar-pages>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <h4 style="align-self: center; margin-left: 30vw; font-size: 25px">Grade a student</h4>
+        <div class="main-page">
+            <div class="year-container">
+            <mat-form-field appearance="fill" [formGroup]="myFormGroup" class="form-container">
+                <mat-label>Choose Student</mat-label>
+                <mat-select formControlName="selectStudent" (selectionChange)="getCoursesForTeacherAndStudent()" required>
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let student of students" [value]="student.id"> {{student.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" [formGroup]="myFormGroup" class="form-container">
+                <mat-label>Choose Course</mat-label>
+                <mat-select formControlName="selectCourse" required [disabled]="isCourseTypeDisabled()">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let course of courses" [value]="course.id">{{course.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" [formGroup]="myFormGroup" class="form-container">
+                <mat-label>Choose Grade</mat-label>
+                <mat-select formControlName="gradeValue" required [disabled]="isGradeDisabled()">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let value1 of grades" [value]="value1">{{value1}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            
+            <button mat-raised-button color="primary" style="width: 11vw" (click)="saveChanges()">Save Grade</button>
+
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

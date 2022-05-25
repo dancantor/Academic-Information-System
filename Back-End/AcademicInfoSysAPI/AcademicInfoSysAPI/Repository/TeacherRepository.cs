@@ -13,6 +13,7 @@ namespace AcademicInfoSysAPI.Repository
         Task<Teacher> GetInfo(int TeacherId);
         Task<bool> UpdateTeacherInfoForID(TeacherDTO data);
         Task<bool> ProposeOptional(ProposedOptionalDTO optional);
+        Task<bool> PostGrade(GradeToPostDTO post);
     }
     public class TeacherRepository : ITeacherRepository
     {
@@ -26,6 +27,36 @@ namespace AcademicInfoSysAPI.Repository
         public async Task<Teacher> GetInfo(int TeachId)
         {
             return await _dbContext.Teachers.Where(x => x.GenericId == TeachId).FirstOrDefaultAsync();
+        }
+
+        public async Task<bool> PostGrade(GradeToPostDTO post)
+        {
+            bool isGradeStandard = await _dbContext.StandardDisciplines.AnyAsync(x => x.Id == post.courseId);
+            if (isGradeStandard)
+            {
+                StandardGrade grade = new StandardGrade
+                {
+                    DisciplineId = post.courseId,
+                    StudId = post.courseId,
+                    Value = post.value,
+                };
+
+                return true;
+            }
+            
+            bool isGradeOptional = await _dbContext.OptionalDisciplines.AnyAsync(x => x.Id == post.courseId);
+            if (isGradeOptional)
+            {
+                OptionalGrade grade = new OptionalGrade
+                {
+                    OptionalDisciplineId = post.courseId,
+                    StudId = post.studId,
+                    Value = post.value
+                };
+
+                return true;
+            }
+            return false;
         }
 
         public async Task<bool> ProposeOptional(ProposedOptionalDTO optional)

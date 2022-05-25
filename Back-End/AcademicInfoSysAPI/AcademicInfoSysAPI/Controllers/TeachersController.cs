@@ -67,5 +67,15 @@ namespace AcademicInfoSysAPI.Controllers
             return BadRequest();
         }
 
+        [HttpPost("grade")]
+        public async Task<IActionResult> PostGrade([FromBody] GradeToPostDTO data)
+        {
+            if (await _teacherService.PostGrade(data))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
     }
 }

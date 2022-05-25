@@ -17,6 +17,7 @@ namespace AcademicInfoSysAPI.Repository
         Task<List<AssignedCourseDTO>> GetAssignedOptionalDisciplinesForDTO(List<OptionalDiscipline> CoursesIdList);
         Task<bool> InsertTemporaryOptional(OptionalDisciplineList odl);
         Task<List<OptionalDiscipline>> GetOptionalDisciplinesSortedByPriority(int studentId);
+        Task<Student> GetStudentById(int studentId);
     
     }
     public class DisciplineRepository : IDisciplineRepository
@@ -92,6 +93,11 @@ namespace AcademicInfoSysAPI.Repository
             _dbContext.OptionalDisciplineLists.Add(odl);
             await _dbContext.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<Student> GetStudentById(int studentId)
+        {
+            return await _dbContext.Students.FirstOrDefaultAsync(x => x.StudId == studentId);
         }
     }
 }

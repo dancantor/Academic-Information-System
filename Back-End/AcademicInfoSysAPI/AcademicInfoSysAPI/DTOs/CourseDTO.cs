@@ -7,4 +7,10 @@
         public int NrOfCredits { get; set; }
         public string Type { get; set; }
     }
+
+    public class CourseDTOSimple
+    {
+        public int Id { get; set; }
+        public string name { get; set; }
+    }
 }

@@ -11,7 +11,8 @@ namespace AcademicInfoSysAPI.Services
     public interface IStudentService
     {
         Task<StudentDTO> GetStudentInfoForID(string id);
-        Task<bool> UpdateStudentInfoForID(StudentDTO data);
+        Task<List<SimpleStudent>> GetStudentNames()
+;        Task<bool> UpdateStudentInfoForID(StudentDTO data);
         Task<EnrollmentDTO> GetEnrollmentForStudent(int stud_id);
         Task<bool> EnrollStudentToYear(int year, int stud_id);
 
@@ -27,6 +28,21 @@ namespace AcademicInfoSysAPI.Services
             _studentRepository = some_repo;
         }
 
+        public async Task <List<SimpleStudent>> GetStudentNames()
+        {
+            var students = await _studentRepository.GetAllStudents();
+            List<SimpleStudent> studentNames = new();
+            foreach(var student in students)
+            {
+                studentNames.Add(new()
+                {
+                    Id = student.StudId,
+                    name = $"{student.FirstName} {student.LastName}"
+                });
+            }
+            return studentNames;
+        }
+        
         public async Task<bool> EnrollStudentToYear(int year, int stud_id)
         {
             if (await _studentRepository.EnrollStudentToYear(year, stud_id))

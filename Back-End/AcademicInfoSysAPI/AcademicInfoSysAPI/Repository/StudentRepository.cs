@@ -13,6 +13,7 @@ namespace AcademicInfoSysAPI.Repository
     {
         public Task<Student> GetInfo(int StudId);
         public Task<Student> GetInfoWithStudId(int StudId);
+        public Task<List<Student>> GetAllStudents();
         public Task<bool> UpdateStudentInfoForID(StudentDTO data);
         public Task<bool> EnrollStudentToYear(int year, int StudId);
 
@@ -26,6 +27,11 @@ namespace AcademicInfoSysAPI.Repository
         public StudentRepository(AcademicInfoSysAPI_dbContext someContext)
         {
             _dbContext = someContext;
+        }
+
+        public async Task<List<Student>> GetAllStudents()
+        {
+            return await _dbContext.Students.ToListAsync();
         }
 
         public async Task<bool> EnrollStudentToYear(int year, int StudId)

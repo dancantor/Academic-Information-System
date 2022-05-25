@@ -8,4 +8,10 @@
         public int age { get; set; }
         public string CNP { get; set; }
     }
+
+    public class SimpleStudent
+    {
+        public int Id { get; set; }
+        public string name { get; set; }
+    }
 }

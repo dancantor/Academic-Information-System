@@ -4,3 +4,8 @@ export class CourseDto {
     nrOfCredits: number;
     type: string;
 }
+
+export class CourseDtoSimple{
+    name: string;
+    id: number;
+}

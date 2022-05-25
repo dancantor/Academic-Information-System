@@ -28,6 +28,15 @@ namespace AcademicInfoSysAPI.Controllers
             this.storageService = storageService;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAllStudentNames()
+        {
+            List<SimpleStudent> studentNames = await _studentService.GetStudentNames();
+            if (studentNames == null)
+                return BadRequest();
+            return Ok(studentNames);
+        }
+
         // GET: Students
         [HttpGet("{stud_ID}")]
         public async Task<IActionResult> GetStudentInfoForID(string stud_ID)

@@ -22,6 +22,7 @@ export class TeacherMainPageComponent implements OnInit {
   }
 
   goToAddGrades(): void{
+    this.router.navigate(['teacher/grading']);
   }
 
   goToProposeCourses(){
