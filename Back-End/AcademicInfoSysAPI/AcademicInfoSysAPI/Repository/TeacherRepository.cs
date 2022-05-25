@@ -2,6 +2,7 @@
 using AcademicInfoSysAPI.Context.Models;
 using AcademicInfoSysAPI.DTOs;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,6 +14,8 @@ namespace AcademicInfoSysAPI.Repository
         Task<Teacher> GetInfo(int TeacherId);
         Task<bool> UpdateTeacherInfoForID(TeacherDTO data);
         Task<bool> ProposeOptional(ProposedOptionalDTO optional);
+        Task<List<OptionalCourseForApproveDTO>> GetCourses();
+        Task ApproveCourse(OptionalCourseForApproveDTO course);
     }
     public class TeacherRepository : ITeacherRepository
     {
@@ -60,6 +63,37 @@ namespace AcademicInfoSysAPI.Repository
             {
                 return false;
             }
+        }
+
+        public async Task<List<OptionalCourseForApproveDTO>> GetCourses()
+        {
+            List<OptionalCourseForApproveDTO> courses = new();
+            var coursesFromDb = await _dbContext.OptionalDisciplines.ToListAsync();
+            foreach (var course in coursesFromDb)
+            {
+                var teacher = await _dbContext.Teachers.FirstOrDefaultAsync(r => r.TeacherId.Equals(course.TeacherId));
+                string teacherName = $"{teacher.FirstName} {teacher.LastName}";
+
+                courses.Add(new OptionalCourseForApproveDTO
+                {
+                    Name = course.Name,
+                    ProfessorName = teacherName,
+                    NrOfCredits = course.NoCredits.Value,
+                    correspondingYear = course.CoresopondingYear.Value,
+                    NrOfStudents = course.NoStudents.Value,
+                    isApproved = course.IsApproved.Value
+                });
+            }
+
+            return courses;
+        }
+
+        public async Task ApproveCourse(OptionalCourseForApproveDTO course)
+        {
+            var toUpdateCourse = await _dbContext.OptionalDisciplines.FirstOrDefaultAsync(c => c.Name == course.Name);
+            toUpdateCourse.IsApproved = course.isApproved;
+
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

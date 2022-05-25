@@ -1,4 +1,4 @@
-import { ProposedOptionalDto } from './../../Models/proposed-optional-dto';
+import { ProposedOptionalDto, ProposedOptionalDTOWithProfName } from './../../Models/proposed-optional-dto';
 import { CourseDto } from './../../Models/course-dto';
 import { OptionalWithPreference } from './../../Models/optional-with-preference';
 import { DisciplineWithId } from './../../Models/discipline-with-id';
@@ -18,6 +18,7 @@ import { GradeDto } from 'src/app/Models/grade-dto';
 })
 export class HttpRequestsService {
   private apiURL = environment.apiURL;
+  private devURL = environment.devURL;
 
 
   constructor(private http: HttpClient, private storageService: StorageService) { }
@@ -75,5 +76,13 @@ export class HttpRequestsService {
 
   proposeCourse(optional: ProposedOptionalDto ) {
     return this.http.post(`${this.apiURL}/teachers/propose`, optional);
+  }
+
+  getCourses(): Observable<Array<ProposedOptionalDTOWithProfName>>{
+    return this.http.get<Array<ProposedOptionalDTOWithProfName>>(`${this.devURL}/teachers/courses`);
+  }
+
+  updateCourseApproval(courses: Array<ProposedOptionalDTOWithProfName>){
+    return this.http.post(`${this.devURL}/teachers/approve`, courses);
   }
 }
