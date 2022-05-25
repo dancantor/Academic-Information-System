@@ -32,7 +32,9 @@ export class ProposeCourseComponent implements OnInit {
   saveCourse(){ 
     const id = this.storage.getUserId()
     if (id === null){
-      this.snackBar.open('Error on proposing optional')
+      this.snackBar.open('Error on proposing optional', 'Ok', {
+        duration: 3000
+      })
       return
     }
     // let course: ProposedOptionalDto = {
@@ -40,7 +42,9 @@ export class ProposeCourseComponent implements OnInit {
 
     // }
     this.http.proposeCourse({teacherId: id, ...this.courseConfig.value}).subscribe(result =>{
-      this.snackBar.open('Optional successfully proposed');
+      this.snackBar.open('Optional successfully proposed', 'Ok', {
+        duration: 3000
+      });
     }, error => this.snackBar.open('Error on proposing optional'));
   }
 

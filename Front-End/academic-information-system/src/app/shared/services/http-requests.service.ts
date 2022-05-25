@@ -76,4 +76,8 @@ export class HttpRequestsService {
   proposeCourse(optional: ProposedOptionalDto ) {
     return this.http.post(`${this.apiURL}/teachers/propose`, optional);
   }
+
+  distributeOptionals() {
+    return this.http.get(`${this.apiURL}/staffs/distribute-optionals`);
+  }
 }
