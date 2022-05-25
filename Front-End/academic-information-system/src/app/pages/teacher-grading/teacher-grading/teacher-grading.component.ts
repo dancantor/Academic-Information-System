@@ -72,16 +72,6 @@ export class TeacherGradingComponent implements OnInit {
     return false;
   }
 
-  callForASingleType() {
-    if (this.myFormGroup.controls['selectCourseType'].value === "Standard"){
-      let profile = new ProfileInformation(); 
-      this.http.getProfileInfoById(this.storage.getUserId() || '', this.storage.getUserType()).subscribe(reponse => profile = reponse);
-
-      let studId = this.myFormGroup.controls['selectStudent'].value;
-      this.http.getCoursesForStudentByTeacher(studId, profile.id).subscribe(response => this.courses = response);
-    }
-  }
-
   saveChanges(){
     let grade = new GradeToPostDto()
     grade.studentId = this.myFormGroup.controls['selectStudent'].value,

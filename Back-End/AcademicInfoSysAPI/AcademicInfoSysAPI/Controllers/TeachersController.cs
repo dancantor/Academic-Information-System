@@ -56,7 +56,7 @@ namespace AcademicInfoSysAPI.Controllers
                 return BadRequest();
             }
         }
-        
+
         [HttpPost("propose")]
         public async Task<IActionResult> ProposeOptional([FromBody] ProposedOptionalDTO optional)
         {
@@ -73,9 +73,10 @@ namespace AcademicInfoSysAPI.Controllers
             if (await _teacherService.PostGrade(data))
             {
                 return Ok();
-            } 
+            }
+            return BadRequest();
         }
-        
+
         [HttpGet("courses")]
         public async Task<IActionResult> GetCoursesToApprove()
         {
@@ -91,8 +92,8 @@ namespace AcademicInfoSysAPI.Controllers
         public async Task<IActionResult> ApproveCourses([FromBody] List<OptionalCourseForApproveDTO> courses)
         {
             await _teacherService.ApproveCourses(courses);
-           
+
             return NoContent();
         }
-    
+    }
 }

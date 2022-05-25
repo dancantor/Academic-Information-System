@@ -1,4 +1,4 @@
-import { ProposedOptionalDto } from './../../Models/proposed-optional-dto';
+import { ProposedOptionalDto, ProposedOptionalDTOWithProfName } from './../../Models/proposed-optional-dto';
 import { CourseDto, CourseDtoSimple } from './../../Models/course-dto';
 import { OptionalWithPreference } from './../../Models/optional-with-preference';
 import { DisciplineWithId } from './../../Models/discipline-with-id';
