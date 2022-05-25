@@ -13,6 +13,7 @@ import { StaffMainPageComponent } from './pages/staff-main-page/staff-main-page.
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ViewAssignedCoursesComponentComponent } from './pages/view-assigned-courses-component/view-assigned-courses-component.component';
 import { StudentEnrollComponent } from './pages/student-enroll/student-enroll.component';
+import { TeacherGradingComponent } from './pages/teacher-grading/teacher-grading/teacher-grading.component';
 import { ViewApproveOptionalCoursesComponent } from './pages/view-and-approve-optional-course/view-approve-optional-courses/view-approve-optional-courses.component';
 
 
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path: 'student/view-grades', component: GradesPageComponent},
   {path: 'student/view-courses', component: ViewCoursesComponent},
   {path: 'teacher/propose-course', component: ProposeCourseComponent},
+  {path: 'teacher/grading', component: TeacherGradingComponent}
   {path: 'teacher/approve-courses', component: ViewApproveOptionalCoursesComponent}
 ];
 

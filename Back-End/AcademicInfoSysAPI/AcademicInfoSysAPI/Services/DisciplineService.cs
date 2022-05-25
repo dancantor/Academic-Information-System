@@ -14,6 +14,7 @@ namespace AcademicInfoSysAPI.Services
         Task<bool> InsertTemporaryOptional(OptionalTemporaryDTO optional);
         Task<List<DisciplineWithIdDTO>> GetOptionalDisciplinesSortedByPriority(int studentId);
         Task<List<CourseDTO>> GetCoursesForStudent(int stud_id, int year);
+        Task<List<CourseDTOSimple>> GetAllDisciplinesForStudentByTeacher(int teacherId, int studId);
     }
     public class DisciplineService : IDisciplineService
     {
@@ -142,6 +143,44 @@ namespace AcademicInfoSysAPI.Services
                     Type = "Optional"
                 });
             }
+            return courses;
+        }
+
+        public async Task<List<CourseDTOSimple>> GetAllDisciplinesForStudentByTeacher(int teacherId, int studId)
+        {
+            var enrolled_courses_with_ids = await _disciplineRepository.GetAssignedOptionalDisciplinesList(studId);
+            var enrolled_courses = await _disciplineRepository.GetAssignedOptionalDisciplines(enrolled_courses_with_ids);
+
+            var student = await _disciplineRepository.GetStudentById(studId);
+
+            var standardCoursesWithTeacher = await _disciplineRepository.GetStandardDisciplines(student.Year1);
+
+            List<CourseDTOSimple> courses = new();
+
+            foreach(var course in enrolled_courses)
+            {
+                if(course.TeacherId == teacherId)
+                {
+                    courses.Add(new CourseDTOSimple
+                    {
+                        Id = course.Id,
+                        name = course.Name
+                    });
+                }
+            }
+
+            foreach(var course in standardCoursesWithTeacher)
+            {
+                if (course.TeacherId == teacherId)
+                {
+                    courses.Add(new CourseDTOSimple
+                    {
+                        Id = course.Id,
+                        name = course.Name
+                    });
+                }
+            }
+
             return courses;
         }
     }

@@ -8,6 +8,12 @@
         public string Type { get; set; }
     }
 
+    public class CourseDTOSimple
+    {
+        public int Id { get; set; }
+        public string name { get; set; }
+    }
+    
     public class OptionalCourseForApproveDTO
     {
         public string Name { get; set; }

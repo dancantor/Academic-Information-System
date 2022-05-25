@@ -16,7 +16,7 @@ import {MatInputModule} from '@angular/material/input';
 import { LoginComponent } from './pages/login-page/login.component'
 import {MatIconModule} from '@angular/material/icon'
 import {MatTableModule} from '@angular/material/table';
-import { SidebarComponent} from './shared/components/sidebar/sidebar.component';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { DisplayErrorsComponent } from './shared/utilities/display-errors/display-errors.component';
 import { SidebarPagesComponent } from './shared/components/sidebar-Pages/sidebar-Pages.component';
@@ -31,6 +31,7 @@ import { SignContractComponent } from './pages/sign-contract/sign-contract.compo
 import { GradesPageComponent } from './pages/grades-page/grades-page.component';
 import { ViewCoursesComponent } from './pages/view-courses/view-courses.component';
 import { ProposeCourseComponent } from './pages/propose-course/propose-course.component';
+import { TeacherGradingComponent } from './pages/teacher-grading/teacher-grading/teacher-grading.component';
 import { ViewApproveOptionalCoursesComponent } from './pages/view-and-approve-optional-course/view-approve-optional-courses/view-approve-optional-courses.component';
 import { ApproveCoursesTableComponent } from './pages/view-and-approve-optional-course/approve-courses-table/approve-courses-table/approve-courses-table.component';
 
@@ -58,6 +59,7 @@ import { ApproveCoursesTableComponent } from './pages/view-and-approve-optional-
     GradesPageComponent,
     ViewCoursesComponent,
     ProposeCourseComponent,
+    TeacherGradingComponent,
     DialogComponent,
     ViewApproveOptionalCoursesComponent,
     ApproveCoursesTableComponent

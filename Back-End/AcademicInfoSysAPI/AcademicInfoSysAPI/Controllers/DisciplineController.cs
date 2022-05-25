@@ -95,6 +95,18 @@ namespace AcademicInfoSysAPI.Controllers
 
         }
 
+        [HttpGet("{teacherId}/{studId}")]
+        public async Task<IActionResult> GetCoursesForStudentByTeacher([FromRoute] int teacherId, int studId)
+        {
+            if (teacherId < 0)
+                return BadRequest();
+
+            var courses = await disciplineService.GetAllDisciplinesForStudentByTeacher(teacherId, studId);
+
+            return Ok(courses);
+
+        }
+
 
         [HttpPost("temporary-optional")]
         public async Task<IActionResult> InsertTemporaryOptional([FromBody] OptionalTemporaryDTO data)

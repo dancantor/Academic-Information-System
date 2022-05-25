@@ -67,6 +67,15 @@ namespace AcademicInfoSysAPI.Controllers
             return BadRequest();
         }
 
+        [HttpPost("grade")]
+        public async Task<IActionResult> PostGrade([FromBody] GradeToPostDTO data)
+        {
+            if (await _teacherService.PostGrade(data))
+            {
+                return Ok();
+            } 
+        }
+        
         [HttpGet("courses")]
         public async Task<IActionResult> GetCoursesToApprove()
         {
@@ -85,5 +94,5 @@ namespace AcademicInfoSysAPI.Controllers
            
             return NoContent();
         }
-    }
+    
 }

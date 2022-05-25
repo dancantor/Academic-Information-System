@@ -1,0 +1,49 @@
+.main-container {
+    height: 100%;
+    width: 100%;
+}
+
+mat-sidenav {
+    width: 20vw;
+    background-image: url("/assets/images/background.png");
+}
+
+mat-sidenav-content {
+    height: 100%;
+}
+
+html, body { height: 100%;}
+
+.table1 {
+    width: 100%;
+}
+
+.year-container {
+    padding-bottom: 10vh;
+    margin-left: 25vw;
+    margin-right: 5vw;
+}
+
+.title {
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+
+.select-container{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.main-page {
+    height: 100%;
+    padding-top: 100px;
+    background-color: var(--page-background-color);
+    margin:20px;
+}
+
+.form-container{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    width: 40vw
+}

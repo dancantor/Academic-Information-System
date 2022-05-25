@@ -11,6 +11,7 @@ namespace AcademicInfoSysAPI.Services
         Task<TeacherDTO> GetTeacherInfoForID(string id);
         Task<bool> UpdateTeacherInfoForID(TeacherDTO data);
         Task<bool> ProposeOptional(ProposedOptionalDTO optional);
+        Task<bool> PostGrade(GradeToPostDTO post);
         Task<List<OptionalCourseForApproveDTO>> GetCourses();
         Task ApproveCourses(List<OptionalCourseForApproveDTO> courses);
     }
@@ -38,6 +39,15 @@ namespace AcademicInfoSysAPI.Services
                 age = (int)userInfo.Age,
                 isChief = (bool)userInfo.IsChief
             };
+        }
+
+        public async Task<bool> PostGrade(GradeToPostDTO post)
+        {
+            if (await _teacherRepository.PostGrade(post))
+            {
+                return true;
+            }
+            return false;
         }
 
         public async Task<bool> ProposeOptional(ProposedOptionalDTO optional)
