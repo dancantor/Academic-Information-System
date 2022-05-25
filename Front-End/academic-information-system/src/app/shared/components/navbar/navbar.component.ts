@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router, private storageService: StorageService, private http: HttpRequestsService){  }
   ngOnInit(): void {
     this.http.getProfileInfoById(this.storageService.getUserId() || '', this.storageService.getUserType())
-      .subscribe(result => {this.user = result; console.log(this.user.last_name)});
+      .subscribe(result => {this.user = result});
   }
 
   logout(): void{

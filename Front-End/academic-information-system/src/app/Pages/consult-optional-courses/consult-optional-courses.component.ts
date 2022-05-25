@@ -1,3 +1,4 @@
+import { CourseDto } from './../../Models/course-dto';
 import { OptionalWithPreference } from './../../Models/optional-with-preference';
 import { DisciplineWithId } from './../../Models/discipline-with-id';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -22,6 +23,7 @@ export class ConsultOptionalCoursesComponent implements OnInit {
     NrOfCredits: 0,
     id: 0
   }];
+  mandatoryDisciplines: Array<DisciplineWithId> = [];
   columnsToDisplay = ['Name', 'ProfessorName', 'NrOfCredits'];
   msg: string[] = [];
   locked: boolean = false;
@@ -35,26 +37,46 @@ export class ConsultOptionalCoursesComponent implements OnInit {
 
   ngOnInit(): void {
     this.http.getOptionalDisciplines().subscribe(result => {
-      this.optionalInitial = result;
       this.http.getProfileInfoById(this.storage.getUserId() || '', this.storage.getUserType()).subscribe(
         result1 => {
-          this.http.getOptionalSortedByPriority(parseInt(result1.id)).subscribe(optionals => {
-            this.optionalFinal = optionals;
-            if (this.optionalFinal.length === this.optionalInitial.length) {
-              this.locked = true;
-              this.optionalInitial = [];
-            }
-            else{
-              if (this.optionalFinal.length === 0) {
-                this.optionalFinal = [{
-                  Name: '',
-                  ProfessorName: '',
-                  NrOfCredits: 0,
-                  id: 0
-                }];
+          this.http.getEnrolledYears(result1.id).subscribe(years => {
+            this.http.getCoursesByStudIdAndYear(parseInt(result1.id), years.year1).subscribe(courses => {
+              this.optionalInitial = result;
+              for (let course of courses){
+                this.mandatoryDisciplines.push({
+                  Name: course.name,
+                  NrOfCredits: course.nrOfCredits,
+                  ProfessorName: course.professorName,
+                  id: 1
+                })
               }
-            }
-          });
+              this.http.getOptionalSortedByPriority(parseInt(result1.id)).subscribe(optionals => {
+                this.optionalFinal = optionals;
+                if (this.optionalFinal.length === this.optionalInitial.length) {
+                  this.locked = true;
+                  this.optionalInitial = [];
+                }
+                else{
+                  var copyArray: Array<DisciplineWithId> = []
+                  for (let optional of this.optionalInitial){
+                    if (this.optionalFinal.find(value => value.id === optional.id) === undefined){
+                      copyArray.push(optional);
+                    }
+                  }
+                  console.log(copyArray)
+                  this.optionalInitial = copyArray;
+                  if (this.optionalFinal.length === 0) {
+                    this.optionalFinal = [{
+                      Name: '',
+                      ProfessorName: '',
+                      NrOfCredits: 0,
+                      id: 0
+                    }];
+                  }
+                }
+              });
+            })
+          })
         })
     })
   }

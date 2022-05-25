@@ -1,3 +1,5 @@
+import { ProposedOptionalDto } from './../../Models/proposed-optional-dto';
+import { CourseDto } from './../../Models/course-dto';
 import { OptionalWithPreference } from './../../Models/optional-with-preference';
 import { DisciplineWithId } from './../../Models/discipline-with-id';
 import { Curriculum } from './../../Models/curriculum';
@@ -9,6 +11,7 @@ import { environment } from 'src/environments/environment.prod';
 import { StorageService } from './storage.service';
 import { AssignedCourse } from 'src/app/Models/AssignedCourse';
 import { enrollment } from 'src/app/Models/enrollment';
+import { GradeDto } from 'src/app/Models/grade-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -60,5 +63,17 @@ export class HttpRequestsService {
       'Accept': 'application/json',
     };
     return this.http.post(`${this.apiURL}/students/upload-contract`, data, {'headers': headers});
+  }
+
+  getGrades(studId: number): Observable<Array<GradeDto>> {
+    return this.http.get<Array<GradeDto>>(`${this.apiURL}/students/grades/${studId}`);
+  }
+
+  getCoursesByStudIdAndYear(studId: number, year: number): Observable<Array<CourseDto>>{
+    return this.http.get<Array<CourseDto>>(`${this.apiURL}/discipline/courses?stud_id=${studId}&year=${year}`);
+  }
+
+  proposeCourse(optional: ProposedOptionalDto ) {
+    return this.http.post(`${this.apiURL}/teachers/propose`, optional);
   }
 }

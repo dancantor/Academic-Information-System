@@ -9,6 +9,7 @@
             public int age { get; set; }
             public string CNP { get; set; }
 
+            public bool isChief { get; set; }
 
     }
 }

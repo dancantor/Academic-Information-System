@@ -13,6 +13,7 @@ namespace AcademicInfoSysAPI.Services
         Task<List<DisciplineWithIdDTO>> GetAllOptionalDisciplines();
         Task<bool> InsertTemporaryOptional(OptionalTemporaryDTO optional);
         Task<List<DisciplineWithIdDTO>> GetOptionalDisciplinesSortedByPriority(int studentId);
+        Task<List<CourseDTO>> GetCoursesForStudent(int stud_id, int year);
     }
     public class DisciplineService : IDisciplineService
     {
@@ -108,6 +109,40 @@ namespace AcademicInfoSysAPI.Services
                 });
             }
             return disciplines;
+        }
+
+        public async Task<List<CourseDTO>> GetCoursesForStudent(int stud_id, int year)
+        {
+            // this is for the OptionalDisciplineList that has 3 ids as attributes
+            var enrolled_courses_with_ids = await _disciplineRepository.GetAssignedOptionalDisciplinesList(stud_id);
+
+            // a list that contains the optionalDiscipine of the student
+            var enrolled_courses = await _disciplineRepository.GetAssignedOptionalDisciplines(enrolled_courses_with_ids);
+            var standardCourses = await _disciplineRepository.GetStandardDisciplines(year);
+            var courses = new List<CourseDTO>();
+
+            foreach (var course in standardCourses)
+            {
+                courses.Add(new CourseDTO
+                {
+                    Name = course.Name,
+                    NrOfCredits = (int)course.NoCredits,
+                    ProfessorName = course.Teacher.LastName + " " + course.Teacher.FirstName,
+                    Type = "Mandatory"
+                });
+            }
+
+            foreach (var course in enrolled_courses)
+            {
+                courses.Add(new CourseDTO 
+                {
+                    Name = course.Name,
+                    NrOfCredits = (int)course.NoCredits,
+                    ProfessorName = course.Teacher.LastName + " " + course.Teacher.FirstName,
+                    Type = "Optional"
+                });
+            }
+            return courses;
         }
     }
 }
