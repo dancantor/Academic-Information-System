@@ -1,1 +1,15 @@
-<p>staff-main-page works!</p>
+<app-navbar></app-navbar>
+<div style="display:flex; flex-flow: row nowrap;">
+    <div style="height: 100vh; width: 50vw; display: flex;">
+        <div class="button-container">
+            <button mat-button style="width: 25vw; height: 7vh;border-radius: 20px; background-color: #E4E2FF; margin: 2vh " (click)="goToViewStudentsByGroup()"> View Students By Group </button>
+            <button mat-button style="width: 25vw; height: 7vh;border-radius: 20px; background-color: #E4E2FF; margin: 2vh " (click)="goToViewStudentsByYear()"> View Students By Year </button>
+            <button mat-button style="width: 25vw; height: 7vh;border-radius: 20px; background-color: #E4E2FF; margin: 2vh " (click)="goToViewStudentsByGrades()"> View Students By Grades </button>
+            <button mat-button style="width: 25vw; height: 7vh;border-radius: 20px; background-color: #E4E2FF; margin: 2vh " (click)="goToFilterStudents()"> Filter Students </button>
+            <button mat-button style="width: 25vw; height: 7vh;border-radius: 20px; background-color: #E4E2FF; margin: 2vh " (click)="goToDecideStudyingGrants()"> View Assigned Optionals </button>
+        </div>
+    </div>
+    <div style="height: 100vh; width: 50vw; display: flex">
+        <img style="width: 50vw; height:70vh" src="assets/images/staff.png">
+    </div>
+</div>
