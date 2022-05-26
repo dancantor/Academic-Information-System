@@ -43,12 +43,14 @@ export class ConsultOptionalCoursesComponent implements OnInit {
             this.http.getCoursesByStudIdAndYear(parseInt(result1.id), years.year1).subscribe(courses => {
               this.optionalInitial = result;
               for (let course of courses){
-                this.mandatoryDisciplines.push({
-                  Name: course.name,
-                  NrOfCredits: course.nrOfCredits,
-                  ProfessorName: course.professorName,
-                  id: 1
+                if (course.type == 'Mandatory') {
+                  this.mandatoryDisciplines.push({
+                    Name: course.name,
+                    NrOfCredits: course.nrOfCredits,
+                    ProfessorName: course.professorName,
+                    id: 1
                 })
+                }
               }
               this.http.getOptionalSortedByPriority(parseInt(result1.id)).subscribe(optionals => {
                 this.optionalFinal = optionals;
