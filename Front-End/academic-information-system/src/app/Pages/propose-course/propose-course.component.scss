@@ -29,6 +29,26 @@ html, body { height: 100%;}
     width: 20vw;
   }
 
+  .title {
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+table {
+    width: 80%;
+}
+
+.mat-header-row {
+    font-size: 50px;
+    height: 40px;
+}
+
+.mat-row {
+    height: 25px;
+}
+
+.table-container {
+    margin-bottom: 40px;
+}
 // button{
 //     height: 60px;
 // }

@@ -100,10 +100,6 @@ export class ConsultOptionalCoursesComponent implements OnInit {
   }
 
   saveOptionalList() {
-    if (this.optionalInitial.length !== 0) {
-      this.msg.push("Please select all the courses");
-      return;
-    }
     this.http.getProfileInfoById(this.storage.getUserId() || '', this.storage.getUserType()).subscribe(
       result => {
         for (var optional of this.optionalFinal) {
@@ -114,7 +110,7 @@ export class ConsultOptionalCoursesComponent implements OnInit {
           }
           this.http.insertOptionalPreferedDiscipline(discipline).subscribe( () => {
             this.msg.pop();
-            this.snackBar.open("Optional discipline added")}
+            this.snackBar.open("Optional discipline added", 'Ok')}
           , error => this.msg = parseWebAPIErrors(error)); 
         }
 

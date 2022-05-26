@@ -53,7 +53,7 @@ export class SignContractComponent implements OnInit {
         contract: this.fileToSave
       }
       this.contractService.create(contract).subscribe(()=>{
-        this.snackbar.open('Contract successfully saved!');
+        this.snackbar.open('Contract successfully saved!', 'Ok');
       })
 
       }

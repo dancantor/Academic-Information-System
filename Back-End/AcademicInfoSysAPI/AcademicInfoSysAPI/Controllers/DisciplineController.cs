@@ -51,12 +51,12 @@ namespace AcademicInfoSysAPI.Controllers
                 var optionalCourses = await disciplineService.GetAssignedOptionalDisciplines(stud_id);
                 return Ok(optionalCourses);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
             }
         }
-        
+
         [HttpGet]
         public async Task<IActionResult> GetAllOptionalDisciplines()
         {
@@ -130,6 +130,26 @@ namespace AcademicInfoSysAPI.Controllers
                     return NoContent();
                 else
                     return Ok(courses);
+            }
+            catch (BadRequestException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
+        [HttpGet("get-proposed/{teacherId}")]
+        public async Task<IActionResult> GetProposedOptionalsByTeacher([FromRoute] int teacherId)
+        {
+            try
+            {
+                List<ProposedOptionalDTO> optionals = await disciplineService.GetProposedOptionalsByTeacher(teacherId);
+                if (optionals == null)
+                    return NoContent();
+                return Ok(optionals);
             }
             catch (BadRequestException ex)
             {

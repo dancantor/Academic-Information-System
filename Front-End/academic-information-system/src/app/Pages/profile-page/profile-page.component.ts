@@ -55,7 +55,7 @@ export class ProfilePageComponent implements OnInit {
   submitChanges(): void{
     this.http.updateUserInfoById(this.role, this.user).subscribe( response => {
       this.msg.pop();
-      this._snackBar.open("Profile updated!")}
+      this._snackBar.open("Profile updated!", 'Ok')}
       , error => this.msg = parseWebAPIErrors(error));
   }
   

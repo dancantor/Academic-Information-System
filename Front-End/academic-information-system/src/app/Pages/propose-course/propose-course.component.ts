@@ -13,7 +13,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProposeCourseComponent implements OnInit {
   courseConfig: FormGroup;
-
+  optionals: Array<ProposedOptionalDto> = []
+  columnsToDisplay = ['Name', 'NoStudents', 'Year', 'NoCredits'];
   constructor(private router: Router, private http:HttpRequestsService,
               private formBuilder: FormBuilder, private snackBar: MatSnackBar,
               private storage: StorageService) { 
@@ -26,6 +27,19 @@ export class ProposeCourseComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const id = this.storage.getUserId();
+    var role = this.storage.getUserType();
+    if (id === null){
+      this.snackBar.open('Error on proposing optional', 'Ok', {
+        duration: 3000
+      })
+      return
+    }
+    this.http.getProfileInfoById(id, role).subscribe(teacher => {
+      this.http.getOptionalsByTeacher(+teacher.id).subscribe(result => {
+        this.optionals = result;
+      })
+    })
     
   }
 
@@ -43,7 +57,7 @@ export class ProposeCourseComponent implements OnInit {
         this.snackBar.open('Optional successfully proposed', 'Ok', {
           duration: 3000
         });
-      }, error => this.snackBar.open('Error on proposing optional'));
+      }, error => this.snackBar.open('Error on proposing optional', 'Ok'));
     })
     // let course: ProposedOptionalDto = {
     //   teacherId: +id,

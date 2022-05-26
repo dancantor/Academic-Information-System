@@ -43,7 +43,15 @@ namespace AcademicInfoSysAPI.Repository
                     StudId = post.courseId,
                     Value = post.value,
                 };
-
+                var gradeFromDB = await _dbContext.StandardGrades.Where(x => x.StudId == grade.StudId && x.DisciplineId == grade.DisciplineId).FirstOrDefaultAsync();
+                if (gradeFromDB != null)
+                {
+                    gradeFromDB.Value = post.value;
+                    await _dbContext.SaveChangesAsync();
+                    return true;
+                }
+                this._dbContext.StandardGrades.Add(grade);
+                await _dbContext.SaveChangesAsync();
                 return true;
             }
             
@@ -56,7 +64,15 @@ namespace AcademicInfoSysAPI.Repository
                     StudId = post.studId,
                     Value = post.value
                 };
-
+                var gradeFromDB = await _dbContext.OptionalGrades.Where(x => x.StudId == grade.StudId && x.OptionalDisciplineId == grade.OptionalDisciplineId).FirstOrDefaultAsync();
+                if (gradeFromDB != null)
+                {
+                    gradeFromDB.Value = post.value;
+                    await _dbContext.SaveChangesAsync();
+                    return true;
+                }
+                this._dbContext.OptionalGrades.Add(grade);
+                await _dbContext.SaveChangesAsync();
                 return true;
             }
             return false;

@@ -56,7 +56,7 @@ export class HttpRequestsService {
   }
 
   insertOptionalPreferedDiscipline(opt: OptionalWithPreference){
-    return this.http.post(`${this.apiURL}/discipline/temporary-optional`, opt);
+    return this.http.post(`${this.devURL}/discipline/temporary-optional`, opt);
   }
 
   sendFileToServer(data: FormData){
@@ -100,5 +100,10 @@ export class HttpRequestsService {
 
   updateCourseApproval(courses: Array<ProposedOptionalDTOWithProfName>){
     return this.http.post(`${this.devURL}/teachers/approve`, courses);
+  }
+
+  getOptionalsByTeacher(teacherId: number): Observable<Array<ProposedOptionalDto>> {
+    return this.http.get<Array<ProposedOptionalDto>>(`${this.devURL}/discipline/get-proposed/${teacherId}`);
+
   }
 }

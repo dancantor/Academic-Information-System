@@ -4,6 +4,50 @@
     </mat-sidenav>
     <mat-sidenav-content>
         <div class="main-page">
+            <div class="title">Optionals Proposed by You</div>
+                <div class="table-container">
+                    <div class="spinner-container" *ngIf="optionals.length == 0">
+                        No Optionals Proposed
+                    </div>
+                    <table
+                        mat-table
+                        [dataSource]="optionals"
+                        *ngIf="optionals.length != 0"
+                    >
+                        <ng-container matColumnDef="Name">
+                            <th mat-header-cell *matHeaderCellDef>Name of Course</th>
+                            <td mat-cell *matCellDef="let element">
+                                {{element.name}}
+                            </td>
+                        </ng-container>
+                    
+                        <ng-container matColumnDef="NoStudents">
+                            <th mat-header-cell *matHeaderCellDef>Number of students</th>
+                            <td mat-cell *matCellDef="let element">
+                                {{element.noOfStudents}}
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Year">
+                            <th mat-header-cell *matHeaderCellDef>Year of Study</th>
+                            <td mat-cell *matCellDef="let element">
+                                {{element.correspondingYear}}
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="NoCredits">
+                            <th mat-header-cell *matHeaderCellDef>Number of credits</th>
+                            <td mat-cell *matCellDef="let element">
+                                {{element.noOfCredits}}
+                            </td>
+                        </ng-container>
+                    
+                        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                        <tr 
+                        mat-row 
+                        *matRowDef="let row; columns: columnsToDisplay"></tr>
+                    </table>
+                </div>
             <form [formGroup]="courseConfig" (submit)="saveCourse()" style="display: inline;">
                 <mat-form-field appearance="outline">
                     <mat-label>Name</mat-label>

@@ -20,6 +20,7 @@ namespace AcademicInfoSysAPI.Repository
         Task<Student> GetStudentById(int studentId);
     
         Task<bool> MakeOptionalFinal(int studentId, int optionalId);
+        Task<List<OptionalDiscipline>> GetProposedOptionalsByTeacher(int teacherId);
     }
     public class DisciplineRepository : IDisciplineRepository
     {
@@ -92,6 +93,14 @@ namespace AcademicInfoSysAPI.Repository
 
         public async Task<bool> InsertTemporaryOptional(OptionalDisciplineList odl)
         {
+            var opt = await _dbContext.OptionalDisciplineLists.Where(optional => optional.StudId == odl.StudId && optional.OptionalDisciplineId == odl.OptionalDisciplineId).FirstOrDefaultAsync();
+            if (opt != null) 
+            {
+                opt.OrderPreference = odl.OrderPreference;
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            odl.Final = false;
             _dbContext.OptionalDisciplineLists.Add(odl);
             await _dbContext.SaveChangesAsync();
             return true;
@@ -112,6 +121,11 @@ namespace AcademicInfoSysAPI.Repository
                 return true;
             }
             return false;
+        }
+
+        public async Task<List<OptionalDiscipline>> GetProposedOptionalsByTeacher(int teacherId)
+        {
+            return await _dbContext.OptionalDisciplines.Where(opl => opl.TeacherId == teacherId).ToListAsync();
         }
     }
 }

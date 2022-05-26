@@ -1,4 +1,5 @@
-﻿using AcademicInfoSysAPI.DTOs;
+﻿using AcademicInfoSysAPI.Context.Models;
+using AcademicInfoSysAPI.DTOs;
 using AcademicInfoSysAPI.Repository;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace AcademicInfoSysAPI.Services
         Task<List<DisciplineWithIdDTO>> GetOptionalDisciplinesSortedByPriority(int studentId);
         Task<List<CourseDTO>> GetCoursesForStudent(int stud_id, int year);
         Task<List<CourseDTOSimple>> GetAllDisciplinesForStudentByTeacher(int teacherId, int studId);
+        Task<List<ProposedOptionalDTO>> GetProposedOptionalsByTeacher(int teacherId);
     }
     public class DisciplineService : IDisciplineService
     {
@@ -182,6 +184,24 @@ namespace AcademicInfoSysAPI.Services
             }
 
             return courses;
+        }
+
+        public async Task<List<ProposedOptionalDTO>> GetProposedOptionalsByTeacher(int teacherId)
+        {
+            List<OptionalDiscipline> optionals = await _disciplineRepository.GetProposedOptionalsByTeacher(teacherId);
+            List<ProposedOptionalDTO> proposedOptionals = new List<ProposedOptionalDTO>();
+            foreach(OptionalDiscipline od in optionals) {
+                proposedOptionals.Add(new ProposedOptionalDTO
+                {
+                    correspondingYear = (int)od.CoresopondingYear,
+                    name = od.Name,
+                    noOfCredits = (int)od.NoCredits,
+                    noOfStudents = (int)od.NoStudents,
+                    teacherId = (int)od.TeacherId
+                });
+            }
+            return proposedOptionals;
+
         }
     }
 }
